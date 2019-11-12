@@ -15,6 +15,9 @@ import demo.dao.TFModelDao;
 import demo.entity.MUTModel;
 import demo.entity.SimValueModel;
 import demo.entity.TFModel;
+import demo.pdf.GeneratePDF;
+import demo.po.GeneralResult;
+import demo.po.PDFContent;
 import demo.service.TFService;
 import demo.vo.IndexDisplayVO;
 import demo.vo.Inputs;
@@ -23,10 +26,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class TFServiceImpl implements TFService {
@@ -62,7 +62,7 @@ public class TFServiceImpl implements TFService {
         String[] p2s = p2Path.split("/");
         int cid2 = Integer.parseInt(p2s[p2s.length-1]);
         try {
-            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueByPair(cid1,cid2);
+            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1,cid2);
             if(simValueModelList.size() != 0){
                 for(int i=0;i<simValueModelList.size();i++){
                     IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
@@ -126,13 +126,65 @@ public class TFServiceImpl implements TFService {
                     }
                 }
             }
+            List<Integer> players = new ArrayList<>();
+            players.add(1);
+            players.add(2);
+            PDFContent pdfContent = getPDFContentFromDB(players,0.8);
+            pdfContent.setSubject("Datalog");
+            pdfContent.setPlayers(players);
+            pdfContent.setThreshold(0.8);
+            GeneratePDF generatePDF = new GeneratePDF();
+            generatePDF.createPDF(pdfContent);
 
 
                 return Result.success().message("检测结果保存成功！").withData(indexDisplayVOList);
         }catch (Exception e){
+            e.printStackTrace();
             return Result.error().message("检测结果保存失败，数据库更新错误！").code(ResponseCode.DB_UPDATE_ERROR);
 
         }
+    }
+    
+    /*
+     * @Author duanding
+     * @Description 从数据库获取生成PDF所需数据
+     * @Date 1:59 PM 2019/11/11
+     * @Param [cids]
+     * @return demo.po.PDFContent
+     **/
+    public PDFContent getPDFContentFromDB(List<Integer> players,double threshold){
+        PDFContent pdfContent = new PDFContent();
+        List<GeneralResult> generalResultList = new ArrayList<>();
+        int index = 1;
+        int plgPairs = 0;
+        for(int i=0;i<players.size()-1;i++) {
+            int cid1 = players.get(i);
+            for (int j = i + 1; j < players.size(); j++) {
+                int cid2 = players.get(j);
+                List<Double> simValueList = simValueModelDao.searchSimValueByPair(cid1, cid2);
+                GeneralResult generalResult = new GeneralResult();
+                if (simValueList.size() != 0) {
+                    generalResult.setResultID(index);
+                    generalResult.setCid1(cid1);
+                    generalResult.setCid2(cid2);
+                    Collections.sort(simValueList);
+                    Double maxSim = simValueList.get(simValueList.size()-1);
+                    generalResult.setMaxSim(maxSim.intValue());
+                    if (maxSim >= threshold * 100) {
+                            generalResult.setPlag(true);
+                            plgPairs++;
+                        } else {
+                            generalResult.setPlag(false);
+                        }
+
+                    index++;
+                }
+                generalResultList.add(generalResult);
+            }
+        }
+        pdfContent.setPlagPairs(plgPairs);
+        pdfContent.setResultList(generalResultList);
+        return pdfContent;
     }
 
     public void saveTFToDB(Map<Integer, List<ContestantTFModel>> tfMap){

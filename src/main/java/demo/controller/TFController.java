@@ -10,12 +10,12 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
-@RequestMapping("/TF")
+@RequestMapping("/API/TF")
 public class TFController {
     @Resource
     private TFService tfService;
 
-    @PostMapping("/detect")
+    @PostMapping("/detectionPDF")
     public Result detect(@RequestBody Inputs inputs){
         return tfService.detect(inputs);
 //        return null;

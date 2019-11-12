@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
+import demo.service.impl.TFServiceImpl;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 public class GeneratePDF {
-    private static Font headfont ;// 设置字体大小
+    private static Font headfont;// 设置字体大小
     private static Font keyfont;// 设置字体大小
     private static Font chtextfont;// 设置中文字体
     private static Font entextfont;// 设置英文及数字字体
@@ -26,7 +27,6 @@ public class GeneratePDF {
         BaseFont bfChinese;
         BaseFont bfEnglish;
         try {
-            //bfChinese = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
             bfChinese = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
             bfEnglish = BaseFont.createFont();
             headfont = new Font(bfChinese, 14, Font.BOLD);
@@ -66,41 +66,41 @@ public class GeneratePDF {
 //            e.printStackTrace();
 //        }
         GeneratePDF generatePDF = new GeneratePDF();
-        PDFContent pdfContent = new PDFContent();
-        pdfContent.setSubject("Datalog");
-        List<Integer> player = new ArrayList<>();
-        player.add(1);
-        player.add(2);
-        player.add(3);
-        player.add(4);
-        player.add(5);
-        pdfContent.setPlayers(player);
-        pdfContent.setThreshold(0.8);
-        pdfContent.setPlagPairs(5);
-        GeneralResult generalResult1 = new GeneralResult(1,1,2,100,true);
-        GeneralResult generalResult2 = new GeneralResult(2,1,3,96,true);
-        GeneralResult generalResult3 = new GeneralResult(3,1,4,93,true);
-        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
-        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
-        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
-        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
-        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
-        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
-        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
-        List<GeneralResult> generalResults = new ArrayList<>();
-        generalResults.add(generalResult1);
-        generalResults.add(generalResult2);
-        generalResults.add(generalResult3);
-        generalResults.add(generalResult4);
-        generalResults.add(generalResult5);
-        generalResults.add(generalResult6);
-        generalResults.add(generalResult7);
-        generalResults.add(generalResult8);
-        generalResults.add(generalResult9);
-        generalResults.add(generalResult10);
-        pdfContent.setResultList(generalResults);
-        
-        generatePDF.createPDF(pdfContent);
+//        PDFContent pdfContent = new PDFContent();
+//        pdfContent.setSubject("Datalog");
+        List<Integer> players = new ArrayList<>();
+        players.add(1);
+        players.add(2);
+//        player.add(3);
+//        player.add(4);
+//        player.add(5);
+//        pdfContent.setPlayers(players);
+//        pdfContent.setThreshold(0.8);
+//        pdfContent.setPlagPairs(5);
+//        GeneralResult generalResult1 = new GeneralResult(1,1,2,100,true);
+//        GeneralResult generalResult2 = new GeneralResult(2,1,3,96,true);
+//        GeneralResult generalResult3 = new GeneralResult(3,1,4,93,true);
+//        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
+//        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
+//        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
+//        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
+//        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
+//        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
+//        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
+//        List<GeneralResult> generalResults = new ArrayList<>();
+//        generalResults.add(generalResult1);
+//        generalResults.add(generalResult2);
+//        generalResults.add(generalResult3);
+//        generalResults.add(generalResult4);
+//        generalResults.add(generalResult5);
+//        generalResults.add(generalResult6);
+//        generalResults.add(generalResult7);
+//        generalResults.add(generalResult8);
+//        generalResults.add(generalResult9);
+//        generalResults.add(generalResult10);
+//        pdfContent.setResultList(generalResults);
+//
+//        generatePDF.createPDF(pdfContent);
     }
 
     /*
@@ -350,6 +350,9 @@ public class GeneratePDF {
     public Phrase titleChineseStrEnglish(String title,String str){
         Chunk leftTitleChunk = new Chunk(title,chtextfont);
         Chunk leftStrChunk = new Chunk(str,entextfont);
+//        System.out.println(str);
+//        System.out.println(entextfont);
+//        System.out.println(leftStrChunk);
         Phrase phrase = new Phrase();
         phrase.add(leftTitleChunk);
         phrase.add(leftStrChunk);

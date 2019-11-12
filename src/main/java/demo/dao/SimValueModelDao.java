@@ -14,7 +14,10 @@ import java.util.List;
 public interface SimValueModelDao extends JpaRepository<SimValueModel, Integer> {
 
     @Query(value = "select * from sim_value_model where cid1=?1 and cid2=?2", nativeQuery = true)
-    List<SimValueModel> searchSimValueByPair(int cid1, int cid2);
+    List<SimValueModel> searchSimValueAllContentByPair(int cid1, int cid2);
+
+    @Query(value = "select sim_value from sim_value_model where cid1=?1 and cid2=?2", nativeQuery = true)
+    List<Double> searchSimValueByPair(int cid1, int cid2);
 //
 //    List<SimValueModel> searchSimValueByParameterByCategory(int cid1, int cid2, int category);
 //
