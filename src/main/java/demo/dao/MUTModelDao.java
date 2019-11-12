@@ -14,6 +14,9 @@ public interface MUTModelDao extends JpaRepository<MUTModel, Integer> {
     @Query(value = "select method_name from mut_model where method_id=?1", nativeQuery = true)
     String getMethodNameByMID(int mid);
 
+    @Query(value = "select * from mut_model where subject=?1", nativeQuery = true)
+    List<MUTModel> getALLBySubejct(String subject);
+
 //    List<Integer> getAllMUTIDList();
 
 }

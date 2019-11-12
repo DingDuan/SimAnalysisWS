@@ -16,6 +16,9 @@ public class MUTModel implements Persistable<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "subject")
+    private String subject;
+
     @Column(name = "access")
     private String access;
 

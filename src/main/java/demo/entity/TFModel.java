@@ -32,6 +32,9 @@ public class TFModel implements Persistable<Integer> {
     @Column(name = "cid")
     private Integer cid;
 
+    @Column(name = "subject")
+    private String subject;
+
     @Override
     public boolean isNew() {
         return null == id;

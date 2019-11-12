@@ -44,7 +44,7 @@ public class Main {
         //ExperimentDataProcess.analyze(rootPath);
 
         //分析待测程序
-        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath);
+        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath,"Datalog");
 //        for(MUTModel mutModel : mutModelList){
 //            System.out.println(mutModel.toString());
 //        }

@@ -57,35 +57,40 @@ public class TFServiceImpl implements TFService {
         String p2Path = inputs.getP2Path();
         double threshold = inputs.getThreshold();
         List<MUTModel> mutModelList;
+        String[] srcs = srcPath.split("/");
+        String subject = srcs[srcs.length - 2];
         String[] p1s = p1Path.split("/");
-        int cid1 = Integer.parseInt(p1s[p1s.length-1]);
+        int cid1 = Integer.parseInt(p1s[p1s.length - 1]);
         String[] p2s = p2Path.split("/");
-        int cid2 = Integer.parseInt(p2s[p2s.length-1]);
+        int cid2 = Integer.parseInt(p2s[p2s.length - 1]);
         try {
-            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1,cid2);
-            if(simValueModelList.size() != 0){
-                for(int i=0;i<simValueModelList.size();i++){
+            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2);
+            if (simValueModelList.size() != 0) {
+                for (int i = 0; i < simValueModelList.size(); i++) {
                     IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
-                    indexDisplayVO.setMethodId(i+1);
+                    indexDisplayVO.setMethodId(i + 1);
                     SimValueModel simValueModel = simValueModelList.get(i);
                     int mid = simValueModel.getMid();
                     indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
 
-                    indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid,cid1));
-                    indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid,cid2));
+                    indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
+                    indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
 
                     double simValue = simValueModel.getSimValue();
                     indexDisplayVO.setSimValue(simValue);
-                    if(simValue >= threshold*100){
+                    if (simValue >= threshold * 100) {
                         indexDisplayVO.setPlag(true);
-                    }else{
+                    } else {
                         indexDisplayVO.setPlag(false);
                     }
 
                     indexDisplayVOList.add(indexDisplayVO);
                 }
-            }else {
-                mutModelList = PUTAnalysis.analyze(srcPath);
+            } else {
+                mutModelList = mutModelDao.getALLBySubejct(subject);
+                if (mutModelList.size() == 0) {
+                    mutModelList = PUTAnalysis.analyze(srcPath, subject);
+                }
                 Map<Integer, List<ContestantTFModel>> tfMap1 = TPAnalysis.myAnalyze(mutModelList, p1Path);
                 Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
 
@@ -94,8 +99,8 @@ public class TFServiceImpl implements TFService {
                     MUTModel mutModelEntity = mutModelDao.save(mutModel);
                 }
 
-                saveTFToDB(tfMap1);
-                saveTFToDB(tfMap2);
+                saveTFToDB(tfMap1, subject);
+                saveTFToDB(tfMap2, subject);
                 // 计算测试片段之间相似度并存入数据库
                 List<List<SimValueVO>> simValueList = tfAnalysis(mutModelList);
                 //11个list，每个里面一个元素
@@ -129,7 +134,7 @@ public class TFServiceImpl implements TFService {
             List<Integer> players = new ArrayList<>();
             players.add(1);
             players.add(2);
-            PDFContent pdfContent = getPDFContentFromDB(players,0.8);
+            PDFContent pdfContent = getPDFContentFromDB(players, 0.8);
             pdfContent.setSubject("Datalog");
             pdfContent.setPlayers(players);
             pdfContent.setThreshold(0.8);
@@ -137,7 +142,10 @@ public class TFServiceImpl implements TFService {
             generatePDF.createPDF(pdfContent);
 
 
-                return Result.success().message("检测结果保存成功！").withData(indexDisplayVOList);
+            return Result.success().message("检测结果保存成功！").withData(indexDisplayVOList);
+        }catch (NullPointerException npe){
+            npe.printStackTrace();
+            return Result.error().message("提供数据不全！").code(ResponseCode.INCOMPLETE_INFO);
         }catch (Exception e){
             e.printStackTrace();
             return Result.error().message("检测结果保存失败，数据库更新错误！").code(ResponseCode.DB_UPDATE_ERROR);
@@ -187,7 +195,7 @@ public class TFServiceImpl implements TFService {
         return pdfContent;
     }
 
-    public void saveTFToDB(Map<Integer, List<ContestantTFModel>> tfMap){
+    public void saveTFToDB(Map<Integer, List<ContestantTFModel>> tfMap,String subject){
         Iterator<Map.Entry<Integer,List<ContestantTFModel>>> entries = tfMap.entrySet().iterator();
         while(entries.hasNext()) {
             Map.Entry<Integer, List<ContestantTFModel>> entry = entries.next();
@@ -202,6 +210,7 @@ public class TFServiceImpl implements TFService {
                     tfModel.setFragment(contestantTFModel.getTestFragment());
                     tfModel.setStateNum(contestantTFModel.getStateNumber());
                     tfModel.setLength(contestantTFModel.getFragmentLength());
+                    tfModel.setSubject(subject);
                     TFModel tfModelEntity = tfModelDao.save(tfModel);
                 }
             }

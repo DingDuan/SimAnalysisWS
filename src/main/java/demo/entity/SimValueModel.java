@@ -32,6 +32,9 @@ public class SimValueModel implements Persistable<Integer> {
     @Column(name = "category")
     private int category;
 
+    @Column(name = "subject")
+    private String subject;
+
     @Override
     public boolean isNew() {
         return null == id;

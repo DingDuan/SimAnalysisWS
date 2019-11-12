@@ -21,15 +21,16 @@ public class PUTAnalysis {
 
     public static List<MUTModel> mutModelList = new ArrayList<>();
 
-    public static List<MUTModel> analyze(String rootPath) {
+    public static List<MUTModel> analyze(String rootPath,String subject) {
         MUTModel mutModel = new MUTModel();
         File rootDirectory = new File(rootPath);
         if (!rootDirectory.exists()) {
             System.err.println("The root directory does not exist.");
             return mutModelList;
         }
+        //这里fileName是写死的，新项目来要改
         String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
-        traverseSubjectDirectory(rootDirectory,fileNames);
+        traverseSubjectDirectory(rootDirectory,fileNames,subject);
         //List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "subject");
         //for (File directory : directories) {
         //    traverseSubjectDirectory(directory);
@@ -37,36 +38,36 @@ public class PUTAnalysis {
         return mutModelList;
     }
 
-    /**
-     * 遍历subject目录
-     *
-     * @param subjectDirectory subject目录路径
-     * @author sunzesong
-     */
-    private static void traverseSubjectDirectory(File subjectDirectory) {
-        File[] subjectDirectories = subjectDirectory.listFiles();
-        if (subjectDirectories != null && subjectDirectories.length > 0) {
-            for (File directory : subjectDirectories) {
-                if (".DS_Store".equals(directory.getName())) {
-                    continue;
-                }
-
-                List<File> FUTList = getAllFUTPathFromPUT(directory);
-                if (FUTList != null) {
-                    for (File file : FUTList) {
-                        String fileContent = FileUtil.readFileContentToString(file);
-                        if (!ParenthesisUtil.judgeParenthesisMatchAmongString(fileContent)) {
-                            System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
-                            continue;
-                        }
-                        analyzeSubjectFileContentString(fileContent);
-                    }
-                }
-            }
-        } else {
-            System.err.println("The directory \"" + subjectDirectory.getAbsolutePath() + "\" is empty.");
-        }
-    }
+//    /**
+//     * 遍历subject目录
+//     *
+//     * @param subjectDirectory subject目录路径
+//     * @author sunzesong
+//     */
+//    private static void traverseSubjectDirectory(File subjectDirectory) {
+//        File[] subjectDirectories = subjectDirectory.listFiles();
+//        if (subjectDirectories != null && subjectDirectories.length > 0) {
+//            for (File directory : subjectDirectories) {
+//                if (".DS_Store".equals(directory.getName())) {
+//                    continue;
+//                }
+//
+//                List<File> FUTList = getAllFUTPathFromPUT(directory);
+//                if (FUTList != null) {
+//                    for (File file : FUTList) {
+//                        String fileContent = FileUtil.readFileContentToString(file);
+//                        if (!ParenthesisUtil.judgeParenthesisMatchAmongString(fileContent)) {
+//                            System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
+//                            continue;
+//                        }
+//                        analyzeSubjectFileContentString(fileContent);
+//                    }
+//                }
+//            }
+//        } else {
+//            System.err.println("The directory \"" + subjectDirectory.getAbsolutePath() + "\" is empty.");
+//        }
+//    }
 
     /**
      * 新的直接找到待测程序并分析
@@ -76,7 +77,7 @@ public class PUTAnalysis {
      * @author duanding
      *
      */
-    private static void traverseSubjectDirectory(File PUTRootDirectory,String[] PUTNames){
+    private static void traverseSubjectDirectory(File PUTRootDirectory,String[] PUTNames,String subject){
         MUTModel mutModel = new MUTModel();
         File[] files = PUTRootDirectory.listFiles();
         if (files != null && files.length > 0) {
@@ -89,7 +90,7 @@ public class PUTAnalysis {
                             System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
                             continue;
                         }
-                        analyzeSubjectFileContentString(fileContent);
+                        analyzeSubjectFileContentString(fileContent,subject);
                     }
                 }
             }
@@ -105,7 +106,7 @@ public class PUTAnalysis {
      *
      * @param subjectFileContentString subject文件内容字符串
      */
-    private static void analyzeSubjectFileContentString(String subjectFileContentString) {
+    private static void analyzeSubjectFileContentString(String subjectFileContentString,String subject) {
         MUTModel mutModel = new MUTModel();
         int leftBracketsNum = 0;
         int rightBracketsNum = 0;
@@ -168,7 +169,7 @@ public class PUTAnalysis {
                     leftBracketsNum = 0;
                     rightBracketsNum = 0;
                     if (!className.equals("") && !classContentString.toString().equals("")) {
-                        analyzeClassContentString(className, classContentString.toString());
+                        analyzeClassContentString(className, classContentString.toString(),subject);
                     }
                     classContentString = new StringBuilder();
                 } else {
@@ -197,7 +198,7 @@ public class PUTAnalysis {
                     innerRightBracketsNum = 0;
                     hasInnerClass = false;
                     if (!className.equals("") && !innerClassContentString.toString().equals("")) {
-                        analyzeClassContentString(innerClassName, innerClassContentString.toString());
+                        analyzeClassContentString(innerClassName, innerClassContentString.toString(),subject);
                     }
                     innerClassContentString = new StringBuilder();
                 } else {
@@ -215,7 +216,7 @@ public class PUTAnalysis {
      * @param classContentString 类的内容字符串
      * @author sunzesong
      */
-    private static void analyzeClassContentString(String className, String classContentString) {
+    private static void analyzeClassContentString(String className, String classContentString,String subject) {
         MUTModel putMethod = new MUTModel();
 
         List<String> words = Arrays.asList(classContentString.split(" "));
@@ -248,7 +249,7 @@ public class PUTAnalysis {
                 resString = new StringBuilder();
             } else if (word.contains(")") && !resString.toString().equals("")) {
                 if (!resString.toString().contains("@")) {
-                    analyzeMethodContentString(className, resString.toString());
+                    analyzeMethodContentString(className, resString.toString(),subject);
                 }
                 resString = new StringBuilder();
             }
@@ -262,8 +263,9 @@ public class PUTAnalysis {
      * @param className           类名
      * @param methodContentString 方法的内容字符串
      */
-    private static void analyzeMethodContentString(String className, String methodContentString) {
+    private static void analyzeMethodContentString(String className, String methodContentString,String subject) {
         MUTModel putMethod = new MUTModel();
+        putMethod.setSubject(subject);
         putMethod.setClassName(className);
         putMethod.setAccess("");
 
