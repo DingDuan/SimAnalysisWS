@@ -64,7 +64,7 @@ public class TFServiceImpl implements TFService {
         String[] p2s = p2Path.split("/");
         int cid2 = Integer.parseInt(p2s[p2s.length - 1]);
         try {
-            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2);
+            List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2,subject);
             if (simValueModelList.size() != 0) {
                 for (int i = 0; i < simValueModelList.size(); i++) {
                     IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
@@ -102,7 +102,7 @@ public class TFServiceImpl implements TFService {
                 saveTFToDB(tfMap1, subject);
                 saveTFToDB(tfMap2, subject);
                 // 计算测试片段之间相似度并存入数据库
-                List<List<SimValueVO>> simValueList = tfAnalysis(mutModelList);
+                List<List<SimValueVO>> simValueList = tfAnalysis(mutModelList,subject);
                 //11个list，每个里面一个元素
 
 
@@ -134,8 +134,8 @@ public class TFServiceImpl implements TFService {
             List<Integer> players = new ArrayList<>();
             players.add(1);
             players.add(2);
-            PDFContent pdfContent = getPDFContentFromDB(players, 0.8);
-            pdfContent.setSubject("Datalog");
+            PDFContent pdfContent = getPDFContentFromDB(players, 0.8,subject);
+            pdfContent.setSubject(subject);
             pdfContent.setPlayers(players);
             pdfContent.setThreshold(0.8);
             GeneratePDF generatePDF = new GeneratePDF();
@@ -160,7 +160,7 @@ public class TFServiceImpl implements TFService {
      * @Param [cids]
      * @return demo.po.PDFContent
      **/
-    public PDFContent getPDFContentFromDB(List<Integer> players,double threshold){
+    public PDFContent getPDFContentFromDB(List<Integer> players,double threshold,String subject){
         PDFContent pdfContent = new PDFContent();
         List<GeneralResult> generalResultList = new ArrayList<>();
         int index = 1;
@@ -169,7 +169,7 @@ public class TFServiceImpl implements TFService {
             int cid1 = players.get(i);
             for (int j = i + 1; j < players.size(); j++) {
                 int cid2 = players.get(j);
-                List<Double> simValueList = simValueModelDao.searchSimValueByPair(cid1, cid2);
+                List<Double> simValueList = simValueModelDao.searchSimValueByPair(cid1, cid2,subject);
                 GeneralResult generalResult = new GeneralResult();
                 if (simValueList.size() != 0) {
                     generalResult.setResultID(index);
@@ -217,7 +217,7 @@ public class TFServiceImpl implements TFService {
         }
     }
 
-    public List<List<SimValueVO>> tfAnalysis(List<MUTModel> mutModelList) {
+    public List<List<SimValueVO>> tfAnalysis(List<MUTModel> mutModelList,String subject) {
 //        mutModelList = mutModelDao.getMUTModelList();
         int[] mIDArray = new int[mutModelList.size()];
         int index = 0;
@@ -235,11 +235,11 @@ public class TFServiceImpl implements TFService {
         }
 
         // category: 0-ratio; 1-partial Ratio(部分比例，即只有百分数的百分号前的);
-        List<List<SimValueVO>> resultLists = calculateSimilarityBetweenTF(mIDArray, 1);
+        List<List<SimValueVO>> resultLists = calculateSimilarityBetweenTF(mIDArray, 1,subject);
         return resultLists;
     }
 
-    public List<List<SimValueVO>> calculateSimilarityBetweenTF(int[] mIDArray, int category) {
+    public List<List<SimValueVO>> calculateSimilarityBetweenTF(int[] mIDArray, int category,String subject) {
         List<ContestantSimilarityByMID> contestantSimilarityByMIDList = new ArrayList<>(mIDArray.length);
         List<List<SimValueVO>> resultLists = new ArrayList<>();
         for (int mid : mIDArray) {
@@ -295,14 +295,14 @@ public class TFServiceImpl implements TFService {
             long endTime=System.currentTimeMillis();
             System.out.println("对比结束时间：" + endTime);
             System.out.println("对比运行耗时：" + (endTime - startTime) + "ms");
-            resultLists.add(saveTFSimValueToDatabase(contestantSimilarityByMIDList, category));
+            resultLists.add(saveTFSimValueToDatabase(contestantSimilarityByMIDList, category,subject));
             contestantSimilarityByMIDList.clear();
         }
         return resultLists;
     }
 
     private List<SimValueVO> saveTFSimValueToDatabase(List<ContestantSimilarityByMID> contestantSimilarityByMIDList
-            , int category) {
+            , int category,String subject) {
         List<SimValueVO> resultList = new ArrayList<>();
         for (ContestantSimilarityByMID contestantSimilarityByMID:
                 contestantSimilarityByMIDList) {
@@ -330,6 +330,7 @@ public class TFServiceImpl implements TFService {
                     simValueModel.setCid2(CID2);
                     simValueModel.setSimValue(simValue);
                     simValueModel.setCategory(category);
+                    simValueModel.setSubject(subject);
                     simValueModelDao.save(simValueModel);
 
                     SimValueVO result = new SimValueVO();

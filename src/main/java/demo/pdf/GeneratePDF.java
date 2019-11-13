@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class GeneratePDF {
     private static Font headfont;// 设置字体大小
     private static Font keyfont;// 设置字体大小
@@ -30,7 +31,7 @@ public class GeneratePDF {
             bfChinese = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
             bfEnglish = BaseFont.createFont();
             headfont = new Font(bfChinese, 14, Font.BOLD);
-            keyfont = new Font(bfChinese, 12, Font.BOLD);
+            keyfont = new Font(bfChinese, 12, Font.BOLD,BaseColor.WHITE);
             chtextfont = new Font(bfChinese, 12, Font.NORMAL);
             entextfont = new Font(bfEnglish,12,Font.NORMAL);
             redenfont = new Font(bfEnglish,12,Font.NORMAL);
@@ -66,41 +67,41 @@ public class GeneratePDF {
 //            e.printStackTrace();
 //        }
         GeneratePDF generatePDF = new GeneratePDF();
-//        PDFContent pdfContent = new PDFContent();
-//        pdfContent.setSubject("Datalog");
+        PDFContent pdfContent = new PDFContent();
+        pdfContent.setSubject("Datalog");
         List<Integer> players = new ArrayList<>();
         players.add(1);
         players.add(2);
-//        player.add(3);
-//        player.add(4);
-//        player.add(5);
-//        pdfContent.setPlayers(players);
-//        pdfContent.setThreshold(0.8);
-//        pdfContent.setPlagPairs(5);
-//        GeneralResult generalResult1 = new GeneralResult(1,1,2,100,true);
-//        GeneralResult generalResult2 = new GeneralResult(2,1,3,96,true);
-//        GeneralResult generalResult3 = new GeneralResult(3,1,4,93,true);
-//        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
-//        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
-//        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
-//        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
-//        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
-//        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
-//        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
-//        List<GeneralResult> generalResults = new ArrayList<>();
-//        generalResults.add(generalResult1);
-//        generalResults.add(generalResult2);
-//        generalResults.add(generalResult3);
-//        generalResults.add(generalResult4);
-//        generalResults.add(generalResult5);
-//        generalResults.add(generalResult6);
-//        generalResults.add(generalResult7);
-//        generalResults.add(generalResult8);
-//        generalResults.add(generalResult9);
-//        generalResults.add(generalResult10);
-//        pdfContent.setResultList(generalResults);
-//
-//        generatePDF.createPDF(pdfContent);
+        players.add(3);
+        players.add(4);
+        players.add(5);
+        pdfContent.setPlayers(players);
+        pdfContent.setThreshold(0.8);
+        pdfContent.setPlagPairs(5);
+        GeneralResult generalResult1 = new GeneralResult(1,1,2,100,true);
+        GeneralResult generalResult2 = new GeneralResult(2,1,3,96,true);
+        GeneralResult generalResult3 = new GeneralResult(3,1,4,93,true);
+        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
+        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
+        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
+        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
+        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
+        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
+        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
+        List<GeneralResult> generalResults = new ArrayList<>();
+        generalResults.add(generalResult1);
+        generalResults.add(generalResult2);
+        generalResults.add(generalResult3);
+        generalResults.add(generalResult4);
+        generalResults.add(generalResult5);
+        generalResults.add(generalResult6);
+        generalResults.add(generalResult7);
+        generalResults.add(generalResult8);
+        generalResults.add(generalResult9);
+        generalResults.add(generalResult10);
+        pdfContent.setResultList(generalResults);
+
+        generatePDF.createPDF(pdfContent);
     }
 
     /*
@@ -129,6 +130,25 @@ public class GeneratePDF {
             Paragraph title = new Paragraph("测试脚本相似度检测报告",titleFont);
             title.setAlignment(1);
             document.add(title);
+            Anchor anchor = new Anchor("baidu", FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLUE));
+            anchor.setReference("http://www.xxxx.com");
+            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+            anchor.setName("string");
+            document.add(anchor);
+
+            Paragraph p = new Paragraph();
+            p.add("string");
+            document.add(p);
+
+            //添加内部锚点
+            Anchor anchor2 = new Anchor("innter", FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLUE));
+            anchor2.setReference("#string");
+            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+            anchor2.setName("inner");
+            document.newPage();
+            document.add(anchor2);
+
+
             document.add(new Paragraph("\n"));
 
             LineSeparator line = new LineSeparator(2f,100,new BaseColor(169,169,169),Element.ALIGN_CENTER,1f);

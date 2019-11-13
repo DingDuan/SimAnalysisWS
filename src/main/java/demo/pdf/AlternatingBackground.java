@@ -17,11 +17,10 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPTableEvent;
 
 /**
- * ClassName:AlternatingBackground <br/> Function: TODO ADD FUNCTION. <br/> Reason: TODO ADD REASON. <br/> Date: 2013-5-27 上午11:08:30 <br/>
+ * ClassName:AlternatingBackground <br/> Function: TODO ADD FUNCTION. <br/> Reason: TODO ADD REASON.
  *
  * @author Administrator
  * @version
- * @since JDK 1.5
  * @see
  */
 public class AlternatingBackground implements PdfPTableEvent {
@@ -35,11 +34,20 @@ public class AlternatingBackground implements PdfPTableEvent {
         int footer = widths.length - table.getFooterRows();
         int header = table.getHeaderRows() - table.getFooterRows();
         for (int row = header; row < footer; row += 2) {
-            columns = widths[row].length - 1;
-            rect = new Rectangle(widths[row][0], heights[row], widths[row][columns], heights[row + 1]);
-            rect.setBackgroundColor(new BaseColor(235,235,235));
-            rect.setBorder(Rectangle.NO_BORDER);
-            canvases[PdfPTable.BASECANVAS].rectangle(rect);
+            if(row == header){
+                columns = widths[row].length - 1;
+                rect = new Rectangle(widths[row][0], heights[row], widths[row][columns], heights[row + 1]);
+                rect.setBackgroundColor(new BaseColor(89,112,207));
+                rect.setBorder(Rectangle.NO_BORDER);
+                canvases[PdfPTable.BASECANVAS].rectangle(rect);
+            }else{
+                columns = widths[row].length - 1;
+                rect = new Rectangle(widths[row][0], heights[row], widths[row][columns], heights[row + 1]);
+                rect.setBackgroundColor(new BaseColor(235,235,235));
+                rect.setBorder(Rectangle.NO_BORDER);
+                canvases[PdfPTable.BASECANVAS].rectangle(rect);
+            }
+
         }
     }
 

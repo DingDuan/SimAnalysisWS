@@ -64,7 +64,7 @@ public class Main {
 //        }
 
         // 计算测试片段之间相似度
-        TFAnalysis.analysis(mutModelList);
+        TFAnalysis.analysis(mutModelList,"Datalog");
 
         // similarity matrix analysis
 //        SimMatrixAnalysis.analysis(rootPath);

@@ -217,7 +217,7 @@ public class TFAnalysis {
      *
      * @date 2019/3/6
      */
-    public static void analysis(List<MUTModel> mutModelList) {
+    public static void analysis(List<MUTModel> mutModelList,String subject) {
 //        mutModelList = mutModelDao.getMUTModelList();
         int[] mIDArray = new int[mutModelList.size()];
         int index = 0;
@@ -236,7 +236,7 @@ public class TFAnalysis {
 
         // category: 0-ratio; 1-partialRatio;
         TFServiceImpl tfService = new TFServiceImpl();
-        tfService.calculateSimilarityBetweenTF(mIDArray, 1);
+        tfService.calculateSimilarityBetweenTF(mIDArray, 1,subject);
 
     }
 
