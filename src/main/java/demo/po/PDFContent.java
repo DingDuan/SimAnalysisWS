@@ -21,4 +21,8 @@ public class PDFContent {
     private int plagPairs;
 
     private List<GeneralResult> resultList;
+
+    private List<Integer> mutList;
+
+    private List<SimDetail> simDetailList;
 }

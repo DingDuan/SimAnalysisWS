@@ -5,7 +5,9 @@ import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
+import demo.po.SimDetail;
 import demo.service.impl.TFServiceImpl;
+import io.swagger.models.auth.In;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,14 +17,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static java.util.Arrays.asList;
+
 
 public class GeneratePDF {
     private static Font headfont;// 设置字体大小
     private static Font keyfont;// 设置字体大小
+    private static Font newkeyfont;// 设置矩阵标题字体大小
     private static Font chtextfont;// 设置中文字体
     private static Font entextfont;// 设置英文及数字字体
+    private static Font newentextfont;// 设置矩阵英文及数字字体
     private static Font redenfont;//红色英文字体
     private static Font redchfont;//红色中文字体
+    private static Font anchorfont;//跳转锚点字体
     int maxWidth = 520;
     static{
         BaseFont bfChinese;
@@ -32,12 +39,15 @@ public class GeneratePDF {
             bfEnglish = BaseFont.createFont();
             headfont = new Font(bfChinese, 14, Font.BOLD);
             keyfont = new Font(bfChinese, 12, Font.BOLD,BaseColor.WHITE);
+            newkeyfont = new Font(bfChinese, 5, Font.BOLD,BaseColor.WHITE);
             chtextfont = new Font(bfChinese, 12, Font.NORMAL);
             entextfont = new Font(bfEnglish,12,Font.NORMAL);
+            newentextfont = new Font(bfEnglish,4,Font.NORMAL);
             redenfont = new Font(bfEnglish,12,Font.NORMAL);
             redenfont.setColor(BaseColor.RED);
             redchfont = new Font(bfChinese,12,Font.NORMAL);
             redchfont.setColor(BaseColor.RED);
+            anchorfont = new Font(bfChinese,12,Font.UNDEFINED);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +110,17 @@ public class GeneratePDF {
         generalResults.add(generalResult9);
         generalResults.add(generalResult10);
         pdfContent.setResultList(generalResults);
-
+        List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
+        pdfContent.setMutList(MUTList);
+        List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
+        SimDetail simDetail = new SimDetail();
+        simDetail.setID(1);
+        simDetail.setCid1(1);
+        simDetail.setCid2(2);
+        simDetail.setSimilarityList(simlarityList1);
+        List<SimDetail> simDetailList = new ArrayList<>();
+        simDetailList.add(simDetail);
+        pdfContent.setSimDetailList(simDetailList);
         generatePDF.createPDF(pdfContent);
     }
 
@@ -130,23 +150,13 @@ public class GeneratePDF {
             Paragraph title = new Paragraph("测试脚本相似度检测报告",titleFont);
             title.setAlignment(1);
             document.add(title);
-            Anchor anchor = new Anchor("baidu", FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLUE));
-            anchor.setReference("http://www.xxxx.com");
-            //设置锚点的名称（用户在使用内部锚点时定位的地方）
-            anchor.setName("string");
-            document.add(anchor);
-
-            Paragraph p = new Paragraph();
-            p.add("string");
-            document.add(p);
 
             //添加内部锚点
-            Anchor anchor2 = new Anchor("innter", FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLUE));
-            anchor2.setReference("#string");
-            //设置锚点的名称（用户在使用内部锚点时定位的地方）
-            anchor2.setName("inner");
-            document.newPage();
-            document.add(anchor2);
+//            Anchor anchor2 = new Anchor("innter", FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLUE));
+//            anchor2.setReference("#string");
+//            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+//            anchor2.setName("inner");
+//            document.add(anchor2);
 
 
             document.add(new Paragraph("\n"));
@@ -196,9 +206,18 @@ public class GeneratePDF {
             PdfPTable table = createTable(4);
 //            table.addCell(createCell("序号", keyfont,Element.ALIGN_LEFT,4,false));
 
+            Chunk maxSimTitle = new Chunk("最大相似度", keyfont);
+            Anchor anchorMore = new Anchor("（更多）", keyfont);
+            anchorMore.setReference("#moreDetail");
+            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+            anchorMore.setName("more");
+            Phrase phraseSim = new Phrase();
+            phraseSim.add(maxSimTitle);
+            phraseSim.add(anchorMore);
+
             table.addCell(createCell("序号", keyfont, Element.ALIGN_CENTER));
             table.addCell(createCell("选手ID对", keyfont, Element.ALIGN_CENTER));
-            table.addCell(createCell("最大相似度", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createCell(phraseSim, Element.ALIGN_CENTER));
             table.addCell(createCell("是否抄袭", keyfont, Element.ALIGN_CENTER));
 
             for(int i=0;i<generalResults.size();i++){
@@ -220,7 +239,37 @@ public class GeneratePDF {
             table.setTableEvent(event);
             document.add(table);
 
+            document.add(new Paragraph("\n"));
+            document.add(line);
+            Anchor anchorMoreDetail = new Anchor("详细相似度矩阵", headfont);
+            anchorMoreDetail.setReference("#more");
+            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+            anchorMoreDetail.setName("moreDetail");
+//            Paragraph anchorMoreDetailPara = new Paragraph(anchorMoreDetail);
+            document.add(anchorMoreDetail);
+            document.add(new Paragraph("\n"));
 
+
+            PdfPTable simMatrix = createTable(57);
+            simMatrix.addCell(createCell("序号",newkeyfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("选手ID对", newkeyfont, Element.ALIGN_CENTER));
+            List<Integer> MUTList = pdfContent.getMutList();
+            for(int i=0;i<MUTList.size();i++){
+                simMatrix.addCell(createCell("方法"+(i+1),newkeyfont,Element.ALIGN_CENTER));
+            }
+            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
+            for(int i=0;i<simDetailList.size();i++){
+                SimDetail simDetail = simDetailList.get(i);
+                simMatrix.addCell(createCell(""+simDetail.getID(),newentextfont,Element.ALIGN_CENTER));
+                simMatrix.addCell(createCell("<"+simDetail.getCid1()+","+simDetail.getCid2()+">", newentextfont));
+                List<Integer> simlarityList = simDetail.getSimilarityList();
+                for(int j=0;j<simlarityList.size();j++){
+                    simMatrix.addCell(createCell(simlarityList.get(j)+"",newentextfont));
+                }
+            }
+
+            simMatrix.setTableEvent(event);
+            document.add(simMatrix);
 
             document.close();
         } catch (FileNotFoundException e) {
@@ -250,7 +299,7 @@ public class GeneratePDF {
 
     /*
      * @Author duanding
-     * @Description 创建表格单元格
+     * @Description 创建表格单元格,根据内容value
      * @Date 2:07 PM 2019/11/8
      * @Param [value, font]
      * @return com.itextpdf.text.pdf.PdfPCell
@@ -260,6 +309,21 @@ public class GeneratePDF {
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setPhrase(new Phrase(value,font));
+        return cell;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 创建表格单元格，直接放phrase
+     * @Date 10:02 AM 2019/11/14
+     * @Param [phrase, align]
+     * @return com.itextpdf.text.pdf.PdfPCell
+     **/
+    public PdfPCell createCell(Phrase phrase,int align){
+        PdfPCell cell = new PdfPCell();
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setHorizontalAlignment(align);
+        cell.setPhrase(phrase);
         return cell;
     }
 
