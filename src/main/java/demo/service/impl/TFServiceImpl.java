@@ -113,7 +113,7 @@ public class TFServiceImpl implements TFService {
                 saveTFToDB(tfMap2, subject);
                 // 计算测试片段之间相似度并存入数据库
                 //两层list，第一层是不同的mid对应的选手之间相似度，第二层是某个mid（即某一个待测方法）里不同选手测该方法片段之间的相似度
-                List<List<SimValueVO>> simValueList = tfAnalysis(mutModelList,subject);
+                List<List<SimValueVO>> simValueList = tfAnalysisByTwo(mutModelList,subject,cid1,cid2);
                 //11个list，每个里面一个元素
 
 
@@ -147,8 +147,8 @@ public class TFServiceImpl implements TFService {
                 }
             }
             List<Integer> players = new ArrayList<>();
-            players.add(1);
-            players.add(2);
+            players.add(cid1);
+            players.add(cid2);
             PDFContent pdfContent = getPDFContentFromDB(players, 0.8,subject);
             pdfContent.setSubject(subject);
             pdfContent.setPlayers(players);
@@ -158,8 +158,8 @@ public class TFServiceImpl implements TFService {
             List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
             SimDetail simDetail = new SimDetail();
             simDetail.setID(1);
-            simDetail.setCid1(1);
-            simDetail.setCid2(2);
+            simDetail.setCid1(cid1);
+            simDetail.setCid2(cid2);
             simDetail.setSimilarityList(simlarityList1);
             List<SimDetail> simDetailList = new ArrayList<>();
             simDetailList.add(simDetail);
@@ -207,6 +207,7 @@ public class TFServiceImpl implements TFService {
                     if (maxSim >= threshold * 100) {
                             generalResult.setPlag(true);
                             plgPairs++;
+                            System.out.println("plagPairs:"+plgPairs);
                         } else {
                             generalResult.setPlag(false);
                         }
@@ -265,6 +266,36 @@ public class TFServiceImpl implements TFService {
         return resultLists;
     }
 
+    /*
+     * @Author duanding
+     * @Description 只针对两个选手的测试片段分析
+     * @Date 5:01 PM 2019/11/15
+     * @Param [mutModelList, subject]
+     * @return java.util.List<java.util.List<demo.vo.SimValueVO>>
+     **/
+    public List<List<SimValueVO>> tfAnalysisByTwo(List<MUTModel> mutModelList,String subject,int cid1,int cid2) {
+//        mutModelList = mutModelDao.getMUTModelList();
+        int[] mIDArray = new int[mutModelList.size()];
+        int index = 0;
+        for (MUTModel mutModel : mutModelList) {
+            long mid =  mutModel.getMethodId();
+//            if (mid == -373229334 || mid == -561849238|| mid == -576060075
+//                    || mid == -620252230 || mid == -620421252
+//                    || mid == -698809980 || mid == -699150091
+//                    || mid == -715073250 || mid == -717360243
+//                    || mid == -723512252 || mid == -862597736
+//                    || mid == -949293390 ) {
+            mIDArray[index] = mutModel.getMethodId();
+            index++;
+//            }
+        }
+
+        // category: 0-ratio; 1-partial Ratio(部分比例，即只有百分数的百分号前的);
+        List<List<SimValueVO>> resultLists = calculateSimilarityBetweenTFByTwo(mIDArray, 1,subject,cid1,cid2);
+        return resultLists;
+    }
+
+
     public List<List<SimValueVO>> calculateSimilarityBetweenTF(int[] mIDArray, int category,String subject) {
         List<ContestantSimilarityByMID> contestantSimilarityByMIDList = new ArrayList<>(mIDArray.length);
         List<List<SimValueVO>> resultLists = new ArrayList<>();
@@ -275,7 +306,78 @@ public class TFServiceImpl implements TFService {
             int compareNumber = 0;
             System.out.println("MID：" + mid);
             ContestantSimilarityByMID contestantSimilarityByMID = new ContestantSimilarityByMID(mid);
+            List<TFModel> tfModelList = tfModelDao.getTFModelListByMID(mid);
+            if (tfModelList == null) {
+                contestantSimilarityByMIDList.add(contestantSimilarityByMID);
+                continue;
+            }
+            int count = tfModelList.size();
+            System.out.println("对比人数：" + count);
+            if (count < 2) {
+                contestantSimilarityByMIDList.add(contestantSimilarityByMID);
+                continue;
+            }
+            long startTime=System.currentTimeMillis();
+            System.out.println("对比开始时间：" + startTime);
+            List<ContestantSimilarity> contestantSimilarityList = new ArrayList<>(count);
+            for (int index = 0; index < count; index++) {
+                TFModel baseTFModel = tfModelList.get(index);
+                int CID1 = baseTFModel.getCid();
+                ContestantSimilarity contestantSimilarity = new ContestantSimilarity(CID1);
+                String baseTestFragment = baseTFModel.getFragment();
+                if (baseTestFragment != null) {
+                    List<TFSimilarityModel> tfSimilarityModelList = new ArrayList<>(count - index - 1);
+                    for (int index1 = index + 1; index1 < count; index1++) {
+                        TFModel tfModel = tfModelList.get(index1);
+                        int CID2 = tfModel.getCid();
+                        String testFragment = tfModel.getFragment();
+                        int simValue = 0;
+//                        if (category == 0) {
+//                            simValue = SimAnalysis.getSimValue(baseTestFragment, testFragment);
+//                        }
+                        if (category == 1) {
+                            simValue = SimAnalysis.fuzzyPartialRatio(baseTestFragment, testFragment);
+                        }
+                        compareNumber++;
+                        TFSimilarityModel tfSimilarityModel = new TFSimilarityModel(CID1, CID2, simValue);
+                        tfSimilarityModelList.add(tfSimilarityModel);
+                    }
+                    contestantSimilarity.setTfSimilarityModelList(tfSimilarityModelList);
+                }
+                contestantSimilarityList.add(contestantSimilarity);
+            }
+            contestantSimilarityByMID.setContestantSimilarityList(contestantSimilarityList);
+            contestantSimilarityByMIDList.add(contestantSimilarityByMID);
+            System.out.println("对比次数：" + compareNumber);
+            long endTime=System.currentTimeMillis();
+            System.out.println("对比结束时间：" + endTime);
+            System.out.println("对比运行耗时：" + (endTime - startTime) + "ms");
+            resultLists.add(saveTFSimValueToDatabase(contestantSimilarityByMIDList, category,subject));
+            contestantSimilarityByMIDList.clear();
+        }
+        return resultLists;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 只针对两个选手之间的计算相似度
+     * @Date 5:03 PM 2019/11/15
+     * @Param [mIDArray, category, subject, cid1, cid2]
+     * @return java.util.List<java.util.List<demo.vo.SimValueVO>>
+     **/
+    public List<List<SimValueVO>> calculateSimilarityBetweenTFByTwo(int[] mIDArray, int category,String subject,int cid1,int cid2) {
+        List<ContestantSimilarityByMID> contestantSimilarityByMIDList = new ArrayList<>(mIDArray.length);
+        List<List<SimValueVO>> resultLists = new ArrayList<>();
+        for (int mid : mIDArray) {
+            if (mid == 0) {
+                continue;
+            }
+            int compareNumber = 0;
+            System.out.println("MID：" + mid);
+            ContestantSimilarityByMID contestantSimilarityByMID = new ContestantSimilarityByMID(mid);
+            List<TFModel> tfModelList2 = tfModelDao.getTFModelListByMIDAndCid(mid,cid2);
             List<TFModel> tfModelList = tfModelDao.getTFModelListByMIDAndCid(mid,cid1);
+            tfModelList.addAll(tfModelList2);
             if (tfModelList == null) {
                 contestantSimilarityByMIDList.add(contestantSimilarityByMID);
                 continue;
