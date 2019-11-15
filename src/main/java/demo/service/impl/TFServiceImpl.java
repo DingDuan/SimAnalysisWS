@@ -18,6 +18,7 @@ import demo.entity.TFModel;
 import demo.pdf.GeneratePDF;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
+import demo.po.SimDetail;
 import demo.service.TFService;
 import demo.vo.IndexDisplayVO;
 import demo.vo.Inputs;
@@ -27,6 +28,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.*;
+
+import static java.util.Arrays.asList;
 
 @Service
 public class TFServiceImpl implements TFService {
@@ -49,6 +52,13 @@ public class TFServiceImpl implements TFService {
         return Result.success().code(200).withData(result);
     }
 
+    /*
+     * @Author duanding
+     * @Description 两个选手之间检测
+     * @Date 3:39 PM 2019/11/15
+     * @Param [inputs]
+     * @return demo.common.Result
+     **/
     @Override
     public Result detect(Inputs inputs) {
         List<IndexDisplayVO> indexDisplayVOList = new ArrayList<>();
@@ -102,6 +112,7 @@ public class TFServiceImpl implements TFService {
                 saveTFToDB(tfMap1, subject);
                 saveTFToDB(tfMap2, subject);
                 // 计算测试片段之间相似度并存入数据库
+                //两层list，第一层是不同的mid对应的选手之间相似度，第二层是某个mid（即某一个待测方法）里不同选手测该方法片段之间的相似度
                 List<List<SimValueVO>> simValueList = tfAnalysis(mutModelList,subject);
                 //11个list，每个里面一个元素
 
@@ -109,25 +120,29 @@ public class TFServiceImpl implements TFService {
                 for (int i = 0; i < simValueList.size(); i++) {
                     List<SimValueVO> list = simValueList.get(i);
                     for (int j = 0; j < list.size(); j++) {
-                        IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
-                        indexDisplayVO.setMethodId(i + 1);
-
                         SimValueVO simValueVO = list.get(j);
-                        int mid = simValueVO.getMid();
-                        indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
+                        if((simValueVO.getCid1() == cid1 && simValueVO.getCid2() == cid2)||
+                                (simValueVO.getCid2() == cid1 && simValueVO.getCid1() == cid2)){
+                            IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
 
-                        indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
-                        indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
+                            indexDisplayVO.setMethodId(i + 1);
 
-                        double simValue = simValueVO.getSimValue();
-                        indexDisplayVO.setSimValue(simValue);
-                        if (simValue >= threshold * 100) {
-                            indexDisplayVO.setPlag(true);
-                        } else {
-                            indexDisplayVO.setPlag(false);
+                            int mid = simValueVO.getMid();
+                            indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
+
+                            indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
+                            indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
+
+                            double simValue = simValueVO.getSimValue();
+                            indexDisplayVO.setSimValue(simValue);
+                            if (simValue >= threshold * 100) {
+                                indexDisplayVO.setPlag(true);
+                            } else {
+                                indexDisplayVO.setPlag(false);
+                            }
+
+                            indexDisplayVOList.add(indexDisplayVO);
                         }
-
-                        indexDisplayVOList.add(indexDisplayVO);
                     }
                 }
             }
@@ -138,6 +153,17 @@ public class TFServiceImpl implements TFService {
             pdfContent.setSubject(subject);
             pdfContent.setPlayers(players);
             pdfContent.setThreshold(0.8);
+            List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
+            pdfContent.setMutList(MUTList);
+            List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
+            SimDetail simDetail = new SimDetail();
+            simDetail.setID(1);
+            simDetail.setCid1(1);
+            simDetail.setCid2(2);
+            simDetail.setSimilarityList(simlarityList1);
+            List<SimDetail> simDetailList = new ArrayList<>();
+            simDetailList.add(simDetail);
+            pdfContent.setSimDetailList(simDetailList);
             GeneratePDF generatePDF = new GeneratePDF();
             generatePDF.createPDF(pdfContent);
 
@@ -249,7 +275,7 @@ public class TFServiceImpl implements TFService {
             int compareNumber = 0;
             System.out.println("MID：" + mid);
             ContestantSimilarityByMID contestantSimilarityByMID = new ContestantSimilarityByMID(mid);
-            List<TFModel> tfModelList = tfModelDao.getTFModelListByMID(mid);
+            List<TFModel> tfModelList = tfModelDao.getTFModelListByMIDAndCid(mid,cid1);
             if (tfModelList == null) {
                 contestantSimilarityByMIDList.add(contestantSimilarityByMID);
                 continue;
