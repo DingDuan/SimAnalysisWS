@@ -203,11 +203,11 @@ public class GeneratePDF {
             document.add(new Paragraph("\n"));
 
             List<GeneralResult> generalResults = pdfContent.getResultList();
-            PdfPTable table = createTable(4);
+            PdfPTable table = createTable(5);
 //            table.addCell(createCell("序号", keyfont,Element.ALIGN_LEFT,4,false));
 
             Chunk maxSimTitle = new Chunk("最大相似度", keyfont);
-            Anchor anchorMore = new Anchor("（更多）", keyfont);
+            Anchor anchorMore = new Anchor("", keyfont);
             anchorMore.setReference("#moreDetail");
             //设置锚点的名称（用户在使用内部锚点时定位的地方）
             anchorMore.setName("more");
@@ -219,6 +219,7 @@ public class GeneratePDF {
             table.addCell(createCell("选手ID对", keyfont, Element.ALIGN_CENTER));
             table.addCell(createCell(phraseSim, Element.ALIGN_CENTER));
             table.addCell(createCell("是否抄袭", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createCell("详情信息", keyfont, Element.ALIGN_CENTER));
 
             for(int i=0;i<generalResults.size();i++){
                 GeneralResult generalResult = generalResults.get(i);
@@ -235,6 +236,7 @@ public class GeneratePDF {
                 }else{
                     table.addCell(createCell("否", chtextfont));
                 }
+                table.addCell(createCell("详情", chtextfont));
             }
             table.setTableEvent(event);
             document.add(table);
@@ -250,26 +252,69 @@ public class GeneratePDF {
             document.add(new Paragraph("\n"));
 
 
-            PdfPTable simMatrix = createTable(57);
-            simMatrix.addCell(createCell("序号",newkeyfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("选手ID对", newkeyfont, Element.ALIGN_CENTER));
-            List<Integer> MUTList = pdfContent.getMutList();
-            for(int i=0;i<MUTList.size();i++){
-                simMatrix.addCell(createCell("方法"+(i+1),newkeyfont,Element.ALIGN_CENTER));
-            }
-            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
-            for(int i=0;i<simDetailList.size();i++){
-                SimDetail simDetail = simDetailList.get(i);
-                simMatrix.addCell(createCell(""+simDetail.getID(),newentextfont,Element.ALIGN_CENTER));
-                simMatrix.addCell(createCell("<"+simDetail.getCid1()+","+simDetail.getCid2()+">", newentextfont));
-                List<Integer> simlarityList = simDetail.getSimilarityList();
-                for(int j=0;j<simlarityList.size();j++){
-                    simMatrix.addCell(createCell(simlarityList.get(j)+"",newentextfont));
-                }
-            }
+//            PdfPTable simMatrix = createTable(57);
+//            simMatrix.addCell(createCell("序号",newkeyfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("选手ID对", newkeyfont, Element.ALIGN_CENTER));
+//            List<Integer> MUTList = pdfContent.getMutList();
+//            for(int i=0;i<MUTList.size();i++){
+//                simMatrix.addCell(createCell("方法"+(i+1),newkeyfont,Element.ALIGN_CENTER));
+//            }
+//            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
+//            for(int i=0;i<simDetailList.size();i++){
+//                SimDetail simDetail = simDetailList.get(i);
+//                simMatrix.addCell(createCell(""+simDetail.getID(),newentextfont,Element.ALIGN_CENTER));
+//                simMatrix.addCell(createCell("<"+simDetail.getCid1()+","+simDetail.getCid2()+">", newentextfont));
+//                List<Integer> simlarityList = simDetail.getSimilarityList();
+//                for(int j=0;j<simlarityList.size();j++){
+//                    simMatrix.addCell(createCell(simlarityList.get(j)+"",newentextfont));
+//                }
+//            }
+//
+//            simMatrix.setTableEvent(event);
+//            document.add(simMatrix);
 
+            PdfPTable simMatrix = createTable(9);
+
+            simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+            PdfPCell cell=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+            cell.setColspan(8);
+            simMatrix.addCell(cell);
+
+            simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.64",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.79",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.81",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.72",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.64",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.82",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createCell("0.75",entextfont,Element.ALIGN_CENTER));
             simMatrix.setTableEvent(event);
             document.add(simMatrix);
+
+            document.add(new Paragraph("\n"));
+            document.add(line);
+            Anchor a = new Anchor("片段详情", headfont);
+            document.add(a);
+            document.add(new Paragraph("\n"));
+
+            PdfPTable detail = createTable(2);
+            detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
+                    " boolean NotEqual = d.equals(dd));\n" +
+                    " boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_CENTER));
+            detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
+                    " boolean NotEqual = d.equals(dd);\n" +
+                    " boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_CENTER));
+            document.add(detail);
 
             document.close();
         } catch (FileNotFoundException e) {

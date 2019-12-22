@@ -29,8 +29,8 @@ public class PUTAnalysis {
             return mutModelList;
         }
         //这里fileName是写死的，新项目来要改
-        String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
-        traverseSubjectDirectory(rootDirectory,fileNames,subject);
+//        String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
+        traverseSubjectDirectory(rootDirectory,subject);
         //List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "subject");
         //for (File directory : directories) {
         //    traverseSubjectDirectory(directory);
@@ -73,26 +73,26 @@ public class PUTAnalysis {
      * 新的直接找到待测程序并分析
      *
      * @param PUTRootDirectory 待测程序所在目录
-     * @param PUTNames 待测程序所有文件名称
+     * @param subject 待测程序名称
      * @author duanding
      *
      */
-    private static void traverseSubjectDirectory(File PUTRootDirectory,String[] PUTNames,String subject){
+    private static void traverseSubjectDirectory(File PUTRootDirectory,String subject){
         MUTModel mutModel = new MUTModel();
         File[] files = PUTRootDirectory.listFiles();
         if (files != null && files.length > 0) {
             for (File file : files) {
-                String fileName = file.getName();
-                for(String PUTName : PUTNames){
-                    if(fileName.equals(PUTName)){
+//                String fileName = file.getName();
+//                for(String PUTName : PUTNames){
+//                    if(fileName.equals(PUTName)){
                         String fileContent = FileUtil.readFileContentToString(file);
                         if (!ParenthesisUtil.judgeParenthesisMatchAmongString(fileContent)) {
                             System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
                             continue;
                         }
                         analyzeSubjectFileContentString(fileContent,subject);
-                    }
-                }
+//                    }
+//                }
             }
         }else {
             System.err.println("The directory \"" + PUTRootDirectory.getAbsolutePath() + "\" is empty.");

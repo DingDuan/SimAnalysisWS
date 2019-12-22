@@ -39,6 +39,54 @@ public class UnPackUtil {
         }
     }
 
+    /*
+     * @Author duanding
+     * @Description 批量解压
+     * @Date 3:58 PM 2019/12/10
+     * @Param [path, password, destPrefix]
+     * @return void
+     **/
+    public static void batchUnPack(String path,String password,String destPrefix){
+        File dir = new File(path);
+        if(dir.isDirectory()){
+            File[] files = dir.listFiles();
+            for(int i=0;i<files.length;i++){
+//                System.out.println(files[i]);
+                    String[] contents = files[i].toString().split("/");
+    //                System.out.println(contents[contents.length-1]);
+                    String[] array = contents[contents.length - 1].split("\\.");
+    //                System.out.println(array.length);
+                    String suffix = array[0] + "/";
+    //                System.out.println(suffix);
+                    String destPath = destPrefix + suffix;
+                    unPackZip(files[i],password,destPath);
+
+                }
+            }
+    }
+
+    public static void batchUnPackSecondLayer(String path,String password,String destPrefix){
+        File dir = new File(path);
+        if(dir.isDirectory()){
+            File[] files = dir.listFiles();
+            for(int i=0;i<files.length;i++){
+                if(files[i].isDirectory()) {
+//                System.out.println(files[i]);
+                    String[] contents = files[i].toString().split("/");
+//                System.out.println(contents[contents.length-1]);
+                    String suffix = contents[contents.length - 1];
+//                System.out.println(array.length);
+//                System.out.println(suffix);
+                    String destPath = destPrefix + suffix;
+//                unPackZip(files[i],password,destPath);
+                    File destDir = new File(destPath);
+                    File[] inFiles = destDir.listFiles();
+                    unPackZip(inFiles[0], password, destPath);
+                }
+            }
+        }
+    }
+
     /**
      * rar文件解压(不支持有密码的压缩包)
      *

@@ -1,4 +1,6 @@
 package demo.getData;
+import demo.util.ImportExcel;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -144,6 +146,18 @@ public class DownloadCode {
     // Authenticator.setDefault(new MyAuthenticator());
     // }
 
+    /*
+     * @Author duanding
+     * @Description 读取excel获取下载列表
+     * @Date 4:22 PM 2019/12/6
+     * @Param [path]
+     * @return DownloadCode
+     **/
+    public DownloadCode readExcel(String path,DownloadCode oInstance){
+
+        return oInstance;
+    }
+
     /**
      * 主方法(用于测试)
      *
@@ -151,14 +165,27 @@ public class DownloadCode {
      */
     public static void main(String argv[]) {
         DownloadCode oInstance = new DownloadCode();
+        String targetPrefix = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Province/";
         try {
-        // //增加下载列表（此处用户可以写入自己代码来增加下载列表）
-        // oInstance.addItem("http://www.~~~.com/java/网络编程001.zip","./网络编程1.zip");//
-        // oInstance.addItem("http://www.~~~.com/java/网络编程002.zip","./网络编程2.zip");
-        // oInstance.addItem("http://www~~~.com/java/网络编程003.zip","./网络编程3.zip");
-        // //开始下载
-        // oInstance.downLoadByList();
-            oInstance.saveToFile("http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3395/52118/SuffixArray_1569329394591.zip", "/Users/dd/Desktop/222333.zip");
+        // //增加下载列表
+        ImportExcel importExcel = new ImportExcel();
+        List<List<String>> list = importExcel.read("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Provincial-developers.xlsx");
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
+                List<String> cellList = list.get(i);
+                for (int j = 0; j < cellList.size(); j++) {
+                    String[] contents = cellList.get(j).split("/");
+                    String targetSuffix = contents[contents.length-2]+contents[contents.length-1];
+                    oInstance.addItem(cellList.get(j),targetPrefix+targetSuffix);
+                }
+            }
+        }
+        long time1=System.currentTimeMillis();
+        // 开始下载
+        oInstance.downLoadByList();
+//            oInstance.saveToFile("http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3395/52118/SuffixArray_1569329394591.zip", "/Users/dd/Desktop/222333.zip");
+        long time2=System.currentTimeMillis();
+        System.out.println("当前程序耗时："+(time2-time1)+"ms");
         }
         catch (Exception err) {
             System.out.println(err.getMessage());
