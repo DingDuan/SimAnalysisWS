@@ -31,6 +31,7 @@ public class PUTAnalysis {
         //这里fileName是写死的，新项目来要改
 //        String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
         traverseSubjectDirectory(rootDirectory,subject);
+//        traversePUTRootDirectory(rootDirectory,subject);
         //List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "subject");
         //for (File directory : directories) {
         //    traverseSubjectDirectory(directory);
@@ -38,20 +39,30 @@ public class PUTAnalysis {
         return mutModelList;
     }
 
-//    /**
-//     * 遍历subject目录
-//     *
-//     * @param subjectDirectory subject目录路径
-//     * @author sunzesong
-//     */
-//    private static void traverseSubjectDirectory(File subjectDirectory) {
-//        File[] subjectDirectories = subjectDirectory.listFiles();
-//        if (subjectDirectories != null && subjectDirectories.length > 0) {
-//            for (File directory : subjectDirectories) {
-//                if (".DS_Store".equals(directory.getName())) {
-//                    continue;
-//                }
-//
+    /**
+     * 遍历代码目录获取待测程序
+     *
+     * @param subjectDirectory 代码目录路径
+     * @author duanding
+     */
+    private static void traverseSubjectDirectory(File subjectDirectory,String subject) {
+        String parentName = subjectDirectory.getName();
+        File[] allChildDirectories = subjectDirectory.listFiles();
+        if (allChildDirectories != null && allChildDirectories.length > 0) {
+            for (File directory : allChildDirectories) {
+                if (".DS_Store".equals(directory.getName())) {
+                    continue;
+                }
+
+                if(directory.listFiles().length>0 && parentName.equals(directory.getParentFile().getName())
+                && directory.getName().contains("")){
+                    String suffix ="/src/main/java/net/mooctest";
+                    String PUTRootPath = directory.getPath() + suffix;
+                    File PUTRootDirectory = new File(PUTRootPath);
+                    traversePUTRootDirectory(PUTRootDirectory,subject);
+                    break;
+                }
+
 //                List<File> FUTList = getAllFUTPathFromPUT(directory);
 //                if (FUTList != null) {
 //                    for (File file : FUTList) {
@@ -63,11 +74,13 @@ public class PUTAnalysis {
 //                        analyzeSubjectFileContentString(fileContent);
 //                    }
 //                }
-//            }
-//        } else {
-//            System.err.println("The directory \"" + subjectDirectory.getAbsolutePath() + "\" is empty.");
-//        }
-//    }
+
+            }
+
+        } else {
+            System.err.println("The directory \"" + subjectDirectory.getAbsolutePath() + "\" is empty.");
+        }
+    }
 
     /**
      * 新的直接找到待测程序并分析
@@ -77,7 +90,7 @@ public class PUTAnalysis {
      * @author duanding
      *
      */
-    private static void traverseSubjectDirectory(File PUTRootDirectory,String subject){
+    private static void traversePUTRootDirectory(File PUTRootDirectory,String subject){
         MUTModel mutModel = new MUTModel();
         File[] files = PUTRootDirectory.listFiles();
         if (files != null && files.length > 0) {

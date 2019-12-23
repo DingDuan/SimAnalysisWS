@@ -28,10 +28,11 @@ public class Main {
 //    public static final String rootPath = "/Users/dd/study/iSE/plagiarism_detection/NewDataSets/ALU/ALU_code";
 //    public static final String PUTRootPath = "/Users/dd/study/iSE/plagiarism_detection/NewDataSets/PUT";
 
-    public static final String PUTRootPath = "/Users/dd/Desktop/MAF-Data/Datalog/src";
+    public static final String PUTRootPath = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Province";
+//    public static final String PUTRootPath = "/Users/dd/Desktop/MAF-Data/Datalog/src";
     public static final String rootPath = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
-    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
-    public static final String cid2Path = "/Users/dd/Desktop/MAF-Data/Datalog/junit/2";
+    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/AStar/junit/1";
+    public static final String cid2Path = "/Users/dd/Desktop/MAF-Data/AStar/junit/2";
 
 
     /**
@@ -44,27 +45,30 @@ public class Main {
         //ExperimentDataProcess.analyze(rootPath);
 
         //分析待测程序
-        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath,"Datalog");
-//        for(MUTModel mutModel : mutModelList){
-//            System.out.println(mutModel.toString());
-//        }
+        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath,"TernaryTree");
+        for(MUTModel mutModel : mutModelList){
+            System.out.println(mutModel.toString());
+        }
 
         //旧的，不用
         //TPAnalysis.analyze(rootPath);
 
         // 我的 测试程序分析，提取片段
         Map<Integer, List<ContestantTFModel>> map =  TPAnalysis.myAnalyze(mutModelList,cid1Path);
-//        for(List<ContestantTFModel> contestantTFModelList : map.values()){
-//            if(contestantTFModelList != null) {
-//                for (ContestantTFModel contestantTFModel : contestantTFModelList) {
-//                    System.out.println(contestantTFModel);
-//                    System.out.println(contestantTFModel.getTestFragment());
-//                }
-//            }
-//        }
+        for(List<ContestantTFModel> contestantTFModelList : map.values()){
+//            System.out.println(contestantTFModelList.size());
+            if(contestantTFModelList != null) {
+                for (ContestantTFModel contestantTFModel : contestantTFModelList) {
+                    System.out.println(contestantTFModel);
+                    System.out.println(contestantTFModel.getTestFragment());
+                }
+            }else{
+//                System.out.println("dfas");
+            }
+        }
 
         // 计算测试片段之间相似度
-        TFAnalysis.analysis(mutModelList,"Datalog");
+//        TFAnalysis.analysis(mutModelList,"Datalog");
 
         // similarity matrix analysis
 //        SimMatrixAnalysis.analysis(rootPath);

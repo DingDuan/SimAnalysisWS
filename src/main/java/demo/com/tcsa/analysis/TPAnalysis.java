@@ -21,13 +21,7 @@ public class TPAnalysis {
 
     private static MUTModelDao mutModelDao;
 
-    /**
-     * 测试程序分析接口
-     *
-     * @param rootPath
-     * @date 2018/4/4 上午9:17
-     *
-     */
+
     public static void analyze(String rootPath) {
 
         //get all MUT from mysql database;
@@ -38,10 +32,11 @@ public class TPAnalysis {
             System.err.println("The root directory does not exist.");
             return;
         }
-        List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "junit");
-        for (File directory : directories) {
-            traverseJUnitDirectory(directory);
-        }
+//        List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "junit");
+//        for (File directory : directories) {
+//            traverseJUnitDirectory(directory);
+//        }
+//        for()
     }
 
     //我的新分析测试程序，提取片段
@@ -112,10 +107,10 @@ public class TPAnalysis {
          * classify test fragments by mut(mid)
          */
         Map<Integer, List<ContestantTFModel>> testFragmentsByMIDMap = classifyTFByMID(mutModelList,contestantTestModelList);
-        int start = buffer.indexOf("tfs_classified_by_cid");
-        int end = start + "tfs_classified_by_cid".length();
-        buffer.replace(start, end, "tfs_classified_by_mid");
-        targetDirectoryPath = buffer.toString();
+//        int start = buffer.indexOf("tfs_classified_by_cid");
+//        int end = start + "tfs_classified_by_cid".length();
+//        buffer.replace(start, end, "tfs_classified_by_mid");
+//        targetDirectoryPath = buffer.toString();
 //                writeTFsClassifiedByMIDToTargetFile(targetDirectoryPath, testFragmentsByMIDMap);
         //the part of writing to database deleted,use jpa to write
 //        writeTFsClassifiedByMIDToDatabase(testFragmentsByMIDMap);
