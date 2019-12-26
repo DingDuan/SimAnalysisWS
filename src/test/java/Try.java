@@ -38,7 +38,10 @@ public class Try {
 //        }
 //
 //        WriteExcel.writeExcel("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Project-mooctest-DD.xlsx",timeList);
-            File file = new File("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/");
-            System.out.println(file.getName());
+//            File file = new File("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/");
+//            System.out.println(file.getName());
+        String s = "Ternary<T>";
+        System.out.println(s.split("<")[0]);
+
     }
 }

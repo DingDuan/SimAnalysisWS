@@ -99,6 +99,7 @@ public class TPAnalysis {
 
         //many lines of this method are annotated,as save to DB instead of to files.
         writeContestantTestFragmentsToTargetFile(targetDirectoryPath, contestantTestModelList);
+//        System.out.println(contestantTestModelList.get(0));
 
 
 
@@ -786,6 +787,7 @@ public class TPAnalysis {
                 continue;
             }
 
+            //去除形如"new TernaryTree"这种创建对象等语句，只提取跳用被测方法的语句
             List<String> sentenceContainsInvokeMethodList = getSentenceContainsInvokeMethod(sentenceAmongTestCaseStringList);
 
             int sentenceContainsInvokeMethodListSize = sentenceContainsInvokeMethodList.size();
@@ -3434,14 +3436,13 @@ public class TPAnalysis {
         return null;
     }
 
-    /**
-      *
-      * @param
-      * @return
-      * @throws
-      * @date 2018/4/26 下午4:56
-      * @author sunweisong
-      */
+    /*
+     * @Author duanding
+     * @Description 从语句中提取类名
+     * @Date 4:20 PM 2019/12/26
+     * @Param [object, sentence]
+     * @return java.lang.String
+     **/
     private static String extractClassNameFromSentence(String object, String sentence) {
 
         StringBuffer stringBuffer = null;
@@ -3454,6 +3455,16 @@ public class TPAnalysis {
         int equalIndex = sentence.indexOf("=");
         if (equalIndex != -1) {
             temp = sentence.substring(0, equalIndex).trim();
+
+            /**
+             * temp = "TernaryNode<Object> ternaryNode0 = new TernaryNode<Object>();"
+             * 2019.12.26
+             **/
+            int leftAngleBracketsIndex = temp.indexOf("<");
+            if(leftAngleBracketsIndex != -1){
+                temp = temp.substring(0, leftAngleBracketsIndex).trim();
+                return temp;
+            }
             /**
              *  temp = "Fact []database"
              *  or temp = "Fact factArray[] =  new Fact[]{fact , fact1};"

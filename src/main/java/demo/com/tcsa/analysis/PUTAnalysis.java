@@ -28,10 +28,13 @@ public class PUTAnalysis {
             System.err.println("The root directory does not exist.");
             return mutModelList;
         }
-        //这里fileName是写死的，新项目来要改
 //        String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
-        traverseSubjectDirectory(rootDirectory,subject);
-//        traversePUTRootDirectory(rootDirectory,subject);
+        if(subject.equals("Datalog")){
+            traversePUTRootDirectory(rootDirectory,subject);
+        }else{
+            traverseSubjectDirectory(rootDirectory,subject);
+        }
+
         //List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "subject");
         //for (File directory : directories) {
         //    traverseSubjectDirectory(directory);
@@ -55,7 +58,7 @@ public class PUTAnalysis {
                 }
 
                 if(directory.listFiles().length>0 && parentName.equals(directory.getParentFile().getName())
-                && directory.getName().contains("")){
+                && directory.getName().contains(subject)){
                     String suffix ="/src/main/java/net/mooctest";
                     String PUTRootPath = directory.getPath() + suffix;
                     File PUTRootDirectory = new File(PUTRootPath);
@@ -165,7 +168,10 @@ public class PUTAnalysis {
                     if (words.get(i + 1).contains("{")) {
                         newClassName = words.get(i + 1).split("\\{")[0];
                         words.set(i + 1, "{");
-                    } else {
+                    //类名中包含"<"或">"
+                    } else if(words.get(i + 1).contains("<")||words.get(i + 1).contains(">")){
+                        newClassName = words.get(i + 1).split("<")[0];
+                    }else{
                         newClassName = words.get(++i);
                     }
 

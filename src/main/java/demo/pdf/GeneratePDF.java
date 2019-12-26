@@ -249,8 +249,10 @@ public class GeneratePDF {
             anchorMoreDetail.setName("moreDetail");
 //            Paragraph anchorMoreDetailPara = new Paragraph(anchorMoreDetail);
             document.add(anchorMoreDetail);
-            document.add(new Paragraph("\n"));
+            document.add(new Paragraph("\n",chtextfont));
 
+            document.add(new Paragraph("选手对：<551,556>",chtextfont));
+            document.add(new Paragraph("\n"));
 
 //            PdfPTable simMatrix = createTable(57);
 //            simMatrix.addCell(createCell("序号",newkeyfont,Element.ALIGN_CENTER));
@@ -305,6 +307,9 @@ public class GeneratePDF {
             document.add(line);
             Anchor a = new Anchor("片段详情", headfont);
             document.add(a);
+            document.add(new Paragraph("\n",chtextfont));
+
+            document.add(new Paragraph("选手对：<551,556>",chtextfont));
             document.add(new Paragraph("\n"));
 
             PdfPTable detail = createTable(2);
