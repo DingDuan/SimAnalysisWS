@@ -163,29 +163,50 @@ public class DownloadCode {
      *
      * @param argv String[]
      */
+    //注：本来是要遍历下载的，没改完
     public static void main(String argv[]) {
         DownloadCode oInstance = new DownloadCode();
-        String targetPrefix = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Province/";
+        String targetPrefix = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+        String url = "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3714/55208/TrieTree_1572398152383.zip";
         try {
-        // //增加下载列表
-        ImportExcel importExcel = new ImportExcel();
-        List<List<String>> list = importExcel.read("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Provincial-developers.xlsx");
-        if (list != null) {
-            for (int i = 0; i < list.size(); i++) {
-                List<String> cellList = list.get(i);
-                for (int j = 0; j < cellList.size(); j++) {
-                    String[] contents = cellList.get(j).split("/");
-                    String targetSuffix = contents[contents.length-2]+contents[contents.length-1];
-                    oInstance.addItem(cellList.get(j),targetPrefix+targetSuffix);
-                }
-            }
-        }
-        long time1=System.currentTimeMillis();
-        // 开始下载
-        oInstance.downLoadByList();
-//            oInstance.saveToFile("http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3395/52118/SuffixArray_1569329394591.zip", "/Users/dd/Desktop/222333.zip");
-        long time2=System.currentTimeMillis();
-        System.out.println("当前程序耗时："+(time2-time1)+"ms");
+//            String[] ids = {"2019",
+//                    "1966",
+//                    "1963",
+//                    "1962",
+//                    "1845",
+//                    "1832",
+//                    "1831",
+//                    "1817",
+//                    "1818",
+//                    "1731",
+//                    "1730",
+//                    "1636",
+//                    "1637",
+//                    "1590",
+//                    "1591"
+//            };
+//            for(int k=0;k<ids.length;k++){
+//                // //增加下载列表
+//                ImportExcel importExcel = new ImportExcel();
+//                List<List<String>> list = importExcel.read("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/AllCode.xlsx");
+//                if (list != null) {
+//                    for (int i = 0; i < list.size(); i++) {
+//                        List<String> cellList = list.get(i);
+//                        for (int j = 0; j < cellList.size(); j++) {
+//                            String[] contents = cellList.get(j).split("/");
+//                            String targetSuffix = contents[contents.length-2]+contents[contents.length-1];
+//                            oInstance.addItem(cellList.get(j),targetPrefix+targetSuffix);
+//                        }
+//                    }
+//                }
+//                long time1=System.currentTimeMillis();
+//                // 开始下载
+//                oInstance.downLoadByList();
+                    oInstance.saveToFile(
+                            "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3473/53503/RedBlackBST_1570016810934.zip", "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/RedBlackBST/53503RedBlackBST_1570016810934.zip");
+//                long time2=System.currentTimeMillis();
+//                System.out.println("当前程序"+ids[k]+"耗时："+(time2-time1)+"ms");
+//            }
         }
         catch (Exception err) {
             System.out.println(err.getMessage());

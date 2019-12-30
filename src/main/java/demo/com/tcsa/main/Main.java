@@ -32,7 +32,7 @@ public class Main {
 //    public static final String PUTRootPath = "/Users/dd/Desktop/MAF-Data/Datalog/src";
     public static final String rootPath = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
 //    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
-    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/TernaryTree/junit/1";
+    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/TernaryTree/junit/17728";
     public static final String cid2Path = "/Users/dd/Desktop/MAF-Data/AStar/junit/2";
 
 

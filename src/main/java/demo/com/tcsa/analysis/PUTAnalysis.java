@@ -57,13 +57,15 @@ public class PUTAnalysis {
                     continue;
                 }
 
-                if(directory.listFiles().length>0 && parentName.equals(directory.getParentFile().getName())
-                && directory.getName().contains(subject)){
-                    String suffix ="/src/main/java/net/mooctest";
-                    String PUTRootPath = directory.getPath() + suffix;
-                    File PUTRootDirectory = new File(PUTRootPath);
-                    traversePUTRootDirectory(PUTRootDirectory,subject);
-                    break;
+                if(directory.isDirectory()) {
+                    if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
+                            && directory.getName().contains(subject)) {
+                        String suffix = "/src/main/java/net/mooctest";
+                        String PUTRootPath = directory.getPath() + suffix;
+                        File PUTRootDirectory = new File(PUTRootPath);
+                        traversePUTRootDirectory(PUTRootDirectory, subject);
+                        break;
+                    }
                 }
 
 //                List<File> FUTList = getAllFUTPathFromPUT(directory);

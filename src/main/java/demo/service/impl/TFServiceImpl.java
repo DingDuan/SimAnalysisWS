@@ -68,7 +68,14 @@ public class TFServiceImpl implements TFService {
         double threshold = inputs.getThreshold();
         List<MUTModel> mutModelList;
         String[] srcs = srcPath.split("/");
-        String subject = srcs[srcs.length - 2];
+        String subject = "";
+        if(srcs[srcs.length-1].equals("Province")) {
+            subject = "TernaryTree";
+        }else if(srcs[srcs.length-2].equals("Datalog")){
+            subject = srcs[srcs.length - 2];
+        }else{
+            subject = srcs[srcs.length - 1];
+        }
         String[] p1s = p1Path.split("/");
         int cid1 = Integer.parseInt(p1s[p1s.length - 1]);
         String[] p2s = p2Path.split("/");
