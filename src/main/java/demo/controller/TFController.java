@@ -17,7 +17,7 @@ public class TFController {
 
     @PostMapping("/detectionPDF")
     public Result detect(@RequestBody Inputs inputs){
-        return tfService.detect(inputs);
+        return tfService.detectBetweenTwo(inputs);
 //        return null;
     }
 

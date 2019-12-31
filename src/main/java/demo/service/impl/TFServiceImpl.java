@@ -54,13 +54,26 @@ public class TFServiceImpl implements TFService {
 
     /*
      * @Author duanding
+     * @Description 某个项目/题目的所有选手之间检测（包含下载解压）
+     * @Date 5:11 PM 2019/12/30
+     * @Param [inputs]
+     * @return demo.common.Result
+     **/
+    @Override
+    public Result detectAll(Inputs inputs) {
+
+        return null;
+    }
+
+    /*
+     * @Author duanding
      * @Description 两个选手之间检测
      * @Date 3:39 PM 2019/11/15
      * @Param [inputs]
      * @return demo.common.Result
      **/
     @Override
-    public Result detect(Inputs inputs) {
+    public Result detectBetweenTwo(Inputs inputs) {
         List<IndexDisplayVO> indexDisplayVOList = new ArrayList<>();
         String srcPath = inputs.getSrcPath();
         String p1Path = inputs.getP1Path();

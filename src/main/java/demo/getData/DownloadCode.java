@@ -203,7 +203,7 @@ public class DownloadCode {
 //                // 开始下载
 //                oInstance.downLoadByList();
                     oInstance.saveToFile(
-                            "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3473/53503/RedBlackBST_1570016810934.zip", "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/RedBlackBST/53503RedBlackBST_1570016810934.zip");
+                            "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3070/49571/Calculator_1559903705111.zip", "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Calculator/49571Calculator_1559903705111.zip");
 //                long time2=System.currentTimeMillis();
 //                System.out.println("当前程序"+ids[k]+"耗时："+(time2-time1)+"ms");
 //            }

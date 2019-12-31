@@ -207,13 +207,13 @@ public class GeneratePDF {
 //            table.addCell(createCell("序号", keyfont,Element.ALIGN_LEFT,4,false));
 
             Chunk maxSimTitle = new Chunk("最大相似度", keyfont);
-            Anchor anchorMore = new Anchor("", keyfont);
-            anchorMore.setReference("#moreDetail");
+//            Anchor anchorMore = new Anchor("-", keyfont);
+//            anchorMore.setReference("#moreDetail");
             //设置锚点的名称（用户在使用内部锚点时定位的地方）
-            anchorMore.setName("more");
+//            anchorMore.setName("more");
             Phrase phraseSim = new Phrase();
             phraseSim.add(maxSimTitle);
-            phraseSim.add(anchorMore);
+//            phraseSim.add(anchorMore);
 
             table.addCell(createCell("序号", keyfont, Element.ALIGN_CENTER));
             table.addCell(createCell("选手ID对", keyfont, Element.ALIGN_CENTER));
@@ -227,9 +227,9 @@ public class GeneratePDF {
                 table.addCell(createCell("<"+generalResult.getCid1()+","+generalResult.getCid2()+">", entextfont));
                 int maxSim = generalResult.getMaxSim();
                 if(maxSim >= pdfContent.getThreshold()*100){
-                    table.addCell(createCell(maxSim + "%", redenfont));
+                    table.addCell(createAnchoredCell(maxSim + "%", redenfont,Element.ALIGN_CENTER,"#moreDetail","more"));
                 }else {
-                    table.addCell(createCell(maxSim + "%", entextfont));
+                    table.addCell(createAnchoredCell(maxSim + "%", entextfont,Element.ALIGN_CENTER,"#moreDetail","more"));
                 }
                 if(generalResult.isPlag()) {
                     table.addCell(createCell("是", redchfont));
@@ -251,7 +251,7 @@ public class GeneratePDF {
             document.add(anchorMoreDetail);
             document.add(new Paragraph("\n",chtextfont));
 
-            document.add(new Paragraph("选手对：<551,556>",chtextfont));
+            document.add(new Paragraph("选手对：<1,2>",chtextfont));
             document.add(new Paragraph("\n"));
 
 //            PdfPTable simMatrix = createTable(57);
@@ -292,33 +292,36 @@ public class GeneratePDF {
             simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
             simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
             simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.64",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.79",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.81",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.72",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.64",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.82",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("0.75",entextfont,Element.ALIGN_CENTER));
+            simMatrix.addCell(createAnchoredCell("0",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.64",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.79",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.81",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.72",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.64",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.82",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0.75",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
             simMatrix.setTableEvent(event);
             document.add(simMatrix);
 
             document.add(new Paragraph("\n"));
             document.add(line);
-            Anchor a = new Anchor("片段详情", headfont);
-            document.add(a);
+            Anchor frag = new Anchor("片段详情", headfont);
+            frag.setReference("#sim");
+            //设置锚点的名称（用户在使用内部锚点时定位的地方）
+            frag.setName("fragDetail");
+            document.add(frag);
             document.add(new Paragraph("\n",chtextfont));
 
-            document.add(new Paragraph("选手对：<551,556>",chtextfont));
+            document.add(new Paragraph("选手对：<1,2>",chtextfont));
             document.add(new Paragraph("\n"));
 
             PdfPTable detail = createTable(2);
             detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
-                    " boolean NotEqual = d.equals(dd));\n" +
-                    " boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_CENTER));
+                    "boolean NotEqual = d.equals(dd));\n" +
+                    "boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_LEFT));
             detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
-                    " boolean NotEqual = d.equals(dd);\n" +
-                    " boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_CENTER));
+                    "boolean NotEqual = d.equals(dd);\n" +
+                    "boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_LEFT));
             document.add(detail);
 
             document.close();
@@ -344,6 +347,27 @@ public class GeneratePDF {
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(align);
         cell.setPhrase(new Phrase(value,font));
+        return cell;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 创建带跳转的cell
+     * @Date 4:35 PM 2019/12/30
+     * @Param [value, font, align]
+     * @return com.itextpdf.text.pdf.PdfPCell
+     **/
+    public PdfPCell createAnchoredCell(String value, Font font, int align,String anchorRef,String anchorName){
+        PdfPCell cell = new PdfPCell();
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setHorizontalAlignment(align);
+        Anchor anchorFrag = new Anchor(value, font);
+        anchorFrag.setReference(anchorRef);
+        //设置锚点的名称（用户在使用内部锚点时定位的地方）
+        anchorFrag.setName(anchorName);
+        Phrase phraseSim = new Phrase();
+        phraseSim.add(anchorFrag);
+        cell.setPhrase(phraseSim);
         return cell;
     }
 
