@@ -16,6 +16,7 @@ import demo.entity.MUTModel;
 import demo.entity.SimValueModel;
 import demo.entity.TFModel;
 import demo.getData.DownloadCode;
+import demo.getData.UnPackUtil;
 import demo.pdf.GeneratePDF;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
@@ -62,20 +63,29 @@ public class TFServiceImpl implements TFService {
     @Override
     public Result detectAll(Inputs inputs) {
         DownloadCode downloadCode = new DownloadCode();
-        String destPathPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+        String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+        String subject = "";
         List<Url> codeUrlList = inputs.getCodeUrlList();
+        long beginDownloadTime = System.currentTimeMillis();
         for(int i=0;i<codeUrlList.size();i++){
             Url codeUrl = codeUrlList.get(i);
             String urlStr = codeUrl.getCodeUrl();
             String[] list = urlStr.split("/");
             String[] lastContent = list[list.length-1].split("_");
-            String subject = lastContent[0];
+            subject = lastContent[0];
             try {
-                downloadCode.saveToFile(urlStr,destPathPre+subject+"/"+list[list.length-2]+list[list.length-1]);
+                downloadCode.saveToFile(urlStr,downloadDestPre+subject+"/"+list[list.length-2]+list[list.length-1]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        long endDownloadTime = System.currentTimeMillis();
+        System.out.println("下载耗时："+(endDownloadTime-beginDownloadTime)+"ms");
+
+        long beginUnpackTime = System.currentTimeMillis();
+        UnPackUtil.batchUnPack(downloadDestPre+subject+"/","",downloadDestPre+subject+"/");
+        long endUnpackTime = System.currentTimeMillis();
+        System.out.println("解压耗时："+(endUnpackTime-beginUnpackTime)+"ms");
 
         return null;
     }

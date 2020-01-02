@@ -51,39 +51,49 @@ public class UnPackUtil {
         if(dir.isDirectory()){
             File[] files = dir.listFiles();
             for(int i=0;i<files.length;i++){
+                if(files[i].isDirectory()||files[i].toString().contains(".DS_Store")){
+                    continue;
+                }
 //                System.out.println(files[i]);
-                    String[] contents = files[i].toString().split("/");
-    //                System.out.println(contents[contents.length-1]);
-                    String[] array = contents[contents.length - 1].split("\\.");
-    //                System.out.println(array.length);
-                    String suffix = array[0] + "/";
-    //                System.out.println(suffix);
-                    String destPath = destPrefix + suffix;
-                    unPackZip(files[i],password,destPath);
-
+                String[] contents = files[i].toString().split("/");
+//                System.out.println(contents[contents.length-1]);
+                String[] array = contents[contents.length - 1].split("\\.");
+//                System.out.println(array.length);
+                String suffix = array[0] + "/";
+//                System.out.println(suffix);
+                String destPath = destPrefix + suffix;
+                File destDir = new File(destPath);
+                System.out.println(destPath);
+                if(!destDir.exists()) {
+                    unPackZip(files[i], password, destPath);
+                    System.out.println(files[i]);
+                    batchUnPackSecondLayer(destPath,password,destPrefix);
                 }
             }
+        }
     }
 
     public static void batchUnPackSecondLayer(String path,String password,String destPrefix){
         File dir = new File(path);
         if(dir.isDirectory()){
             File[] files = dir.listFiles();
-            for(int i=0;i<files.length;i++){
-                if(files[i].isDirectory()) {
-//                System.out.println(files[i]);
-                    String[] contents = files[i].toString().split("/");
-//                System.out.println(contents[contents.length-1]);
-                    String suffix = contents[contents.length - 1];
-//                System.out.println(array.length);
-//                System.out.println(suffix);
-                    String destPath = destPrefix + suffix;
-//                unPackZip(files[i],password,destPath);
-                    File destDir = new File(destPath);
-                    File[] inFiles = destDir.listFiles();
-                    unPackZip(inFiles[0], password, destPath);
-                }
-            }
+//            for(int i=0;i<files.length;i++){
+//                if(files[i].isDirectory()) {
+////                System.out.println(files[i]);
+//                    String[] contents = files[i].toString().split("/");
+////                System.out.println(contents[contents.length-1]);
+//                    String suffix = contents[contents.length - 1];
+////                System.out.println(array.length);
+////                System.out.println(suffix);
+//                    String destPath = destPrefix + suffix;
+////                unPackZip(files[i],password,destPath);
+//                    File destDir = new File(destPath);
+//                    File[] inFiles = destDir.listFiles();
+//                    if(!destDir.exists()) {
+            unPackZip(files[0], password, path);
+//                    }
+//                }
+//            }
         }
     }
 
