@@ -4,8 +4,6 @@ import com.csvreader.CsvReader;
 import demo.com.tcsa.analysis.*;
 import demo.com.tcsa.model.ContestantTFModel;
 import demo.entity.MUTModel;
-import demo.service.impl.TFServiceImpl;
-import demo.vo.Inputs;
 import me.xdrop.fuzzywuzzy.FuzzySearch;
 
 import java.io.*;
@@ -189,7 +187,7 @@ public class Main {
 //        test10();
 
 //        TFServiceImpl tfService = new TFServiceImpl();
-//        Inputs inputs = new Inputs();
+//        Paths inputs = new Paths();
 //        inputs.setSrcPath(PUTRootPath);
 //        inputs.setP1Path(cid1Path);
 //        inputs.setP2Path(cid2Path);

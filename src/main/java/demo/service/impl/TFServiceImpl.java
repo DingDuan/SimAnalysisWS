@@ -15,18 +15,18 @@ import demo.dao.TFModelDao;
 import demo.entity.MUTModel;
 import demo.entity.SimValueModel;
 import demo.entity.TFModel;
+import demo.getData.DownloadCode;
 import demo.pdf.GeneratePDF;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
 import demo.po.SimDetail;
 import demo.service.TFService;
-import demo.vo.IndexDisplayVO;
-import demo.vo.Inputs;
-import demo.vo.SimValueVO;
+import demo.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.*;
 
 import static java.util.Arrays.asList;
@@ -44,7 +44,7 @@ public class TFServiceImpl implements TFService {
     private TFModelDao tfModelDao;
 
     @Override
-    public Result getSimValue(Inputs inputs) {
+    public Result getSimValue(Paths paths) {
 
 
         List<Double> result = new ArrayList<>();
@@ -56,11 +56,26 @@ public class TFServiceImpl implements TFService {
      * @Author duanding
      * @Description 某个项目/题目的所有选手之间检测（包含下载解压）
      * @Date 5:11 PM 2019/12/30
-     * @Param [inputs]
+     * @Param [paths]
      * @return demo.common.Result
      **/
     @Override
     public Result detectAll(Inputs inputs) {
+        DownloadCode downloadCode = new DownloadCode();
+        String destPathPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+        List<Url> codeUrlList = inputs.getCodeUrlList();
+        for(int i=0;i<codeUrlList.size();i++){
+            Url codeUrl = codeUrlList.get(i);
+            String urlStr = codeUrl.getCodeUrl();
+            String[] list = urlStr.split("/");
+            String[] lastContent = list[list.length-1].split("_");
+            String subject = lastContent[0];
+            try {
+                downloadCode.saveToFile(urlStr,destPathPre+subject+"/"+list[list.length-2]+list[list.length-1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         return null;
     }
@@ -69,16 +84,16 @@ public class TFServiceImpl implements TFService {
      * @Author duanding
      * @Description 两个选手之间检测
      * @Date 3:39 PM 2019/11/15
-     * @Param [inputs]
+     * @Param [paths]
      * @return demo.common.Result
      **/
     @Override
-    public Result detectBetweenTwo(Inputs inputs) {
+    public Result detectBetweenTwo(Paths paths) {
         List<IndexDisplayVO> indexDisplayVOList = new ArrayList<>();
-        String srcPath = inputs.getSrcPath();
-        String p1Path = inputs.getP1Path();
-        String p2Path = inputs.getP2Path();
-        double threshold = inputs.getThreshold();
+        String srcPath = paths.getSrcPath();
+        String p1Path = paths.getP1Path();
+        String p2Path = paths.getP2Path();
+        double threshold = paths.getThreshold();
         List<MUTModel> mutModelList;
         String[] srcs = srcPath.split("/");
         String subject = "";

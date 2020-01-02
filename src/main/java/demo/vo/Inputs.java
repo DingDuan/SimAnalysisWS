@@ -1,11 +1,9 @@
 package demo.vo;
 
 import lombok.Data;
+import java.util.List;
 
 @Data
 public class Inputs {
-    private String srcPath;
-    private String p1Path;
-    private String p2Path;
-    private double threshold;
+    private List<Url> codeUrlList;
 }
