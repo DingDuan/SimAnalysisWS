@@ -113,12 +113,12 @@ public class TFServiceImpl implements TFService {
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
                 paths.setP2Path(dirList.get(j).getPath());
-                if(paths.getP1Path().contains("50488") && paths.getP2Path().contains("49571")) {
+//                if(paths.getP1Path().contains("50488") && paths.getP2Path().contains("49571")) {
                     System.out.println("检测：");
                     System.out.println("选手一：" + dirList.get(i).getPath());
                     System.out.println("选手二：" + dirList.get(j).getPath());
                     detectBetweenTwo(paths);
-                }
+//                }
             }
         }
 
@@ -197,7 +197,7 @@ public class TFServiceImpl implements TFService {
 //                System.out.println();
                 if(tfModelList2.size() == 0) {
                     Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
-                    System.out.println("选手："+cid2+" 片段："+tfMap2.get(-2005394965));
+//                    System.out.println("选手："+cid2+" 片段："+tfMap2.get(-2005394965));
                     saveTFToDB(tfMap2, subject);
                 }
 
@@ -473,13 +473,13 @@ public class TFServiceImpl implements TFService {
                 continue;
             }
             int count = tfModelList.size();
-            System.out.println("对比人数：" + count);
+//            System.out.println("对比人数：" + count);
             if (count < 2) {
                 contestantSimilarityByMIDList.add(contestantSimilarityByMID);
                 continue;
             }
             long startTime=System.currentTimeMillis();
-            System.out.println("对比开始时间：" + startTime);
+//            System.out.println("对比开始时间：" + startTime);
             List<ContestantSimilarity> contestantSimilarityList = new ArrayList<>(count);
             for (int index = 0; index < count; index++) {
                 TFModel baseTFModel = tfModelList.get(index);
@@ -509,9 +509,9 @@ public class TFServiceImpl implements TFService {
             }
             contestantSimilarityByMID.setContestantSimilarityList(contestantSimilarityList);
             contestantSimilarityByMIDList.add(contestantSimilarityByMID);
-            System.out.println("对比次数：" + compareNumber);
+//            System.out.println("对比次数：" + compareNumber);
             long endTime=System.currentTimeMillis();
-            System.out.println("对比结束时间：" + endTime);
+//            System.out.println("对比结束时间：" + endTime);
             System.out.println("对比运行耗时：" + (endTime - startTime) + "ms");
             resultLists.add(saveTFSimValueToDatabase(contestantSimilarityByMIDList, category,subject));
             contestantSimilarityByMIDList.clear();

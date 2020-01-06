@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23ea235c-8f2f-4029-b0f4-e3b291fa3530" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -65,19 +62,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
+            <state relative-caret-position="358">
+              <caret line="522" column="44" lean-forward="true" selection-start-line="522" selection-start-column="44" selection-end-line="522" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="1286">
               <caret line="109" column="70" lean-forward="true" selection-start-line="109" selection-start-column="70" selection-end-line="109" selection-end-column="70" />
             </state>
           </provider>
@@ -196,8 +193,8 @@
         <option value="$PROJECT_DIR$/src/main/java/demo/dao/MUTModelDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" />
+        <option value="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -396,7 +393,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578280185760" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578294718767" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -524,7 +521,7 @@
       <workItem from="1575464005663" duration="333000" />
       <workItem from="1575599324577" duration="37811000" />
       <workItem from="1577170075716" duration="21129000" />
-      <workItem from="1577670090970" duration="39072000" />
+      <workItem from="1577670090970" duration="41546000" />
     </task>
     <servers />
   </component>
@@ -561,7 +558,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206351000" />
+    <option name="totallyTimeSpent" value="208825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -621,12 +618,6 @@
           <line>3361</line>
           <properties />
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java</url>
-          <line>195</line>
-          <properties />
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java</url>
@@ -1027,17 +1018,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
+        <state relative-caret-position="1286">
+          <caret line="109" column="70" lean-forward="true" selection-start-line="109" selection-start-column="70" selection-end-line="109" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="109" column="70" lean-forward="true" selection-start-line="109" selection-start-column="70" selection-end-line="109" selection-end-column="70" />
+        <state relative-caret-position="358">
+          <caret line="522" column="44" lean-forward="true" selection-start-line="522" selection-start-column="44" selection-end-line="522" selection-end-column="44" />
         </state>
       </provider>
     </entry>
