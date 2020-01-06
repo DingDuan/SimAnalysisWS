@@ -39,16 +39,24 @@ public class TPAnalysis {
 //        for()
     }
 
-    //我的新分析测试程序，提取片段
+    /*
+     * @Author duanding
+     * @Description    我的新的分析测试程序，提取片段
+     * @Date 11:04 AM 2020/1/3
+     * @Param [mutModelList, rootPath]
+     * @return Map<Integer, List<ContestantTFModel>> Integer是mid，List是每个mid下的TFModel
+     **/
     public static Map<Integer, List<ContestantTFModel>> myAnalyze(List<MUTModel> mutModelList, String rootPath){
 
         //get all MUT from mysql database;
 //        mutModelList = mutModelDao.getMUTModelList();
 
+        String suffix = "/src/test/java/net/mooctest";
+        String testFilePath = rootPath+suffix;
         List<TestFileModel> testFileModelList = null;
         List<ContestantTestModel> contestantTestModelList = null;
         StringBuffer buffer = null;
-        File rootDirectory = new File(rootPath);
+        File rootDirectory = new File(testFilePath);
         if (!rootDirectory.exists()) {
             System.err.println("The root directory does not exist.");
             return null;
@@ -73,8 +81,15 @@ public class TPAnalysis {
                 }
                 //                    }
             }
+            String cid = "";
             String[] splits = rootPath.split("/");
-            String cid = splits[splits.length-1];
+            if(rootPath.contains("junit")) {
+                cid = splits[splits.length - 1];
+            }else{
+                String[] lastContent = splits[splits.length - 1].split("_");
+                cid = lastContent[0];
+            }
+            System.out.println("cid: "+cid);
             ContestantTestModel contestantTestModel = new ContestantTestModel(cid);
 //                if ("364".equals(contestantId)) {
             List<TestFileModel> allTestFileModelList = testFileModelList;
@@ -87,12 +102,12 @@ public class TPAnalysis {
             contestantTestModelList.add(contestantTestModel);
         }
         buffer = new StringBuffer(rootPath);
-        int subjectStringIndex = buffer.indexOf("junit");
-        buffer.replace(subjectStringIndex, buffer.length(), "analysis");
-        buffer.append(File.separator + "sim_analysis"
-                + File.separator + "tfs_classified_by_cid");
-//                buffer.append(File.separator + "sim_analysis"
-//                        + File.separator + "cid_tfs_for_plaggie");
+//        int subjectStringIndex = buffer.indexOf("junit");
+////        buffer.replace(subjectStringIndex, buffer.length(), "analysis");
+////        buffer.append(File.separator + "sim_analysis"
+////                + File.separator + "tfs_classified_by_cid");
+////                buffer.append(File.separator + "sim_analysis"
+////                        + File.separator + "cid_tfs_for_plaggie");
         String targetDirectoryPath = buffer.toString();
         //System.out.println(targetDirectoryPath);
 //                writeContestantTestFragmentsForTry(targetDirectoryPath, contestantTestModelList);
@@ -730,6 +745,7 @@ public class TPAnalysis {
         List<InvokeMethodModel> invokeMethodModelList = new ArrayList<>();
         List<InvokeMethodModel> invokeMethodModelAmongTryBlockList = new ArrayList<>();;
         for (String testCaseString : testCaseStringList) {
+            System.out.println("testCaseString: "+testCaseString);
             if (testCaseString.contains("@Before")
                     || testCaseString.contains("@org.junit.Before")
                     || testCaseString.contains("@After")
@@ -4242,13 +4258,13 @@ public class TPAnalysis {
         return testCaseStringList;
     }
 
-    /**
-     *
-     * @param
-     * @return
-     * @throws
-     * @date 2018/5/3 下午5:07
-     */
+    /*
+     * @Author duanding
+     * @Description 这个方法现在的作用在于将allTFMap设置成有值
+     * @Date 11:01 AM 2020/1/6
+     * @Param [targetDirectoryPath, contestantTestModelList]
+     * @return void
+     **/
     public static void writeContestantTestFragmentsToTargetFile(String targetDirectoryPath
             , List<ContestantTestModel> contestantTestModelList) {
         StringBuffer stringBuffer = new StringBuffer(targetDirectoryPath);

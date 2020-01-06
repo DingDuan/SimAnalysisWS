@@ -26,11 +26,11 @@ public class Main {
 //    public static final String rootPath = "/Users/dd/study/iSE/plagiarism_detection/NewDataSets/ALU/ALU_code";
 //    public static final String PUTRootPath = "/Users/dd/study/iSE/plagiarism_detection/NewDataSets/PUT";
 
-    public static final String PUTRootPath = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Province";
+    public static final String PUTRootPath = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Calculator/50488_Calculator_1559963890188";
 //    public static final String PUTRootPath = "/Users/dd/Desktop/MAF-Data/Datalog/src";
     public static final String rootPath = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
 //    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/Datalog/junit/1";
-    public static final String cid1Path = "/Users/dd/Desktop/MAF-Data/TernaryTree/junit/17728";
+    public static final String cid1Path = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Calculator/50488_Calculator_1559963890188";
     public static final String cid2Path = "/Users/dd/Desktop/MAF-Data/AStar/junit/2";
 
 
@@ -44,7 +44,8 @@ public class Main {
         //ExperimentDataProcess.analyze(rootPath);
 
         //分析待测程序
-        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath,"TernaryTree");
+        List<MUTModel> mutModelList = PUTAnalysis.analyze(PUTRootPath,"Calculator");
+        System.out.println("mutModelList:"+mutModelList.size());
         for(MUTModel mutModel : mutModelList){
             System.out.println(mutModel.toString());
         }

@@ -27,6 +27,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -74,7 +75,7 @@ public class TFServiceImpl implements TFService {
             String[] lastContent = list[list.length-1].split("_");
             subject = lastContent[0];
             try {
-                downloadCode.saveToFile(urlStr,downloadDestPre+subject+"/"+list[list.length-2]+list[list.length-1]);
+                downloadCode.saveToFile(urlStr,downloadDestPre+subject+"/"+list[list.length-2]+"_"+list[list.length-1]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,7 +88,41 @@ public class TFServiceImpl implements TFService {
         long endUnpackTime = System.currentTimeMillis();
         System.out.println("解压耗时："+(endUnpackTime-beginUnpackTime)+"ms");
 
-        return null;
+        String rootPath = downloadDestPre+subject+"/";
+        File rootDir = new File(rootPath);
+        String parentName = rootDir.getName();
+        File[] allChildDirectories = rootDir.listFiles();
+        List<File> dirList = new ArrayList<>();
+        if (allChildDirectories != null && allChildDirectories.length > 0) {
+            for (int i = 0; i < allChildDirectories.length; i++) {
+                File directory = allChildDirectories[i];
+                if (".DS_Store".equals(directory.getName())) {
+                    continue;
+                }
+                if (directory.isDirectory()) {
+                    if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
+                            && directory.getName().contains(subject)) {
+                        dirList.add(directory);
+                    }
+                }
+            }
+        }
+        Paths paths = new Paths();
+        paths.setSrcPath(rootPath);
+        for(int i = 0;i < dirList.size();i++){
+            paths.setP1Path(dirList.get(i).getPath());
+            for(int j = i+1;j < dirList.size();j++){
+                paths.setP2Path(dirList.get(j).getPath());
+                if(paths.getP1Path().contains("50488") && paths.getP2Path().contains("49571")) {
+                    System.out.println("检测：");
+                    System.out.println("选手一：" + dirList.get(i).getPath());
+                    System.out.println("选手二：" + dirList.get(j).getPath());
+                    detectBetweenTwo(paths);
+                }
+            }
+        }
+
+        return Result.success().message("检测结果保存成功！");
     }
 
     /*
@@ -115,9 +150,11 @@ public class TFServiceImpl implements TFService {
             subject = srcs[srcs.length - 1];
         }
         String[] p1s = p1Path.split("/");
-        int cid1 = Integer.parseInt(p1s[p1s.length - 1]);
+        String[] p1LastContent = p1s[p1s.length-1].split("_");
+        int cid1 = Integer.parseInt(p1LastContent[0]);
         String[] p2s = p2Path.split("/");
-        int cid2 = Integer.parseInt(p2s[p2s.length - 1]);
+        String[] p2LastContent = p2s[p2s.length-1].split("_");
+        int cid2 = Integer.parseInt(p2LastContent[0]);
         try {
             List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2,subject);
             if (simValueModelList.size() != 0) {
@@ -142,20 +179,28 @@ public class TFServiceImpl implements TFService {
                     indexDisplayVOList.add(indexDisplayVO);
                 }
             } else {
+                List<SimValueVO> resultList = new ArrayList<>();
                 mutModelList = mutModelDao.getALLBySubejct(subject);
                 if (mutModelList.size() == 0) {
                     mutModelList = PUTAnalysis.analyze(srcPath, subject);
                 }
-                Map<Integer, List<ContestantTFModel>> tfMap1 = TPAnalysis.myAnalyze(mutModelList, p1Path);
-                Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
-
-                List<SimValueVO> resultList = new ArrayList<>();
                 for (MUTModel mutModel : mutModelList) {
                     MUTModel mutModelEntity = mutModelDao.save(mutModel);
                 }
 
-                saveTFToDB(tfMap1, subject);
-                saveTFToDB(tfMap2, subject);
+                List<TFModel> tfModelList1 = tfModelDao.getTFModelListByCid(cid1);
+                if(tfModelList1.size() == 0) {
+                    Map<Integer, List<ContestantTFModel>> tfMap1 = TPAnalysis.myAnalyze(mutModelList, p1Path);
+                    saveTFToDB(tfMap1, subject);
+                }
+                List<TFModel> tfModelList2 = tfModelDao.getTFModelListByCid(cid2);
+//                System.out.println();
+                if(tfModelList2.size() == 0) {
+                    Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
+                    System.out.println("选手："+cid2+" 片段："+tfMap2.get(-2005394965));
+                    saveTFToDB(tfMap2, subject);
+                }
+
                 // 计算测试片段之间相似度并存入数据库
                 //两层list，第一层是不同的mid对应的选手之间相似度，第二层是某个mid（即某一个待测方法）里不同选手测该方法片段之间的相似度
                 List<List<SimValueVO>> simValueList = tfAnalysisByTwo(mutModelList,subject,cid1,cid2);
@@ -191,26 +236,26 @@ public class TFServiceImpl implements TFService {
                     }
                 }
             }
-            List<Integer> players = new ArrayList<>();
-            players.add(cid1);
-            players.add(cid2);
-            PDFContent pdfContent = getPDFContentFromDB(players, 0.8,subject);
-            pdfContent.setSubject(subject);
-            pdfContent.setPlayers(players);
-            pdfContent.setThreshold(0.8);
-            List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
-            pdfContent.setMutList(MUTList);
-            List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
-            SimDetail simDetail = new SimDetail();
-            simDetail.setID(1);
-            simDetail.setCid1(cid1);
-            simDetail.setCid2(cid2);
-            simDetail.setSimilarityList(simlarityList1);
-            List<SimDetail> simDetailList = new ArrayList<>();
-            simDetailList.add(simDetail);
-            pdfContent.setSimDetailList(simDetailList);
-            GeneratePDF generatePDF = new GeneratePDF();
-            generatePDF.createPDF(pdfContent);
+//            List<Integer> players = new ArrayList<>();
+//            players.add(cid1);
+//            players.add(cid2);
+//            PDFContent pdfContent = getPDFContentFromDB(players, 0.8,subject);
+//            pdfContent.setSubject(subject);
+//            pdfContent.setPlayers(players);
+//            pdfContent.setThreshold(0.8);
+//            List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
+//            pdfContent.setMutList(MUTList);
+//            List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
+//            SimDetail simDetail = new SimDetail();
+//            simDetail.setID(1);
+//            simDetail.setCid1(cid1);
+//            simDetail.setCid2(cid2);
+//            simDetail.setSimilarityList(simlarityList1);
+//            List<SimDetail> simDetailList = new ArrayList<>();
+//            simDetailList.add(simDetail);
+//            pdfContent.setSimDetailList(simDetailList);
+//            GeneratePDF generatePDF = new GeneratePDF();
+//            generatePDF.createPDF(pdfContent);
 
 
             return Result.success().message("检测结果保存成功！").withData(indexDisplayVOList);
