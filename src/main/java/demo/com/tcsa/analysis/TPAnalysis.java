@@ -85,6 +85,11 @@ public class TPAnalysis {
             String[] splits = rootPath.split("/");
             if(rootPath.contains("junit")) {
                 cid = splits[splits.length - 1];
+            }else if(rootPath.contains("Province")){
+                String[] lastContent = splits[splits.length - 1].split("_");
+                String temp = lastContent[0];
+                int index = temp.indexOf("T");
+                cid = temp.substring(0,index);
             }else{
                 String[] lastContent = splits[splits.length - 1].split("_");
                 cid = lastContent[0];
@@ -661,7 +666,7 @@ public class TPAnalysis {
                             || FUTNameList.contains(testFileName)) {
                         continue;
                     }
-                    System.out.println(testFileName);
+//                    System.out.println(testFileName);
                     TestFileModel testFileModel = new TestFileModel(testFileName);
                     List<InvokeMethodModel> testMethodList = analyzeTestFile(mutModelList,testFile);
                     if (testMethodList != null) {
@@ -678,7 +683,7 @@ public class TPAnalysis {
                     if (".DS_Store".equals(testFileName)) {
                         continue;
                     }
-                    System.out.println(testFileName);
+//                    System.out.println(testFileName);
 //                    if ("ArgumentTest.java".equals(testFileName)) {
                         TestFileModel testFileModel = new TestFileModel(testFileName);
                         List<InvokeMethodModel> testMethodList = analyzeTestFile(mutModelList,testFile);
@@ -745,7 +750,7 @@ public class TPAnalysis {
         List<InvokeMethodModel> invokeMethodModelList = new ArrayList<>();
         List<InvokeMethodModel> invokeMethodModelAmongTryBlockList = new ArrayList<>();;
         for (String testCaseString : testCaseStringList) {
-            System.out.println("testCaseString: "+testCaseString);
+//            System.out.println("testCaseString: "+testCaseString);
             if (testCaseString.contains("@Before")
                     || testCaseString.contains("@org.junit.Before")
                     || testCaseString.contains("@After")
