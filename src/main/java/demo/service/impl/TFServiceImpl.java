@@ -138,8 +138,10 @@ public class TFServiceImpl implements TFService {
         paths.setSrcPath(rootPath);
 
         for(int i = 0;i < dirList.size();i++){
+            if(i!=13) continue;
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
+                if(j!=41) continue;
                 paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
                     System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());

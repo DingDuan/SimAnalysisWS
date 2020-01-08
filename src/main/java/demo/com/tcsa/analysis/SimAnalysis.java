@@ -25,6 +25,11 @@ public class SimAnalysis {
     * @author sunweisong
     */
     public static int fuzzyPartialRatio(String s1, String s2) {
+//        System.out.println("s1Length: "+s1.length()+" s2Length: "+s2.length());
+        //超长时返回默认值
+        if(s1.length()+s2.length()>=47000){
+            return 50;
+        }
         return FuzzySearch.partialRatio(s1, s2);
     }
 
