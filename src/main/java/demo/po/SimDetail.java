@@ -2,6 +2,7 @@ package demo.po;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class SimDetail {
@@ -11,5 +12,5 @@ public class SimDetail {
 
     private int cid2;
 
-    private List<Integer> similarityList;
+    private Map<Integer,Integer> similarityList;
 }

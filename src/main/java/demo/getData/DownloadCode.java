@@ -1,5 +1,6 @@
 package demo.getData;
 import demo.util.ImportExcel;
+import demo.vo.Url;
 
 import java.io.*;
 import java.net.*;
@@ -158,6 +159,42 @@ public class DownloadCode {
         return oInstance;
     }
 
+    /*
+     * @Author duanding
+     * @Description 从excel获取该项目的代码url list
+     * @Date 3:32 PM 2020/1/10
+     * @Param [subject]
+     * @return List<Url>
+     **/
+    public List<Url> getUrlList(String subject){
+        List<Url> codeUrlList = new ArrayList<>();
+        String targetPrefix = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+        DownloadCode oInstance = new DownloadCode();
+        ImportExcel importExcel = new ImportExcel();
+        List<List<String>> list = importExcel.read("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/AllCode.xlsx");
+        if (list != null) {
+            for (int i = 1; i < list.size(); i++) {
+                List<String> cellList = list.get(i);
+//                for (int j = 0; j < cellList.size(); j++) {
+                String urlStr = cellList.get(2);
+                if(urlStr.contains(subject)) {
+                    Url url = new Url();
+                    url.setCodeUrl(urlStr);
+                    codeUrlList.add(url);
+//                    String[] contents = url.split("/");
+//                    String targetSuffix = contents[contents.length - 2] + contents[contents.length - 1];
+//                    oInstance.addItem(url, targetPrefix + subject+"/"+targetSuffix);
+//                    System.out.println("url: " + url);
+//                    System.out.println("target: " + targetPrefix + subject+"/"+targetSuffix);
+                }
+//                }
+            }
+        }
+
+
+        return codeUrlList;
+    }
+
     /**
      * 主方法(用于测试)
      *
@@ -185,28 +222,17 @@ public class DownloadCode {
 //                    "1590",
 //                    "1591"
 //            };
-//            for(int k=0;k<ids.length;k++){
-//                // //增加下载列表
-//                ImportExcel importExcel = new ImportExcel();
-//                List<List<String>> list = importExcel.read("/Users/dd/study/iSE/Graduation-Design/ContestDataSet/AllCode.xlsx");
-//                if (list != null) {
-//                    for (int i = 0; i < list.size(); i++) {
-//                        List<String> cellList = list.get(i);
-//                        for (int j = 0; j < cellList.size(); j++) {
-//                            String[] contents = cellList.get(j).split("/");
-//                            String targetSuffix = contents[contents.length-2]+contents[contents.length-1];
-//                            oInstance.addItem(cellList.get(j),targetPrefix+targetSuffix);
-//                        }
-//                    }
-//                }
-//                long time1=System.currentTimeMillis();
-//                // 开始下载
-//                oInstance.downLoadByList();
-                    oInstance.saveToFile(
-                            "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3070/49571/Calculator_1559903705111.zip", "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Calculator/49571Calculator_1559903705111.zip");
+//
+//                    oInstance.saveToFile(
+//                            "http://mooctest-dev.oss-cn-shanghai.aliyuncs.com/data/answers/3070/49571/Calculator_1559903705111.zip", "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/Calculator/49571Calculator_1559903705111.zip");
 //                long time2=System.currentTimeMillis();
-//                System.out.println("当前程序"+ids[k]+"耗时："+(time2-time1)+"ms");
-//            }
+//System.out.println("当前程序"+ids[k]+"耗时："+(time2-time1)+"ms");
+            // 开始下载
+//            oInstance.downLoadByList();
+            List<Url> urls = oInstance.getUrlList("Tarjan");
+            for(Url url1:urls){
+                System.out.println(url1.getCodeUrl());
+            }
         }
         catch (Exception err) {
             System.out.println(err.getMessage());

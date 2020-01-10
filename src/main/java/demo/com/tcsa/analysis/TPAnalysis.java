@@ -5,9 +5,11 @@ import demo.com.tcsa.util.*;
 import demo.common.Constant;
 import demo.dao.MUTModelDao;
 import demo.entity.MUTModel;
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 
 import java.io.File;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,6 +49,7 @@ public class TPAnalysis {
      * @return Map<Integer, List<ContestantTFModel>> Integer是mid，List是每个mid下的TFModel
      **/
     public static Map<Integer, List<ContestantTFModel>> myAnalyze(List<MUTModel> mutModelList, String rootPath){
+        final ExecutorService exec = Executors.newFixedThreadPool(1);
 
         //get all MUT from mysql database;
 //        mutModelList = mutModelDao.getMUTModelList();
@@ -69,9 +72,27 @@ public class TPAnalysis {
                     continue;
                 }
                 System.out.println(testFileName);
-                //                    if ("ArgumentTest.java".equals(testFileName)) {
                 TestFileModel testFileModel = new TestFileModel(testFileName);
-                List<InvokeMethodModel> testMethodList = analyzeTestFile(mutModelList,testFile);
+                List<InvokeMethodModel> testMethodList = new ArrayList<>();
+                Callable<List<InvokeMethodModel>> call = new Callable<List<InvokeMethodModel>>() {
+                    public List<InvokeMethodModel> call() throws Exception {
+                        //开始执行耗时操作
+                        return analyzeTestFile(mutModelList,testFile);
+                    }
+                };
+                try {
+                    Future<List<InvokeMethodModel>> future = exec.submit(call);
+                    testMethodList = future.get(1000 * 60, TimeUnit.MILLISECONDS); //任务处理超时时间设为 60 秒
+//            System.out.println("任务成功返回:" + simValue);
+                } catch (TimeoutException ex) {
+                    System.out.println("处理超时啦....");
+                    ex.printStackTrace();
+                } catch (Exception e) {
+                    System.err.println("处理失败");
+                    e.printStackTrace();
+                }
+                // 关闭线程池
+                exec.shutdown();
                 if (testMethodList != null) {
                     testFileModel.setTestMethodList(testMethodList);
                     if (testFileModelList == null) {
@@ -88,7 +109,12 @@ public class TPAnalysis {
             }else if(rootPath.contains("Province")){
                 String[] lastContent = splits[splits.length - 1].split("_");
                 String temp = lastContent[0];
-                int index = temp.indexOf("T");
+                int index = 0;
+                if(temp.contains("AStar")) {
+                    index = temp.indexOf("A");
+                }else if(temp.contains("TernaryTree")){
+                    index = temp.indexOf("T");
+                }
                 cid = temp.substring(0,index);
             }else{
                 String[] lastContent = splits[splits.length - 1].split("_");

@@ -1,4 +1,5 @@
 package demo.po;
+import demo.entity.MUTModel;
 import lombok.Data;
 
 import java.util.List;
@@ -22,7 +23,9 @@ public class PDFContent {
 
     private List<GeneralResult> resultList;
 
-    private List<Integer> mutList;
+    private List<MUTModel> mutList;
 
     private List<SimDetail> simDetailList;
+
+    private List<FragDetail> fragDetailList;
 }

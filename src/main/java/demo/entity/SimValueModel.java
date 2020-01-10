@@ -4,12 +4,13 @@ import lombok.Data;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.util.Comparator;
 
 
 @Data
 @Entity
 @Table(name = "sim_value_model")
-public class SimValueModel implements Persistable<Integer> {
+public class SimValueModel implements Persistable<Integer>, Comparator<SimValueModel> {
 
     @Id
     @Column(name = "id")
@@ -38,5 +39,17 @@ public class SimValueModel implements Persistable<Integer> {
     @Override
     public boolean isNew() {
         return null == id;
+    }
+
+    //降序排列
+    @Override
+    public int compare(SimValueModel o1, SimValueModel o2) {
+        if(o1.getSimValue() < o2.getSimValue()){
+            return 1;
+        }else if (o1.getSimValue()==o2.getSimValue()){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 }

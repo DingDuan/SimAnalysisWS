@@ -47,7 +47,7 @@ public class GeneratePDF {
             redenfont.setColor(BaseColor.RED);
             redchfont = new Font(bfChinese,12,Font.NORMAL);
             redchfont.setColor(BaseColor.RED);
-            anchorfont = new Font(bfChinese,12,Font.UNDEFINED);
+            anchorfont = new Font(bfChinese,12,Font.UNDERLINE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,55 +83,55 @@ public class GeneratePDF {
         players.add(1);
         players.add(2);
         players.add(3);
-        players.add(4);
-        players.add(5);
+//        players.add(4);
+//        players.add(5);
         pdfContent.setPlayers(players);
         pdfContent.setThreshold(0.8);
-        pdfContent.setPlagPairs(5);
+        pdfContent.setPlagPairs(3);
         GeneralResult generalResult1 = new GeneralResult(1,1,2,100,true);
         GeneralResult generalResult2 = new GeneralResult(2,1,3,96,true);
-        GeneralResult generalResult3 = new GeneralResult(3,1,4,93,true);
-        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
-        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
-        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
-        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
-        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
-        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
-        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
+        GeneralResult generalResult3 = new GeneralResult(3,2,3,73,false);
+//        GeneralResult generalResult4 = new GeneralResult(4,1,5,91,true);
+//        GeneralResult generalResult5 = new GeneralResult(5,2,3,86,true);
+//        GeneralResult generalResult6 = new GeneralResult(6,2,4,79,false);
+//        GeneralResult generalResult7 = new GeneralResult(7,2,5,77,false);
+//        GeneralResult generalResult8 = new GeneralResult(8,3,4,65,false);
+//        GeneralResult generalResult9 = new GeneralResult(9,3,5,62,false);
+//        GeneralResult generalResult10 = new GeneralResult(10,4,5,48,false);
         List<GeneralResult> generalResults = new ArrayList<>();
         generalResults.add(generalResult1);
         generalResults.add(generalResult2);
         generalResults.add(generalResult3);
-        generalResults.add(generalResult4);
-        generalResults.add(generalResult5);
-        generalResults.add(generalResult6);
-        generalResults.add(generalResult7);
-        generalResults.add(generalResult8);
-        generalResults.add(generalResult9);
-        generalResults.add(generalResult10);
+//        generalResults.add(generalResult4);
+//        generalResults.add(generalResult5);
+//        generalResults.add(generalResult6);
+//        generalResults.add(generalResult7);
+//        generalResults.add(generalResult8);
+//        generalResults.add(generalResult9);
+//        generalResults.add(generalResult10);
         pdfContent.setResultList(generalResults);
         List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
-        pdfContent.setMutList(MUTList);
+//        pdfContent.setMutList(MUTList);
         List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
         SimDetail simDetail = new SimDetail();
         simDetail.setID(1);
         simDetail.setCid1(1);
         simDetail.setCid2(2);
-        simDetail.setSimilarityList(simlarityList1);
+//        simDetail.setSimilarityList(simlarityList1);
         List<SimDetail> simDetailList = new ArrayList<>();
         simDetailList.add(simDetail);
         pdfContent.setSimDetailList(simDetailList);
-        generatePDF.createPDF(pdfContent);
+        generatePDF.createPDF(pdfContent,false);
     }
 
     /*
      * @Author duanding
      * @Description 生成PDF
-     * @Date 2:02 PM 2019/11/8
-     * @Param [pdfContent]
+     * @Date 4:27 PM 2020/1/8
+     * @Param [pdfContent, isAll:是否是全部选手]
      * @return boolean
      **/
-    public boolean createPDF(PDFContent pdfContent){
+    public boolean createPDF(PDFContent pdfContent,boolean isAll){
         try {
             Document document = new Document();
             PdfPTableEvent event = new AlternatingBackground();
@@ -173,8 +173,15 @@ public class GeneratePDF {
             String subjectStr = pdfContent.getSubject();
             Paragraph subject = new Paragraph(titleChineseStrEnglish("题目：",subjectStr));
             List<Integer> playerIDs = pdfContent.getPlayers();
-            String playerStr = generatePlayerStr(playerIDs);
-            Paragraph players = new Paragraph(titleChineseStrEnglish("检测选手范围：",playerStr));
+            String playerStr = "";
+            Paragraph players;
+            if(isAll){
+                playerStr = playerIDs.size()+"";
+                players = new Paragraph(titleChineseStrEnglish("检测选手范围：全部选手 共计：",playerStr));
+            }else {
+                playerStr = generatePlayerStr(playerIDs);
+                players = new Paragraph(titleChineseStrEnglish("检测选手范围：",playerStr));
+            }
             String threStr = pdfContent.getThreshold()*100+"%";
             Paragraph threshold = new Paragraph(titleChineseStrEnglish("相似度阈值：",threStr));
             subject.setIndentationLeft(23);
@@ -215,11 +222,11 @@ public class GeneratePDF {
             phraseSim.add(maxSimTitle);
 //            phraseSim.add(anchorMore);
 
-            table.addCell(createCell("序号", keyfont, Element.ALIGN_CENTER));
-            table.addCell(createCell("选手ID对", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createFixedCell("序号", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createFixedCell("选手ID对", keyfont, Element.ALIGN_CENTER));
             table.addCell(createCell(phraseSim, Element.ALIGN_CENTER));
-            table.addCell(createCell("是否抄袭", keyfont, Element.ALIGN_CENTER));
-            table.addCell(createCell("详情信息", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createFixedCell("是否抄袭", keyfont, Element.ALIGN_CENTER));
+            table.addCell(createFixedCell("详情信息", keyfont, Element.ALIGN_CENTER));
 
             for(int i=0;i<generalResults.size();i++){
                 GeneralResult generalResult = generalResults.get(i);
@@ -236,7 +243,7 @@ public class GeneratePDF {
                 }else{
                     table.addCell(createCell("否", chtextfont));
                 }
-                table.addCell(createCell("详情", chtextfont));
+                table.addCell(createAnchoredCell("详情", anchorfont,Element.ALIGN_CENTER,"#moreDetail","more"));
             }
             table.setTableEvent(event);
             document.add(table);
@@ -251,8 +258,7 @@ public class GeneratePDF {
             document.add(anchorMoreDetail);
             document.add(new Paragraph("\n",chtextfont));
 
-            document.add(new Paragraph("选手对：<1,2>",chtextfont));
-            document.add(new Paragraph("\n"));
+
 
 //            PdfPTable simMatrix = createTable(57);
 //            simMatrix.addCell(createCell("序号",newkeyfont,Element.ALIGN_CENTER));
@@ -274,7 +280,8 @@ public class GeneratePDF {
 //
 //            simMatrix.setTableEvent(event);
 //            document.add(simMatrix);
-
+            document.add(new Paragraph("选手对：<1,2>",chtextfont));
+            document.add(new Paragraph("\n"));
             PdfPTable simMatrix = createTable(9);
 
             simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
@@ -292,16 +299,76 @@ public class GeneratePDF {
             simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
             simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
             simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createAnchoredCell("0",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.64",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.79",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.81",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.72",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.64",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.82",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("0.75",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("79%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("81%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("72%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("100%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix.addCell(createAnchoredCell("75%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
             simMatrix.setTableEvent(event);
             document.add(simMatrix);
+
+            document.add(new Paragraph("选手对：<1,3>",chtextfont));
+            document.add(new Paragraph("\n"));
+            PdfPTable simMatrix1 = createTable(9);
+
+            simMatrix1.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+            PdfPCell cell1=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+            cell1.setColspan(8);
+            simMatrix1.addCell(cell1);
+
+            simMatrix1.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+            simMatrix1.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("96%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("69%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("78%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("77%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.addCell(createAnchoredCell("74%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix1.setTableEvent(event);
+            document.add(simMatrix1);
+
+            document.add(new Paragraph("选手对：<2,3>",chtextfont));
+            document.add(new Paragraph("\n"));
+            PdfPTable simMatrix2 = createTable(9);
+
+            simMatrix2.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+            PdfPCell cell2=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+            cell2.setColspan(8);
+            simMatrix2.addCell(cell2);
+
+            simMatrix2.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+            simMatrix2.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("66%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("73%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("67%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+            simMatrix2.setTableEvent(event);
+            document.add(simMatrix2);
 
             document.add(new Paragraph("\n"));
             document.add(line);
@@ -316,13 +383,37 @@ public class GeneratePDF {
             document.add(new Paragraph("\n"));
 
             PdfPTable detail = createTable(2);
-            detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
+            detail.addCell(createCell("TernaryTree d = new TernaryTree(\"1\");\n" +
                     "boolean NotEqual = d.equals(dd));\n" +
-                    "boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_LEFT));
-            detail.addCell(createCell("Datalog d = new Datalog(\"1\");\n" +
+                    "boolean Equal = d.equals(new TernaryTree(\"12\"));",entextfont,Element.ALIGN_LEFT));
+            detail.addCell(createCell("TernaryTree d = new TernaryTree(\"1\");\n" +
                     "boolean NotEqual = d.equals(dd);\n" +
-                    "boolean Equal = d.equals(new Datalog(\"12\"));",entextfont,Element.ALIGN_LEFT));
+                    "boolean Equal = d.equals(new TernaryTree(\"12\"));",entextfont,Element.ALIGN_LEFT));
             document.add(detail);
+
+            document.add(new Paragraph("选手对：<1,3>",chtextfont));
+            document.add(new Paragraph("\n"));
+
+            PdfPTable detail1 = createTable(2);
+            detail1.addCell(createCell("Value value1=new Value(\"value\"); \n" +
+                    "Argument argument1=Argument.value(value1);",entextfont,Element.ALIGN_LEFT));
+            detail1.addCell(createCell("Value value1=new Value(\\\"va\\\"); \n" +
+                    "Argument argument1=Argument.value(va);",entextfont,Element.ALIGN_LEFT));
+            document.add(detail1);
+
+            document.add(new Paragraph("选手对：<2,3>",chtextfont));
+            document.add(new Paragraph("\n"));
+
+            PdfPTable detail2 = createTable(2);
+            detail2.addCell(createCell("Datalog dl1 = new Datalog(pd1,ags1);\n"+
+                    "Predicate pd1 = new Predicate(\"test0001\");\n"+
+                    "Argument[] ags1 = {ag1,ag2};\n"+
+                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
+            detail2.addCell(createCell("Datalog dl1 = new Datalog(p1,a1);\n"+
+                    "Predicate pd1 = new Predicate(\"t1\");\n"+
+                    "Argument[] ags1 = {a1,a2};\n"+
+                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
+            document.add(detail2);
 
             document.close();
         } catch (FileNotFoundException e) {
@@ -337,13 +428,31 @@ public class GeneratePDF {
 
     /*
      * @Author duanding
-     * @Description 创建表格的单元格，包括设置水平格式
-     * @Date 2:04 PM 2019/11/8
+     * @Description 创建表格单元格，高度不固定
+     * @Date 5:35 PM 2020/1/8
      * @Param [value, font, align]
      * @return com.itextpdf.text.pdf.PdfPCell
      **/
     public PdfPCell createCell(String value, Font font, int align){
         PdfPCell cell = new PdfPCell();
+//        cell.setPadding(2);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setHorizontalAlignment(align);
+        cell.setPhrase(new Phrase(value,font));
+        return cell;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 创建表格的单元格，包括设置水平格式,设置固定高度
+     * @Date 2:04 PM 2019/11/8
+     * @Param [value, font, align]
+     * @return com.itextpdf.text.pdf.PdfPCell
+     **/
+    public PdfPCell createFixedCell(String value, Font font, int align){
+        PdfPCell cell = new PdfPCell();
+//        cell.setPadding(2);
+        cell.setFixedHeight(25f);
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(align);
         cell.setPhrase(new Phrase(value,font));
@@ -359,6 +468,8 @@ public class GeneratePDF {
      **/
     public PdfPCell createAnchoredCell(String value, Font font, int align,String anchorRef,String anchorName){
         PdfPCell cell = new PdfPCell();
+//        cell.setPadding(2);
+        cell.setFixedHeight(25f);
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(align);
         Anchor anchorFrag = new Anchor(value, font);

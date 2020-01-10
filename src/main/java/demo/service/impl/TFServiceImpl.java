@@ -18,11 +18,13 @@ import demo.entity.TFModel;
 import demo.getData.DownloadCode;
 import demo.getData.UnPackUtil;
 import demo.pdf.GeneratePDF;
+import demo.po.FragDetail;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
 import demo.po.SimDetail;
 import demo.service.TFService;
 import demo.vo.*;
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +33,15 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static java.util.Arrays.asList;
 
 @Service
 public class TFServiceImpl implements TFService {
+    double threshold = 0.8;
 
     @Resource
     private SimValueModelDao simValueModelDao;
@@ -66,29 +72,30 @@ public class TFServiceImpl implements TFService {
     public Result detectAll(Inputs inputs) {
         DownloadCode downloadCode = new DownloadCode();
         String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
-        //String subject = "";
-        String subject = "Province";
-        List<Url> codeUrlList = inputs.getCodeUrlList();
-//        long beginDownloadTime = System.currentTimeMillis();
-//        for(int i=0;i<codeUrlList.size();i++){
-//            Url codeUrl = codeUrlList.get(i);
-//            String urlStr = codeUrl.getCodeUrl();
-//            String[] list = urlStr.split("/");
-//            String[] lastContent = list[list.length-1].split("_");
-//            subject = lastContent[0];
-//            try {
-//                downloadCode.saveToFile(urlStr,downloadDestPre+subject+"/"+list[list.length-2]+"_"+list[list.length-1]);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        long endDownloadTime = System.currentTimeMillis();
-//        System.out.println("下载耗时："+(endDownloadTime-beginDownloadTime)+"ms");
-//
-//        long beginUnpackTime = System.currentTimeMillis();
-//        UnPackUtil.batchUnPack(downloadDestPre+subject+"/","",downloadDestPre+subject+"/");
-//        long endUnpackTime = System.currentTimeMillis();
-//        System.out.println("解压耗时："+(endUnpackTime-beginUnpackTime)+"ms");
+        String subject = "";
+//        String subject = "Province";
+//        List<Url> codeUrlList = inputs.getCodeUrlList();
+        List<Url> codeUrlList = downloadCode.getUrlList("Tarjan");
+        long beginDownloadTime = System.currentTimeMillis();
+        for(int i=0;i<codeUrlList.size();i++){
+            Url codeUrl = codeUrlList.get(i);
+            String urlStr = codeUrl.getCodeUrl();
+            String[] list = urlStr.split("/");
+            String[] lastContent = list[list.length-1].split("_");
+            subject = lastContent[0];
+            try {
+                downloadCode.saveToFile(urlStr,downloadDestPre+subject+"/"+list[list.length-2]+"_"+list[list.length-1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        long endDownloadTime = System.currentTimeMillis();
+        System.out.println("下载耗时："+(endDownloadTime-beginDownloadTime)+"ms");
+
+        long beginUnpackTime = System.currentTimeMillis();
+        UnPackUtil.batchUnPack(downloadDestPre+subject+"/","",downloadDestPre+subject+"/");
+        long endUnpackTime = System.currentTimeMillis();
+        System.out.println("解压耗时："+(endUnpackTime-beginUnpackTime)+"ms");
 
         long beginDetectTime = System.currentTimeMillis();
 
@@ -111,7 +118,7 @@ public class TFServiceImpl implements TFService {
                     BigInteger dirNameLast = new BigInteger(dirName[dirName.length-1]);
                     if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
 //                            && directory.getName().contains(subject)) {
-                            && directory.getName().contains("TernaryTree")) {
+                            && directory.getName().contains("AStar")) {
                         Iterator it = dirList.iterator();
                         while(it.hasNext()){
                             File existDir = (File) it.next();
@@ -137,11 +144,13 @@ public class TFServiceImpl implements TFService {
         Paths paths = new Paths();
         paths.setSrcPath(rootPath);
 
+        System.out.println("检测选手数量："+dirList.size());
+
         for(int i = 0;i < dirList.size();i++){
-            if(i!=13) continue;
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
-                if(j!=41) continue;
+//                if((i==119||j==119)) continue;
+//                if(i<3||(i==3&&j<119)) continue;
                 paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
                     System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());
@@ -151,8 +160,9 @@ public class TFServiceImpl implements TFService {
         }
 
         long endDetectTime = System.currentTimeMillis();
-        System.out.println("检测选手数量：126，耗时："+(endDetectTime-beginDetectTime)+"ms");
+        System.out.println("检测总耗时："+(endDetectTime-beginDetectTime)+"ms");
 
+        outputAllPDF(dirList,subject);
 
         return Result.success().message("检测结果保存成功！");
     }
@@ -175,7 +185,7 @@ public class TFServiceImpl implements TFService {
         String[] srcs = srcPath.split("/");
         String subject = "";
         if(srcs[srcs.length-1].equals("Province")) {
-            subject = "TernaryTree";
+            subject = "AStar";
         }else if(srcs[srcs.length-2].equals("Datalog")){
             subject = srcs[srcs.length - 2];
         }else{
@@ -189,7 +199,12 @@ public class TFServiceImpl implements TFService {
         }else if(p1Path.contains("Province")){
             String temp = p1LastContent[0];
 //            System.out.println("temp"+temp);
-            int index = temp.indexOf('T');
+            int index = 0;
+            if(temp.contains("AStar")) {
+                index = temp.indexOf("A");
+            }else if(temp.contains("TernaryTree")){
+                index = temp.indexOf("T");
+            }
             cidStr1 = temp.substring(0,index);
         }else{
             cidStr1 = p1LastContent[0];
@@ -202,7 +217,12 @@ public class TFServiceImpl implements TFService {
             cidStr2 = p2LastContent[p2LastContent.length - 1];
         }else if(p2Path.contains("Province")){
             String temp = p2LastContent[0];
-            int index = temp.indexOf('T');
+            int index = 0;
+            if(temp.contains("AStar")) {
+                index = temp.indexOf("A");
+            }else if(temp.contains("TernaryTree")){
+                index = temp.indexOf("T");
+            }
             cidStr2 = temp.substring(0,index);
         }else{
             cidStr2 = p2LastContent[0];
@@ -211,26 +231,26 @@ public class TFServiceImpl implements TFService {
         try {
             List<SimValueModel> simValueModelList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2,subject);
             if (simValueModelList.size() != 0) {
-                for (int i = 0; i < simValueModelList.size(); i++) {
-                    IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
-                    indexDisplayVO.setMethodId(i + 1);
-                    SimValueModel simValueModel = simValueModelList.get(i);
-                    int mid = simValueModel.getMid();
-                    indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
-
-                    indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
-                    indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
-
-                    double simValue = simValueModel.getSimValue();
-                    indexDisplayVO.setSimValue(simValue);
-                    if (simValue >= threshold * 100) {
-                        indexDisplayVO.setPlag(true);
-                    } else {
-                        indexDisplayVO.setPlag(false);
-                    }
-
-                    indexDisplayVOList.add(indexDisplayVO);
-                }
+//                for (int i = 0; i < simValueModelList.size(); i++) {
+//                    IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
+//                    indexDisplayVO.setMethodId(i + 1);
+//                    SimValueModel simValueModel = simValueModelList.get(i);
+//                    int mid = simValueModel.getMid();
+//                    indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
+//
+//                    indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
+//                    indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
+//
+//                    double simValue = simValueModel.getSimValue();
+//                    indexDisplayVO.setSimValue(simValue);
+//                    if (simValue >= threshold * 100) {
+//                        indexDisplayVO.setPlag(true);
+//                    } else {
+//                        indexDisplayVO.setPlag(false);
+//                    }
+//
+//                    indexDisplayVOList.add(indexDisplayVO);
+//                }
             } else {
                 List<SimValueVO> resultList = new ArrayList<>();
                 mutModelList = mutModelDao.getALLBySubejct(subject);
@@ -247,7 +267,6 @@ public class TFServiceImpl implements TFService {
                     saveTFToDB(tfMap1, subject);
                 }
                 List<TFModel> tfModelList2 = tfModelDao.getTFModelListByCid(cid2);
-//                System.out.println();
                 if(tfModelList2.size() == 0) {
                     Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
 //                    System.out.println("选手："+cid2+" 片段："+tfMap2.get(-2005394965));
@@ -260,42 +279,36 @@ public class TFServiceImpl implements TFService {
                 //11个list，每个里面一个元素
 
 
-                for (int i = 0; i < simValueList.size(); i++) {
-                    List<SimValueVO> list = simValueList.get(i);
-                    for (int j = 0; j < list.size(); j++) {
-                        SimValueVO simValueVO = list.get(j);
-                        if((simValueVO.getCid1() == cid1 && simValueVO.getCid2() == cid2)||
-                                (simValueVO.getCid2() == cid1 && simValueVO.getCid1() == cid2)){
-                            IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
-
-                            indexDisplayVO.setMethodId(i + 1);
-
-                            int mid = simValueVO.getMid();
-                            indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
-
-                            indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
-                            indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
-
-                            double simValue = simValueVO.getSimValue();
-                            indexDisplayVO.setSimValue(simValue);
-                            if (simValue >= threshold * 100) {
-                                indexDisplayVO.setPlag(true);
-                            } else {
-                                indexDisplayVO.setPlag(false);
-                            }
-
-                            indexDisplayVOList.add(indexDisplayVO);
-                        }
-                    }
-                }
+//                for (int i = 0; i < simValueList.size(); i++) {
+//                        List<SimValueVO> list = simValueList.get(i);
+//                        for (int j = 0; j < list.size(); j++) {
+//                            SimValueVO simValueVO = list.get(j);
+//                            if((simValueVO.getCid1() == cid1 && simValueVO.getCid2() == cid2)||
+//                                    (simValueVO.getCid2() == cid1 && simValueVO.getCid1() == cid2)){
+//                                IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
+//
+//                                indexDisplayVO.setMethodId(i + 1);
+//
+//                                int mid = simValueVO.getMid();
+//                                indexDisplayVO.setMethodName(mutModelDao.getMethodNameByMID(mid));
+//
+//                                indexDisplayVO.setTfid1(tfModelDao.getIdByMIDAndCid(mid, cid1));
+//                                indexDisplayVO.setTfid2(tfModelDao.getIdByMIDAndCid(mid, cid2));
+//
+//                                double simValue = simValueVO.getSimValue();
+//                                indexDisplayVO.setSimValue(simValue);
+//                                if (simValue >= threshold * 100) {
+//                                    indexDisplayVO.setPlag(true);
+//                                } else {
+//                                    indexDisplayVO.setPlag(false);
+//                                }
+//
+//                                indexDisplayVOList.add(indexDisplayVO);
+//                            }
+//                        }
+//                }
             }
-//            List<Integer> players = new ArrayList<>();
-//            players.add(cid1);
-//            players.add(cid2);
-//            PDFContent pdfContent = getPDFContentFromDB(players, 0.8,subject);
-//            pdfContent.setSubject(subject);
-//            pdfContent.setPlayers(players);
-//            pdfContent.setThreshold(0.8);
+
 //            List<Integer> MUTList = asList(-1185023915,738255133,1326593525,-373229334,955911267,-862597736,-699150091,-312350647,-1794624710,-1622325445,1985156826,-1466814440,-576060075,848030720,634542075,-119209151,1794288550,-1130370374,1029532411,-715073250,648303882,-2064526362,1540046353,997683594,-1965743371,-949293390,1421055235,-933063831,-1300706429,1450127482,-1135966537,1234382088,-92124590,802055090,921782765,-139073259,-723512252,-698809980,908918481,1957296140,-2041695313,137194604,-1787424067,-2027935236,-717360243,-1680305396	,561849238,896641703	,1027976968,8081654,-620252230,-620421252,-1215342824,-493494133,-1484881528);
 //            pdfContent.setMutList(MUTList);
 //            List<Integer> simlarityList1 = asList(0,64,65,79,79,81,81,0,0,53,0,0,0,0,0,0,0,0,0,0,0,0,0,50,58,0,0,0,56,62,0,0,0,0,0,0,0,0,0,0,6,67,0,0,64,64,57,60,57,0,0,0,0,0,0);
@@ -307,8 +320,6 @@ public class TFServiceImpl implements TFService {
 //            List<SimDetail> simDetailList = new ArrayList<>();
 //            simDetailList.add(simDetail);
 //            pdfContent.setSimDetailList(simDetailList);
-//            GeneratePDF generatePDF = new GeneratePDF();
-//            generatePDF.createPDF(pdfContent);
 
 
             return Result.success().message("检测结果保存成功！").withData(indexDisplayVOList);
@@ -322,8 +333,41 @@ public class TFServiceImpl implements TFService {
         }
     }
 
-    public boolean outputPDF(){
-
+    /*
+     * @Author duanding
+     * @Description 生成检测所有选手的报告PDF
+     * @Date 3:46 PM 2020/1/8
+     * @Param [dirList, subject]
+     * @return boolean
+     **/
+    public boolean outputAllPDF(List<File> dirList,String subject){
+        List<Integer> players = new ArrayList<>();
+        for(int i=0;i<dirList.size();i++){
+            String path = dirList.get(i).getPath();
+            String[] paths = path.split("/");
+            String lastContent = paths[paths.length-1];
+            String[] lastContents = lastContent.split("_");
+            String cidStr = "";
+            if(path.contains("Province")){
+                int index = 0;
+                if(lastContents[0].contains("AStar")) {
+                    index = lastContents[0].indexOf("A");
+                }else if(lastContents[0].contains("TernaryTree")){
+                    index = lastContents[0].indexOf("T");
+                }
+                cidStr = lastContents[0].substring(0,index);
+            }else{
+                cidStr = lastContents[0];
+            }
+            Integer cid = Integer.parseInt(cidStr);
+            players.add(cid);
+        }
+        PDFContent pdfContent = getPDFContentFromDB(players, threshold,subject);
+        pdfContent.setSubject(subject);
+        pdfContent.setPlayers(players);
+        pdfContent.setThreshold(threshold);
+        GeneratePDF generatePDF = new GeneratePDF();
+        generatePDF.createPDF(pdfContent,true);
         return true;
     }
 
@@ -339,33 +383,52 @@ public class TFServiceImpl implements TFService {
         List<GeneralResult> generalResultList = new ArrayList<>();
         int index = 1;
         int plgPairs = 0;
+        List<MUTModel> mutList = mutModelDao.getALLBySubejct(subject);
+        pdfContent.setMutList(mutList);
         for(int i=0;i<players.size()-1;i++) {
             int cid1 = players.get(i);
             for (int j = i + 1; j < players.size(); j++) {
                 int cid2 = players.get(j);
-                List<Double> simValueList = simValueModelDao.searchSimValueByPair(cid1, cid2,subject);
+                List<SimValueModel> simValueList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2,subject);
                 GeneralResult generalResult = new GeneralResult();
+                SimDetail simDetail = new SimDetail();
+                FragDetail fragDetail = new FragDetail();
+                generalResult.setResultID(index);
+                generalResult.setCid1(cid1);
+                generalResult.setCid2(cid2);
                 if (simValueList.size() != 0) {
-                    generalResult.setResultID(index);
-                    generalResult.setCid1(cid1);
-                    generalResult.setCid2(cid2);
-                    Collections.sort(simValueList);
-                    Double maxSim = simValueList.get(simValueList.size()-1);
+                    Collections.sort(simValueList,simValueList.get(0));
+                    Double maxSim = simValueList.get(0).getSimValue();
                     generalResult.setMaxSim(maxSim.intValue());
                     if (maxSim >= threshold * 100) {
                             generalResult.setPlag(true);
                             plgPairs++;
-                            System.out.println("plagPairs:"+plgPairs);
+//                            System.out.println("plagPairs:"+plgPairs);
                         } else {
                             generalResult.setPlag(false);
                         }
 
-                    index++;
+                }else{
+                    generalResult.setMaxSim(0);
+                    generalResult.setPlag(false);
                 }
                 generalResultList.add(generalResult);
+                index++;
+
+                simDetail.setCid1(cid1);
+                simDetail.setCid2(cid2);
+                Map<Integer,Integer> similarityList = new HashMap<>();
+                for(int k=0;k<mutList.size();k++){
+                    MUTModel mutModel = mutList.get(k);
+                    Integer mid = mutModel.getMethodId();
+                }
+
+                fragDetail.setCid1(cid1);
+                fragDetail.setCid2(cid2);
             }
         }
         pdfContent.setPlagPairs(plgPairs);
+        Collections.sort(generalResultList,generalResultList.get(0));
         pdfContent.setResultList(generalResultList);
         return pdfContent;
     }
@@ -451,6 +514,10 @@ public class TFServiceImpl implements TFService {
             if (mid == 0) {
                 continue;
             }
+            //针对TernaryTree的i=41的那个，跳过一些
+//            if(mid == -1414274990||mid == -66085341||mid == 630826990){
+//                continue;
+//            }
             int compareNumber = 0;
             System.out.println("MID：" + mid);
             ContestantSimilarityByMID contestantSimilarityByMID = new ContestantSimilarityByMID(mid);
@@ -542,6 +609,7 @@ public class TFServiceImpl implements TFService {
             for (int index = 0; index < count; index++) {
                 TFModel baseTFModel = tfModelList.get(index);
                 int CID1 = baseTFModel.getCid();
+//                System.out.println("CID1:"+CID1);
                 ContestantSimilarity contestantSimilarity = new ContestantSimilarity(CID1);
                 String baseTestFragment = baseTFModel.getFragment();
                 if (baseTestFragment != null) {
@@ -549,6 +617,7 @@ public class TFServiceImpl implements TFService {
                     for (int index1 = index + 1; index1 < count; index1++) {
                         TFModel tfModel = tfModelList.get(index1);
                         int CID2 = tfModel.getCid();
+//                        System.out.println("CID2:"+CID2);
                         String testFragment = tfModel.getFragment();
                         int simValue = 0;
 //                        if (category == 0) {
@@ -617,4 +686,5 @@ public class TFServiceImpl implements TFService {
         }
         return resultList;
     }
+
 }

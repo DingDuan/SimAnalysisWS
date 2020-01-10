@@ -1,8 +1,10 @@
 package demo.po;
 import lombok.Data;
 
+import java.util.Comparator;
+
 @Data
-public class GeneralResult {
+public class GeneralResult implements Comparator<GeneralResult> {
 
     private int resultID;
 
@@ -24,5 +26,16 @@ public class GeneralResult {
         this.cid2 = cid2;
         this.maxSim = maxSim;
         this.plag = plag;
+    }
+
+    @Override
+    public int compare(GeneralResult o1, GeneralResult o2) {
+        if(o1.getMaxSim() < o2.getMaxSim()){
+            return 1;
+        }else if (o1.getMaxSim()==o2.getMaxSim()){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 }
