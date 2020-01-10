@@ -1,6 +1,7 @@
 package demo.po;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -10,6 +11,6 @@ public class FragDetail {
 
     private int cid2;
 
-    private Map<Integer,String> fragmentList;
+    private Map<Integer, List<String>> fragmentMap;
 
 }

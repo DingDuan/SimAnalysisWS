@@ -20,8 +20,11 @@ public interface TFModelDao extends JpaRepository<TFModel, Integer> {
     @Query(value = "select * from tf_model where mid=?1 and cid=?2", nativeQuery = true)
     List<TFModel> getTFModelListByMIDAndCid(int mid,int cid);
 
-    @Query(value = "select * from tf_model where cid=?1", nativeQuery = true)
-    List<TFModel> getTFModelListByCid(Integer cid);
+    @Query(value = "select * from tf_model where cid=?1 and subject=?2", nativeQuery = true)
+    List<TFModel> getTFModelListByCidAndSubject(Integer cid,String subject);
+
+    @Query(value = "select * from tf_model where subject=?1", nativeQuery = true)
+    List<TFModel> getTFModelListBySubject(String subject);
 //
 //    List<TFModel> searchTFModelListByParameter(int cid1, int cid2, int mid);
 }

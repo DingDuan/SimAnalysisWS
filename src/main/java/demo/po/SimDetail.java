@@ -12,5 +12,5 @@ public class SimDetail {
 
     private int cid2;
 
-    private Map<Integer,Integer> similarityList;
+    private Map<Integer,Double> similarityMap;
 }

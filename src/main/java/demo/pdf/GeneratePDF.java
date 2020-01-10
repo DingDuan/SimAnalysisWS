@@ -280,6 +280,9 @@ public class GeneratePDF {
 //
 //            simMatrix.setTableEvent(event);
 //            document.add(simMatrix);
+
+            //注意考虑有的方法没有相似度的情况，填0
+
             document.add(new Paragraph("选手对：<1,2>",chtextfont));
             document.add(new Paragraph("\n"));
             PdfPTable simMatrix = createTable(9);
