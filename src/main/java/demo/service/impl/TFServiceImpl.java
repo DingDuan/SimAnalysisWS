@@ -72,10 +72,10 @@ public class TFServiceImpl implements TFService {
     public Result detectAll(Inputs inputs) {
         DownloadCode downloadCode = new DownloadCode();
         String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
-        String subject = "Tarjan";
+        String subject = "TrieTree";
 //        String subject = "Province";
 //        List<Url> codeUrlList = inputs.getCodeUrlList();
-//        List<Url> codeUrlList = downloadCode.getUrlList("Tarjan");
+//        List<Url> codeUrlList = downloadCode.getUrlList("TrieTree");
 //        long beginDownloadTime = System.currentTimeMillis();
 //        for(int i=0;i<codeUrlList.size();i++){
 //            Url codeUrl = codeUrlList.get(i);
@@ -150,7 +150,7 @@ public class TFServiceImpl implements TFService {
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
 //                if((i==119||j==119)) continue;
-                if(i==0&&j<75) continue;
+                if(i==0&&(j<241||j>=75)) continue;
                 paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
                     System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());

@@ -282,96 +282,103 @@ public class GeneratePDF {
 //            document.add(simMatrix);
 
             //注意考虑有的方法没有相似度的情况，填0
+            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
+            for(int i=0;i<simDetailList.size();i++){
+                SimDetail simDetail = simDetailList.get(i);
+                int cid1 = simDetail.getCid1();
+                int cid2 = simDetail.getCid2();
+                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
+            }
 
-            document.add(new Paragraph("选手对：<1,2>",chtextfont));
-            document.add(new Paragraph("\n"));
-            PdfPTable simMatrix = createTable(9);
-
-            simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
-            PdfPCell cell=createCell("Argument",keyfont,Element.ALIGN_CENTER);
-            cell.setColspan(8);
-            simMatrix.addCell(cell);
-
-            simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-            simMatrix.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("79%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("81%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("72%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("100%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.addCell(createAnchoredCell("75%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix.setTableEvent(event);
-            document.add(simMatrix);
-
-            document.add(new Paragraph("选手对：<1,3>",chtextfont));
-            document.add(new Paragraph("\n"));
-            PdfPTable simMatrix1 = createTable(9);
-
-            simMatrix1.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
-            PdfPCell cell1=createCell("Argument",keyfont,Element.ALIGN_CENTER);
-            cell1.setColspan(8);
-            simMatrix1.addCell(cell1);
-
-            simMatrix1.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-            simMatrix1.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("96%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("69%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("78%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("77%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.addCell(createAnchoredCell("74%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix1.setTableEvent(event);
-            document.add(simMatrix1);
-
-            document.add(new Paragraph("选手对：<2,3>",chtextfont));
-            document.add(new Paragraph("\n"));
-            PdfPTable simMatrix2 = createTable(9);
-
-            simMatrix2.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
-            PdfPCell cell2=createCell("Argument",keyfont,Element.ALIGN_CENTER);
-            cell2.setColspan(8);
-            simMatrix2.addCell(cell2);
-
-            simMatrix2.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-            simMatrix2.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("66%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("73%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("67%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-            simMatrix2.setTableEvent(event);
-            document.add(simMatrix2);
+//            document.add(new Paragraph("选手对：<1,2>",chtextfont));
+//            document.add(new Paragraph("\n"));
+//            PdfPTable simMatrix = createTable(9);
+//
+//            simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+//            PdfPCell cell=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+//            cell.setColspan(8);
+//            simMatrix.addCell(cell);
+//
+//            simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("79%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("81%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("72%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("100%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.addCell(createAnchoredCell("75%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix.setTableEvent(event);
+//            document.add(simMatrix);
+//
+//            document.add(new Paragraph("选手对：<1,3>",chtextfont));
+//            document.add(new Paragraph("\n"));
+//            PdfPTable simMatrix1 = createTable(9);
+//
+//            simMatrix1.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+//            PdfPCell cell1=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+//            cell1.setColspan(8);
+//            simMatrix1.addCell(cell1);
+//
+//            simMatrix1.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix1.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("96%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("69%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("78%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("77%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.addCell(createAnchoredCell("74%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix1.setTableEvent(event);
+//            document.add(simMatrix1);
+//
+//            document.add(new Paragraph("选手对：<2,3>",chtextfont));
+//            document.add(new Paragraph("\n"));
+//            PdfPTable simMatrix2 = createTable(9);
+//
+//            simMatrix2.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+//            PdfPCell cell2=createCell("Argument",keyfont,Element.ALIGN_CENTER);
+//            cell2.setColspan(8);
+//            simMatrix2.addCell(cell2);
+//
+//            simMatrix2.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+//            simMatrix2.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("66%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("73%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("71%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("58%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("67%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+//            simMatrix2.setTableEvent(event);
+//            document.add(simMatrix2);
 
             document.add(new Paragraph("\n"));
             document.add(line);

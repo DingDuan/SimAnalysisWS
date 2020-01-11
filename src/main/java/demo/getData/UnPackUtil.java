@@ -90,7 +90,9 @@ public class UnPackUtil {
 //                    File destDir = new File(destPath);
 //                    File[] inFiles = destDir.listFiles();
 //                    if(!destDir.exists()) {
-            unPackZip(files[0], password, path);
+            if(files.length != 0) {
+                unPackZip(files[0], password, path);
+            }
 //                    }
 //                }
 //            }
