@@ -157,7 +157,7 @@ public class SearchAnalysis {
      * @return
      * @throws
      * @date 2018/7/19 下午2:12
-     * @author sunweisong
+     * @author duanding
      */
     private static List<CIDPairModel> readExcel(Workbook wb, int sheetIndex,
                                                 int startReadLine, int tailLine) {

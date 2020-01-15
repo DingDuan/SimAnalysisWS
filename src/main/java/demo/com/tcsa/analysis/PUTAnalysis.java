@@ -28,17 +28,12 @@ public class PUTAnalysis {
             System.err.println("The root directory does not exist.");
             return mutModelList;
         }
-//        String[] fileNames = {"Argument.java","Datalog.java","Fact.java","Predict.java","Program.java","Rule.java","Substitution.java","Value.java","Variable.java"};
         if(subject.equals("Datalog")){
             traversePUTRootDirectory(rootDirectory,subject);
         }else{
             traverseSubjectDirectory(rootDirectory,subject);
         }
 
-        //List<File> directories = FileUtil.traverseRootDirectory(rootDirectory, "subject");
-        //for (File directory : directories) {
-        //    traverseSubjectDirectory(directory);
-        //}
         return mutModelList;
     }
 
@@ -392,7 +387,7 @@ public class PUTAnalysis {
     /**
      * @param PUTRootDirectory PUT根目录路径
      * @return FUT路径列表
-     * @author sunzesong
+     * @author duanding
      */
     private static List<File> getAllFUTPathFromPUT(File PUTRootDirectory) {
         File[] directories = PUTRootDirectory.listFiles();

@@ -13,7 +13,7 @@ public class SimAnalysis {
       * @return
       * @throws
       * @date 2018/7/31 下午7:01
-      * @author sunweisong
+      * @author duanding
       */
     public static int fuzzyRatio(String s1, String s2) {
         return FuzzySearch.ratio(s1, s2);

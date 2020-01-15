@@ -3,6 +3,7 @@ package demo.pdf;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import demo.entity.MUTModel;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
 import demo.po.SimDetail;
@@ -13,8 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -281,14 +281,52 @@ public class GeneratePDF {
 //            simMatrix.setTableEvent(event);
 //            document.add(simMatrix);
 
-            //注意考虑有的方法没有相似度的情况，填0
-            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
-            for(int i=0;i<simDetailList.size();i++){
-                SimDetail simDetail = simDetailList.get(i);
-                int cid1 = simDetail.getCid1();
-                int cid2 = simDetail.getCid2();
-                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
+
+            List<MUTModel> mutModelList = pdfContent.getMutList();
+            Set<String> classNameSet = new HashSet<>();
+            for(MUTModel mutModel:mutModelList){
+                classNameSet.add(mutModel.getClassName());
             }
+            List<List<MUTModel>> newMUTModelList = new ArrayList<>();
+            for(String className:classNameSet){
+//                System.out.println(className);
+                List<MUTModel> mutOfOneClassList = new ArrayList<>();
+                for(MUTModel mutModel:mutModelList){
+                    if(mutModel.getClassName().equals(className)){
+                        mutOfOneClassList.add(mutModel);
+//                        mutModelList.remove(mutModel);
+                    }
+                }
+                newMUTModelList.add(mutOfOneClassList);
+            }
+//            for(List<MUTModel> list:newMUTModelList){
+//                for(MUTModel mutModel:list){
+//                    System.out.println("className: "+mutModel.getClassName());
+//                    System.out.println("methodName: "+mutModel.getMethodName());
+//                }
+//            }
+//            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
+//            for(int i=0;i<simDetailList.size();i++){
+//                SimDetail simDetail = simDetailList.get(i);
+//                int cid1 = simDetail.getCid1();
+//                int cid2 = simDetail.getCid2();
+//                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
+//                document.add(new Paragraph("\n"));
+//                PdfPTable simMatrix = createTable(9);
+//                Map<Integer,Double> similarityMap = simDetail.getSimilarityMap();
+//
+//                simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+//                PdfPCell cell=createCell(className,keyfont,Element.ALIGN_CENTER);
+//                cell.setColspan(8);
+//                simMatrix.addCell(cell);
+//
+//                simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+//                simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
+//                simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
+//                simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
+//                //注意考虑有的方法没有相似度的情况，填0
+//            }
+
 
 //            document.add(new Paragraph("选手对：<1,2>",chtextfont));
 //            document.add(new Paragraph("\n"));

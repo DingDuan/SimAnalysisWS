@@ -12,7 +12,7 @@ public class DistanceCalculate {
       * @return 三个值中的最小值
       * @throws
       * @date 2018/7/31 上午9:39
-      * @author sunweisong
+      * @author duanding
       */
     private static int getMinimum(int a, int b, int c) {
         int mi;
@@ -32,7 +32,7 @@ public class DistanceCalculate {
       * @param targetStr 目标符串
       * @return int 最小编辑距离
       * @date 2018/7/31 上午9:37
-      * @author sunweisong
+      * @author duanding
       */
     public static int calculateLD(String sourceStr, String targetStr) {
         int d[][]; // matrix

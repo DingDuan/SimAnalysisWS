@@ -41,7 +41,7 @@ public class ExperimentDataProcess {
      *
      * @param junitDirectory
      * @date 2018/4/4 上午10:21
-     * @author sunweisong
+     * @author duanding
      */
     private static void traverseJUnitDirectory(File junitDirectory) {
         File[] subjectDirectories = junitDirectory.listFiles();

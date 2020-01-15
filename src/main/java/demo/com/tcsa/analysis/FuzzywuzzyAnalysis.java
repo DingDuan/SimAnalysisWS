@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-  * @Author sunweisong
+  * @Author duanding
   * @Date 2018/8/10 下午6:54
   */
 public class FuzzywuzzyAnalysis {

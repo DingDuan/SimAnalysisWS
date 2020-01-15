@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-  * @Author sunweisong
+  * @Author duanding
   * @Date 2018/7/27 上午9:53
   */
 public class PlagiarismAnalysis {
@@ -22,7 +22,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 上午10:05
-      * @author sunweisong
+      * @author duanding
       */
     public static void analysis(String rootPath) {
         StringBuffer buffer = new StringBuffer(rootPath);
@@ -75,7 +75,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/8/11 上午10:58
-      * @author sunweisong
+      * @author duanding
       */
     private static void constructMaxSVMatrix(String simMatrixFilePath
             , String maxSimValueStatisticFilePath) {
@@ -139,7 +139,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 下午12:15
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String[]> findExceptionRecordsFrom(List<String[]> exceptionRecords
             , String pcLabelMatrixFilePath, String exceptionRecordsOutPutFilePath) {
@@ -195,7 +195,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 上午11:50
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String[]> findExceptionRecords(List<String[]> records) {
         List<String[]> exceptionRecords = new ArrayList<>();
@@ -219,7 +219,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 上午11:45
-      * @author sunweisong
+      * @author duanding
       */
     private static double calculateAccuracy(List<String[]> records, int threshold) {
         int totalRecordNumber = records.size();
@@ -262,7 +262,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 上午10:55
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String[]> searchRecordByThreshold(String maxSVMatrixFilePath, int threshold
             , String resultOutputFilePath) {
@@ -317,7 +317,7 @@ public class PlagiarismAnalysis {
       * @return
       * @throws
       * @date 2018/7/27 上午10:22
-      * @author sunweisong
+      * @author duanding
       */
     private static void constructMaxSVMatrixWithLabel(String simMatrixFilePath, String maxSVMatrixFilePath) {
         CsvReader reader = null;

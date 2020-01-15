@@ -122,7 +122,6 @@ public class TPAnalysis {
             }
             System.out.println("cid: "+cid);
             ContestantTestModel contestantTestModel = new ContestantTestModel(cid);
-//                if ("364".equals(contestantId)) {
             List<TestFileModel> allTestFileModelList = testFileModelList;
             if (allTestFileModelList != null) {
                 contestantTestModel.setTestFileModelList(allTestFileModelList);
@@ -1950,7 +1949,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/4/25 下午7:47
-     * @author sunweisong
+     * @author duanding
      */
     private static String searchCutNameAmongBeforeTestCase(String object
             , List<String> testCaseStringList) {
@@ -1997,7 +1996,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/16 下午1:32
-      * @author sunweisong
+      * @author duanding
       */
     private static void setParameterType(List<ParameterModel> parameterList
             , String testCaseName, List<String> testCaseStringList
@@ -2111,7 +2110,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/29 下午5:41
-      * @author sunweisong
+      * @author duanding
       */
     private static String removeUserCustomFunction(String temp, int flag) {
         int r_index = 0;
@@ -2156,7 +2155,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/29 下午5:40
-      * @author sunweisong
+      * @author duanding
       */
     private static String removeFunctionsCreatedByUserFromString(String temp) {
         while (temp.contains(") {")) {
@@ -2196,7 +2195,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/5/3 下午1:42
-     * @author sunweisong
+     * @author duanding
      */
     private static void extractRelatedSentenceFromTestFile(InvokeMethodModel invokeMethodModel
             , String testCaseString, String testCaseName, List<String> testCaseStringList
@@ -2269,7 +2268,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/5/7 上午11:53
-     * @author sunweisong
+     * @author duanding
      */
     private static List<StatementModel> searchInstantiateStatement(String instance
             , String invokeMethodSentence
@@ -2445,7 +2444,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/6 下午3:41
-      * @author sunweisong
+      * @author duanding
       */
     private static List<StatementModel> searchStatementModelFromList (String instance
             , String invokeMethodSentence
@@ -2497,7 +2496,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/5 下午3:26
-      * @author sunweisong
+      * @author duanding
       */
     private static int getInstanceIndexAmongStatement(String instance, String statement) {
         int instanceIndex = statement.indexOf(instance);
@@ -2602,7 +2601,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/30 下午3:29
-      * @author sunweisong
+      * @author duanding
       */
     private static void searchStatementVariableFromTestCaseAmongTargetList(List<String> variableList
             , List<StatementModel> targetList
@@ -2628,7 +2627,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/30 下午2:18
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> searchStatementAboutVariable(List<StatementModel> statementModelList
             , List<StatementModel> statementModelListAmongTestCase
@@ -2662,7 +2661,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/5/8 下午5:32
-     * @author sunweisong
+     * @author duanding
      */
     private static boolean isOnlyContainsObjectInStatement(String object
             , String statement) {
@@ -2731,7 +2730,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/7 上午11:53
-      * @author sunweisong
+      * @author duanding
       */
     private static List<StatementModel> searchParameterizedStatement(List<ParameterModel> parameterList
             , String invokeMethodSentence
@@ -2867,7 +2866,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/7 上午11:02
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> getParameterNameList(List<ParameterModel> parameterList) {
         List<String> parameterNameList = new ArrayList<>(parameterList.size());
@@ -2883,7 +2882,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/7 上午11:53
-      * @author sunweisong
+      * @author duanding
       */
     private static List<StatementModel> searchInvokedStatement(String invokeMethodSentence
             , String testCaseString
@@ -2998,7 +2997,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/31 下午3:12
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> extractIdentifierFromList(List<StatementModel> invokedStatementModelList
             , String invokeMethodSentence) {
@@ -3032,7 +3031,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/5/6 下午9:47
-     * @author sunweisong
+     * @author duanding
      */
     private static List<StatementModel> searchParameterizedStatement(List<ParameterModel> parameterList
             , List<StatementModel> statementModelListAmongTestCaseString
@@ -3079,7 +3078,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/6 下午9:49
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> extractVariableListStatementModelList(List<StatementModel> statementModelList) {
         List<String> variableList = null;
@@ -3104,7 +3103,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/6 下午9:47
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> extractVariableFromStatement(String statement) {
         List<String> allVariableList = null;
@@ -3183,7 +3182,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/10 下午10:41
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> extractVariableFromSentence(String sentence) {
         List<String> variableList = null;
@@ -3230,7 +3229,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/6 下午9:47
-      * @author sunweisong
+      * @author duanding
       */
     private static List<StatementModel> searchStatementListAboutVariableInVariableList(List<String> variableList
             , List<StatementModel> statementModelListAmongTestCaseString
@@ -3354,7 +3353,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/8 下午2:48
-      * @author sunweisong
+      * @author duanding
       */
     private static List<Integer> calculateAllPossibleMid(String mutString) {
         List<Integer> midList = new ArrayList<>();
@@ -3409,7 +3408,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/8 下午2:36
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> getPossibleMUTString (int allLevel
             , int currentLevel, String[] typeArray) {
@@ -3449,7 +3448,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/26 下午4:59
-      * @author sunweisong
+      * @author duanding
       */
     private static String searchCutNameAmongTestFileContentString(String object
             , List<String> testCaseStringList
@@ -3647,7 +3646,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午7:47
-      * @author sunweisong
+      * @author duanding
       */
     private static String searchCutNameAmongTestCaseString(String object, String testCaseName
             , List<String> testCaseStringList) {
@@ -3695,7 +3694,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午6:36
-      * @author sunweisong
+      * @author duanding
       */
     private static String extractStringContainsMatchParenthesesAmong(String string) {
         if (!string.contains(".")) {
@@ -3715,7 +3714,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午6:21
-      * @author sunweisong
+      * @author duanding
       */
     private static boolean isParenthesesMatchAmongString(String string) {
         char[] alphaArray = string.toCharArray();
@@ -3747,7 +3746,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午6:12
-      * @author sunweisong
+      * @author duanding
       */
     private static String removeContentsInQuotes(String string) {
         Matcher matcher = Pattern.compile("\"(.*?)\"").matcher(string);
@@ -3763,7 +3762,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午5:58
-      * @author sunweisong
+      * @author duanding
       */
     private static boolean isMoreThanOneSetOfParenthesesAmongString(String string) {
         char[] alphaArray = string.toCharArray();
@@ -3800,7 +3799,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/4/25 下午5:45
-      * @author sunweisong
+      * @author duanding
       */
     private static List<String> getSentenceContainsInvokeMethod(List<String> sentenceStringList) {
         List<String> sentenceContainsInvokeMethodList = new ArrayList<>();
@@ -3938,7 +3937,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/12 下午2:48
-      * @author sunweisong
+      * @author duanding
       */
     private static boolean isIdentifierAmongStatement(String instance
             , String statement) {
@@ -3991,7 +3990,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/6 下午3:25
-      * @author sunweisong
+      * @author duanding
       */
     private static List<StatementModel> extractStatementModelFromTryBlockString(String tryCatchBlock) {
         String tryBlock = extractTryBlockFromTryCatchBlock(tryCatchBlock);
@@ -4100,7 +4099,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/5/6 下午6:51
-      * @author sunweisong
+      * @author duanding
       */
     public static List<StatementModel> extractStatementModelFromString(String string) {
         int start = string.indexOf("{");
@@ -4235,7 +4234,7 @@ public class TPAnalysis {
      * @return
      * @throws
      * @date 2018/4/11 下午8:20
-     * @author sunweisong
+     * @author duanding
      */
     private static List<String> extractMethodWithJUnitAnnotationFromString(String string) {
         List<String> testCaseStringList = new ArrayList<String>();
@@ -4350,7 +4349,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/19 下午10:52
-      * @author sunweisong
+      * @author duanding
       */
     private static Map<Integer, InvokeMethodModel> cleanUpContestantTestFragment(List<TestFileModel> testFileModelList) {
         Map<Integer, InvokeMethodModel> allTFMap = new HashMap<>();
@@ -4386,7 +4385,7 @@ public class TPAnalysis {
       * @return
       * @throws
       * @date 2018/6/19 下午10:47
-      * @author sunweisong
+      * @author duanding
       */
     private static void mergeInvokeMethodModelWithSameMID(InvokeMethodModel oldInvokeMethodModel
             , InvokeMethodModel newInvokeMethodModel) {

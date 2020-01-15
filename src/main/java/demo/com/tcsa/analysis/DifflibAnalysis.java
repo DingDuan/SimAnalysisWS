@@ -57,7 +57,7 @@ public class DifflibAnalysis {
       * @return
       * @throws
       * @date 2018/8/11 上午10:11
-      * @author sunweisong
+      * @author duanding
       */
     private static void mappingCID(String statisticResultRootPath
             , Map<String, String> cidMap) {
@@ -123,7 +123,7 @@ public class DifflibAnalysis {
       * @return
       * @throws
       * @date 2018/8/11 上午10:12
-      * @author sunweisong
+      * @author duanding
       */
     private static Map<String,String> extractCIDMapFromFile(File cidMapFile) {
         if (!cidMapFile.exists()) {
@@ -161,7 +161,7 @@ public class DifflibAnalysis {
      * @return
      * @throws
      * @date 2018/7/19 下午2:12
-     * @author sunweisong
+     * @author duanding
      */
     private static Map<String, String> readExcel(Workbook wb
             , int sheetIndex, int startReadLine, int tailLine) throws Exception {
