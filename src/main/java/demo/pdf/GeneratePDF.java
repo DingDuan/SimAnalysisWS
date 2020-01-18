@@ -4,6 +4,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import demo.entity.MUTModel;
+import demo.po.FragDetail;
 import demo.po.GeneralResult;
 import demo.po.PDFContent;
 import demo.po.SimDetail;
@@ -305,58 +306,47 @@ public class GeneratePDF {
 //                    System.out.println("methodName: "+mutModel.getMethodName());
 //                }
 //            }
-//            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
-//            for(int i=0;i<simDetailList.size();i++){
-//                SimDetail simDetail = simDetailList.get(i);
-//                int cid1 = simDetail.getCid1();
-//                int cid2 = simDetail.getCid2();
-//                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
-//                document.add(new Paragraph("\n"));
-//                PdfPTable simMatrix = createTable(9);
-//                Map<Integer,Double> similarityMap = simDetail.getSimilarityMap();
-//
-//                simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
-//                PdfPCell cell=createCell(className,keyfont,Element.ALIGN_CENTER);
-//                cell.setColspan(8);
-//                simMatrix.addCell(cell);
-//
-//                simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
-//                simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
-//                simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
-//                simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
-//                //注意考虑有的方法没有相似度的情况，填0
-//            }
+            List<SimDetail> simDetailList = pdfContent.getSimDetailList();
+            for(int i=0;i<simDetailList.size();i++){
+                SimDetail simDetail = simDetailList.get(i);
+                int cid1 = simDetail.getCid1();
+                int cid2 = simDetail.getCid2();
+                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
+                document.add(new Paragraph("\n"));
+
+                Map<Integer,Double> similarityMap = simDetail.getSimilarityMap();
+                for(List<MUTModel> listOfOneClassName: newMUTModelList){
+                    String className = listOfOneClassName.get(0).getClassName();
+                    PdfPTable simMatrix = createTable(listOfOneClassName.size()+1);
+                    simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
+                    PdfPCell cell=createCell(className,keyfont,Element.ALIGN_CENTER);
+                    cell.setColspan(listOfOneClassName.size());
+                    simMatrix.addCell(cell);
+
+                    simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
+                    for(int j=0;j<listOfOneClassName.size();j++){
+                        simMatrix.addCell(createCell(listOfOneClassName.get(j).getMethodName(),entextfont,Element.ALIGN_CENTER));
+                    }
+
+                    simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
+                    for(int j=0;j<listOfOneClassName.size();j++){
+                        int mid = listOfOneClassName.get(j).getMethodId();
+                        double sim = 0.0;
+                        if(null!=similarityMap.get(mid)){
+                            sim = similarityMap.get(mid);
+                        }
+                        simMatrix.addCell(createAnchoredCell(sim+"%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
+                    }
+                    simMatrix.setTableEvent(event);
+                    document.add(simMatrix);
+                }
+                document.add(new Paragraph("\n"));
+                document.add(line);
+                document.add(new Paragraph("\n"));
+            }
 
 
-//            document.add(new Paragraph("选手对：<1,2>",chtextfont));
-//            document.add(new Paragraph("\n"));
-//            PdfPTable simMatrix = createTable(9);
-//
-//            simMatrix.addCell(createCell("类名",keyfont,Element.ALIGN_CENTER));
-//            PdfPCell cell=createCell("Argument",keyfont,Element.ALIGN_CENTER);
-//            cell.setColspan(8);
-//            simMatrix.addCell(cell);
-//
-//            simMatrix.addCell(createCell("方法名",chtextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("Argument",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("value",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("variable",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("getValue",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("getVariable",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("isValue",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("isVariable",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("toString",entextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createCell("相似度",chtextfont,Element.ALIGN_CENTER));
-//            simMatrix.addCell(createAnchoredCell("0%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("79%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("81%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("72%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("64%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("100%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.addCell(createAnchoredCell("75%",entextfont,Element.ALIGN_CENTER,"#fragDetail","sim"));
-//            simMatrix.setTableEvent(event);
-//            document.add(simMatrix);
+
 //
 //            document.add(new Paragraph("选手对：<1,3>",chtextfont));
 //            document.add(new Paragraph("\n"));
@@ -418,8 +408,6 @@ public class GeneratePDF {
 //            simMatrix2.setTableEvent(event);
 //            document.add(simMatrix2);
 
-            document.add(new Paragraph("\n"));
-            document.add(line);
             Anchor frag = new Anchor("片段详情", headfont);
             frag.setReference("#sim");
             //设置锚点的名称（用户在使用内部锚点时定位的地方）
@@ -427,41 +415,60 @@ public class GeneratePDF {
             document.add(frag);
             document.add(new Paragraph("\n",chtextfont));
 
-            document.add(new Paragraph("选手对：<1,2>",chtextfont));
-            document.add(new Paragraph("\n"));
+            List<FragDetail> fragDetailList = pdfContent.getFragDetailList();
+            for(int i=0;i<fragDetailList.size();i++){
+                FragDetail fragDetail = fragDetailList.get(i);
+                int cid1 = fragDetail.getCid1();
+                int cid2 = fragDetail.getCid2();
+                document.add(new Paragraph("选手对：<"+cid1+","+cid2+">",chtextfont));
+                document.add(new Paragraph("\n"));
 
-            PdfPTable detail = createTable(2);
-            detail.addCell(createCell("TernaryTree d = new TernaryTree(\"1\");\n" +
-                    "boolean NotEqual = d.equals(dd));\n" +
-                    "boolean Equal = d.equals(new TernaryTree(\"12\"));",entextfont,Element.ALIGN_LEFT));
-            detail.addCell(createCell("TernaryTree d = new TernaryTree(\"1\");\n" +
-                    "boolean NotEqual = d.equals(dd);\n" +
-                    "boolean Equal = d.equals(new TernaryTree(\"12\"));",entextfont,Element.ALIGN_LEFT));
-            document.add(detail);
-
-            document.add(new Paragraph("选手对：<1,3>",chtextfont));
-            document.add(new Paragraph("\n"));
-
-            PdfPTable detail1 = createTable(2);
-            detail1.addCell(createCell("Value value1=new Value(\"value\"); \n" +
-                    "Argument argument1=Argument.value(value1);",entextfont,Element.ALIGN_LEFT));
-            detail1.addCell(createCell("Value value1=new Value(\\\"va\\\"); \n" +
-                    "Argument argument1=Argument.value(va);",entextfont,Element.ALIGN_LEFT));
-            document.add(detail1);
-
-            document.add(new Paragraph("选手对：<2,3>",chtextfont));
-            document.add(new Paragraph("\n"));
-
-            PdfPTable detail2 = createTable(2);
-            detail2.addCell(createCell("Datalog dl1 = new Datalog(pd1,ags1);\n"+
-                    "Predicate pd1 = new Predicate(\"test0001\");\n"+
-                    "Argument[] ags1 = {ag1,ag2};\n"+
-                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
-            detail2.addCell(createCell("Datalog dl1 = new Datalog(p1,a1);\n"+
-                    "Predicate pd1 = new Predicate(\"t1\");\n"+
-                    "Argument[] ags1 = {a1,a2};\n"+
-                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
-            document.add(detail2);
+                Map<Integer,List<String>> fragmentMap = fragDetail.getFragmentMap();
+                for(List<String> frags:fragmentMap.values()){
+                    if(frags.size()>1) {
+                        PdfPTable detail = createTable(2);
+                        for (int j=0;j<frags.size();j++){
+                            String fragStr = frags.get(j);
+                            String[] splits = fragStr.split(";");
+                            String newFragStr = "";
+                            for(int k=0;k<splits.length;k++){
+                                newFragStr += splits[k].trim();
+                                if(k!=splits.length-1){
+                                    newFragStr += "\n";
+                                }
+                            }
+                            detail.addCell(createCell(newFragStr,entextfont,Element.ALIGN_LEFT));
+                        }
+                        document.add(detail);
+                    }
+                }
+                document.add(new Paragraph("\n"));
+                document.add(line);
+                document.add(new Paragraph("\n"));
+            }
+//            document.add(new Paragraph("选手对：<1,3>",chtextfont));
+//            document.add(new Paragraph("\n"));
+//
+//            PdfPTable detail1 = createTable(2);
+//            detail1.addCell(createCell("Value value1=new Value(\"value\"); \n" +
+//                    "Argument argument1=Argument.value(value1);",entextfont,Element.ALIGN_LEFT));
+//            detail1.addCell(createCell("Value value1=new Value(\\\"va\\\"); \n" +
+//                    "Argument argument1=Argument.value(va);",entextfont,Element.ALIGN_LEFT));
+//            document.add(detail1);
+//
+//            document.add(new Paragraph("选手对：<2,3>",chtextfont));
+//            document.add(new Paragraph("\n"));
+//
+//            PdfPTable detail2 = createTable(2);
+//            detail2.addCell(createCell("Datalog dl1 = new Datalog(pd1,ags1);\n"+
+//                    "Predicate pd1 = new Predicate(\"test0001\");\n"+
+//                    "Argument[] ags1 = {ag1,ag2};\n"+
+//                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
+//            detail2.addCell(createCell("Datalog dl1 = new Datalog(p1,a1);\n"+
+//                    "Predicate pd1 = new Predicate(\"t1\");\n"+
+//                    "Argument[] ags1 = {a1,a2};\n"+
+//                    "assertNotNull(dl1.getPredicate());",entextfont,Element.ALIGN_LEFT));
+//            document.add(detail2);
 
             document.close();
         } catch (FileNotFoundException e) {

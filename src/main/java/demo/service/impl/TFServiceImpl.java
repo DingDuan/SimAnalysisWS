@@ -162,7 +162,9 @@ public class TFServiceImpl implements TFService {
 //        long endDetectTime = System.currentTimeMillis();
 //        System.out.println("检测总耗时："+(endDetectTime-beginDetectTime)+"ms");
 
-        outputAllPDF(dirList,subject);
+        if(outputAllPDF(dirList,subject)){
+            System.out.println("生成检测报告成功！");
+        }
 
         return Result.success().message("检测结果保存成功！");
     }
@@ -387,24 +389,17 @@ public class TFServiceImpl implements TFService {
         int plgPairs = 0;
         List<MUTModel> mutList = mutModelDao.getALLBySubejct(subject);
         List<TFModel> tfModelList = tfModelDao.getTFModelListBySubject(subject);
+        List<SimValueModel> allSimValueList = simValueModelDao.searchSimValueAllContentBySubject(subject);
         pdfContent.setMutList(mutList);
         for(int i=0;i<players.size()-1;i++) {
             int cid1 = players.get(i);
             for (int j = i + 1; j < players.size(); j++) {
                 int cid2 = players.get(j);
-                List<SimValueModel> simValueList = simValueModelDao.searchSimValueAllContentByPair(cid1, cid2,subject);
+                List<SimValueModel> simValueList = getSimValueByPair(cid1, cid2,allSimValueList);
                 GeneralResult generalResult = new GeneralResult();
-                SimDetail simDetail = new SimDetail();
-                FragDetail fragDetail = new FragDetail();
                 generalResult.setResultID(index);
                 generalResult.setCid1(cid1);
                 generalResult.setCid2(cid2);
-                simDetail.setCid1(cid1);
-                simDetail.setCid2(cid2);
-                fragDetail.setCid1(cid1);
-                fragDetail.setCid2(cid2);
-                Map<Integer,Double> similarityMap = new HashMap<>();
-                Map<Integer,List<String>> fragmentMap = new HashMap<>();
                 if (simValueList.size() != 0) {
                     Collections.sort(simValueList,simValueList.get(0));
                     Double maxSim = simValueList.get(0).getSimValue();
@@ -412,52 +407,85 @@ public class TFServiceImpl implements TFService {
                     if (maxSim >= threshold * 100) {
                             generalResult.setPlag(true);
                             plgPairs++;
-//                            System.out.println("plagPairs:"+plgPairs);
                         } else {
                             generalResult.setPlag(false);
                         }
-
-
-                    for(int k=0;k<mutList.size();k++){
-                        MUTModel mutModel = mutList.get(k);
-                        Integer mid = mutModel.getMethodId();
-                        for(int n=0;n<simValueList.size();n++){
-                            if(simValueList.get(n).getMid() == mid){
-                                similarityMap.put(mid,simValueList.get(n).getSimValue());
-                            }
-                        }
-                        List<String> frags = new ArrayList<>();
-                        for(int n=0;n<tfModelList.size();n++){
-                            TFModel tfModel = tfModelList.get(n);
-                            if(tfModel.getMid() == mid && (tfModel.getCid() == cid1 || tfModel.getCid() == cid2)){
-                                frags.add(tfModel.getFragment());
-                            }
-                        }
-                        fragmentMap.put(mid,frags);
-                    }
-                    simDetail.setSimilarityMap(similarityMap);
-                    fragDetail.setFragmentMap(fragmentMap);
-
                 }else{
                     generalResult.setMaxSim(0);
                     generalResult.setPlag(false);
-                    for(int k=0;k<mutList.size();k++){
-                        similarityMap.put(mutList.get(k).getMethodId(),0.0);
-                    }
                 }
                 generalResultList.add(generalResult);
-                simDetailList.add(simDetail);
-                fragDetailList.add(fragDetail);
                 index++;
-
             }
         }
-        pdfContent.setSimDetailList(simDetailList);
-        pdfContent.setFragDetailList(fragDetailList);
         pdfContent.setPlagPairs(plgPairs);
         Collections.sort(generalResultList,generalResultList.get(0));
         pdfContent.setResultList(generalResultList);
+
+        for(int i=0;i<generalResultList.size();i++) {
+            GeneralResult generalResult = generalResultList.get(i);
+            int cid1 = generalResult.getCid1();
+            int cid2 = generalResult.getCid2();
+            List<SimValueModel> simValueList = getSimValueByPair(cid1, cid2,allSimValueList);
+            SimDetail simDetail = new SimDetail();
+            FragDetail fragDetail = new FragDetail();
+            simDetail.setCid1(cid1);
+            simDetail.setCid2(cid2);
+            fragDetail.setCid1(cid1);
+            fragDetail.setCid2(cid2);
+            Map<Integer, Double> similarityMap = new HashMap<>();
+            Map<Integer, List<String>> fragmentMap = new HashMap<>();
+            for (int k = 0; k < mutList.size(); k++) {
+                MUTModel mutModel = mutList.get(k);
+                Integer mid = mutModel.getMethodId();
+                for (int n = 0; n < simValueList.size(); n++) {
+                    if (simValueList.get(n).getMid() == mid) {
+                        similarityMap.put(mid, simValueList.get(n).getSimValue());
+                    }
+                }
+                //frags里有两个，一个cid1的，一个cid2的
+                List<String> frags = new ArrayList<>();
+                for (int n = 0; n < tfModelList.size(); n++) {
+                    TFModel tfModel = tfModelList.get(n);
+                    if (tfModel.getMid().equals(mid) && tfModel.getCid().equals(cid1)) {
+                        frags.add(tfModel.getFragment());
+                    }
+                }
+                for (int n = 0; n < tfModelList.size(); n++) {
+                    TFModel tfModel = tfModelList.get(n);
+                    if (tfModel.getMid().equals(mid) && tfModel.getCid().equals(cid2)) {
+                        frags.add(tfModel.getFragment());
+                    }
+                }
+                fragmentMap.put(mid, frags);
+            }
+            simDetail.setSimilarityMap(similarityMap);
+            fragDetail.setFragmentMap(fragmentMap);
+            simDetailList.add(simDetail);
+            fragDetailList.add(fragDetail);
+        }
+        pdfContent.setSimDetailList(simDetailList);
+        pdfContent.setFragDetailList(fragDetailList);
+
         return pdfContent;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 从该项目所有sim_value中获取这两个选手对的
+     * @Date 3:31 PM 2020/1/17
+     * @Param [cid1, cid2, allSimValueList]
+     * @return java.util.List<demo.entity.SimValueModel>
+     **/
+    private List<SimValueModel> getSimValueByPair(int cid1, int cid2, List<SimValueModel> allSimValueList) {
+        List<SimValueModel> simValueList = new ArrayList<>();
+        for(SimValueModel simValueModel:allSimValueList){
+            if((cid1==simValueModel.getCid1()&&cid2==simValueModel.getCid2())||
+                    (cid2==simValueModel.getCid1())&&cid1==simValueModel.getCid2()){
+                simValueList.add(simValueModel);
+            }
+        }
+        return simValueList;
     }
 
     public void saveTFToDB(Map<Integer, List<ContestantTFModel>> tfMap,String subject){
