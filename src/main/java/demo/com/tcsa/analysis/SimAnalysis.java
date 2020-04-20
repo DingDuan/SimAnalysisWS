@@ -29,7 +29,6 @@ public class SimAnalysis {
     public static int fuzzyPartialRatio(String s1, String s2) {
         int simValue = 50;
         final ExecutorService exec = Executors.newFixedThreadPool(1);
-//        System.out.println("s1Length: "+s1.length()+" s2Length: "+s2.length());
         //String超长时返回默认值
         if(s1.length()+s2.length()>=47000){
             return simValue;
@@ -42,9 +41,9 @@ public class SimAnalysis {
         };
         try {
             Future<Integer> future = exec.submit(call);
-            Integer res = future.get(1000 * 60, TimeUnit.MILLISECONDS); //任务处理超时时间设为 60 秒
+            //任务处理超时时间设为 60 秒
+            Integer res = future.get(1000 * 60, TimeUnit.MILLISECONDS);
             simValue = res;
-//            System.out.println("任务成功返回:" + simValue);
         } catch (TimeoutException ex) {
             System.out.println("处理超时啦....");
             ex.printStackTrace();
@@ -54,7 +53,6 @@ public class SimAnalysis {
         }
         // 关闭线程池
         exec.shutdown();
-
         return simValue;
     }
 

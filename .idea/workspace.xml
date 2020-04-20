@@ -2,10 +2,248 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23ea235c-8f2f-4029-b0f4-e3b291fa3530" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/backup/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/ALU.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Abstract.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Legend.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Stu1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Stu2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Stu3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Stu4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/ALU/Stu5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Argument.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Datalog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Fact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Predicate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Program.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Rule.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Stu1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Stu2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Stu3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Stu4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Stu5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/Datalog/Substitution.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/AbstractBinaryTree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Node.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/RedBlackTree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Stu1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Stu2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Stu3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Stu4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/code/RBT/Stu5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/config.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/component2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/config.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/contact.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/fileinput.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/frame.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/history.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/index2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/lib/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/lib/sidebar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/lib/themify-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/new.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/origin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/prettify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/projects.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/result.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/resultList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/shCoreDefault.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/toolConfig.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/data/les-miserables.gexf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/history.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/architecture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/framework.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/framework.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/header.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/mooctest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/warning.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/warning2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/warning2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/img/warning2.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/index2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/PercentPie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/detail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/fileUpload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/fileinput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/fileinput.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/fileinput_locale_zh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/history.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/jquery-3.2.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/jquery.ba-throttle-debounce.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/jquery.stickyheader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/lib/sidebar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/projects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/result.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/setting-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/shBrushCSharp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/shBrushJava.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/shCore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/similarity.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/task-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/js/toolConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/layui.mobile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/rate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/new3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/jqPaginator.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/jquery-1.7.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/myPage-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/myPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/myPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/res/myPage2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/resultList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/ALU.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/Datalog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/RedBlackTree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/detail-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/help.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/oldToolConfig.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/projects-data.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/projects.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/tool/result3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/SimAnalysis$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/SimAnalysis$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/SimAnalysis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/SimAnalysis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/TPAnalysis$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/TPAnalysis$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/TPAnalysis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/demo/com/tcsa/analysis/TPAnalysis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/demo/pdf/GeneratePDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/demo/pdf/GeneratePDF.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,27 +257,32 @@
     <session id="-902057634">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="9" />
-          <entry key="java" value="18736" />
+          <entry key="java" value="19303" />
           <entry key="xml" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="18736" />
+          <entry key="JAVA" value="19303" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="XML" value="105" />
         </counts>
@@ -47,18 +290,20 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="53" />
-          <entry key="java" value="226" />
-          <entry key="xml" value="8" />
+          <entry key="html" value="2" />
+          <entry key="java" value="234" />
+          <entry key="xml" value="9" />
           <entry key="xsd" value="6" />
-          <entry key="yml" value="2" />
+          <entry key="yml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="53" />
-          <entry key="JAVA" value="226" />
-          <entry key="XML" value="14" />
-          <entry key="YAML" value="2" />
+          <entry key="HTML" value="2" />
+          <entry key="JAVA" value="234" />
+          <entry key="XML" value="15" />
+          <entry key="YAML" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -66,52 +311,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PlagiarismAnalysis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="448" column="57" selection-start-line="448" selection-start-column="57" selection-end-line="448" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/entity/TFModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/FragDetail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="50" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="6555">
+              <caret line="353" column="17" selection-start-line="353" selection-start-column="17" selection-end-line="353" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -121,29 +324,58 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
               <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="434" column="63" lean-forward="true" selection-start-line="434" selection-start-column="63" selection-end-line="434" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12617#12669#0" />
-                <element signature="e#16931#16933#0" />
-                <element signature="e#23586#23652#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="234" column="53" selection-start-line="234" selection-start-column="53" selection-end-line="234" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/backup/result.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/tool/home.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/SimDetail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/PDFContent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
+            <state relative-caret-position="418">
               <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -155,8 +387,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/demo/entity/MUTModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="475">
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -177,7 +409,6 @@
       <find>saveTFSimValueToDatabase</find>
       <find>fu</find>
       <find>null</find>
-      <find>get</find>
       <find>getNum</find>
       <find>myA</find>
       <find>invokeMethodModelList</find>
@@ -198,6 +429,8 @@
       <find>55082</find>
       <find>A</find>
       <find>T</find>
+      <find>get</find>
+      <find>zhici</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -252,10 +485,10 @@
         <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PlagiarismAnalysis.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PUTAnalysis.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SearchAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java" />
+        <option value="$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java" />
         <option value="$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java" />
       </list>
     </option>
@@ -283,7 +516,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,127 +573,32 @@
               <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="tcsa" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="getData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="pdf" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="po" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="ImportExcel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="SimAnalysisWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimAnalysisWS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -471,14 +608,14 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579315435945" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587351248057" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -489,6 +626,7 @@
       <recent name="demo.ws.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/public" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/demo" />
       <recent name="$PROJECT_DIR$/src/main/java/demo/com" />
@@ -506,7 +644,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="Application.GeneratePDF">
     <configuration name="DownloadCode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="demo.getData.DownloadCode" />
       <module name="SimAnalysisWS" />
@@ -575,9 +713,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GeneratePDF" />
         <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Application.DownloadCode" />
-        <item itemvalue="Application.GeneratePDF" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Try" />
       </list>
@@ -600,7 +738,13 @@
       <workItem from="1575464005663" duration="333000" />
       <workItem from="1575599324577" duration="37811000" />
       <workItem from="1577170075716" duration="21129000" />
-      <workItem from="1577670090970" duration="125052000" />
+      <workItem from="1577670090970" duration="127059000" />
+      <workItem from="1583592376756" duration="802000" />
+      <workItem from="1585663936329" duration="631000" />
+      <workItem from="1585664600650" duration="4765000" />
+      <workItem from="1585914994875" duration="1755000" />
+      <workItem from="1585991898696" duration="3716000" />
+      <workItem from="1587294642606" duration="1799000" />
     </task>
     <servers />
   </component>
@@ -637,7 +781,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292331000" />
+    <option name="totallyTimeSpent" value="307806000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -658,7 +802,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.26752505" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.26037195" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -669,7 +813,7 @@
       <window_info anchor="bottom" id="Spring" order="6" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.2686747" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.2686747" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
@@ -697,15 +841,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java</url>
-          <line>154</line>
+          <line>150</line>
           <properties />
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java</url>
-          <line>427</line>
-          <properties />
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java</url>
@@ -717,48 +855,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.3.RELEASE/spring-data-commons-2.1.3.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/util/FileUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1729">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/model/TestFileModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/TFService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/controller/TFController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/vo/Paths.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/vo/Url.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -770,9 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -821,10 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <element signature="e#870#871#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -863,10 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="354" column="16" selection-start-line="354" selection-start-column="16" selection-end-line="354" selection-end-column="16" />
-          <folding>
-            <element signature="e#9075#9076#0" expanded="true" />
-            <element signature="e#9136#9137#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -874,9 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="38" column="9" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="38" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,9 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,9 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1314">
           <caret line="238" column="9" lean-forward="true" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -911,16 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1672">
           <caret line="94" column="13" lean-forward="true" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/SimDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,27 +1039,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PlagiarismAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-504">
-          <caret line="319" column="24" selection-start-line="319" selection-start-column="24" selection-end-line="319" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PUTAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="389" column="23" selection-start-line="389" selection-start-column="23" selection-end-line="389" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="801">
           <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,48 +1053,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimMatrixAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18212">
-          <folding>
-            <element signature="e#0#40124#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-18212" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/StatisticAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7767">
-          <folding>
-            <element signature="e#0#26165#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-7767" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/entity/TFModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PUTAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1597">
+          <caret line="199" column="21" lean-forward="true" selection-start-line="199" selection-start-column="21" selection-end-line="199" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TFAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
+        <state relative-caret-position="4370">
           <caret line="238" column="38" selection-start-line="238" selection-start-column="38" selection-end-line="238" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7809">
+          <caret line="448" column="57" selection-start-line="448" selection-start-column="57" selection-end-line="448" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/FragDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/TPAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="1951" column="23" lean-forward="true" selection-start-line="1951" selection-start-column="23" selection-end-line="1951" selection-end-column="23" />
+        <state relative-caret-position="14345">
+          <caret line="766" column="53" selection-start-line="766" selection-start-column="53" selection-end-line="766" selection-end-column="53" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/SimAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="42" column="48" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/com/tcsa/analysis/PlagiarismAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6555">
+          <caret line="353" column="17" selection-start-line="353" selection-start-column="17" selection-end-line="353" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/MUTModelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/SimDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/PDFContent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
+        <state relative-caret-position="418">
           <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1055,71 +1171,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/entity/MUTModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        <state relative-caret-position="475">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/MUTModelDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/SimValueModelDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/demo/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/po/FragDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/dao/TFModelDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/entity/TFModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/demo/service/impl/TFServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="448" column="57" selection-start-line="448" selection-start-column="57" selection-end-line="448" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="95">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/demo/pdf/GeneratePDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="434" column="63" lean-forward="true" selection-start-line="434" selection-start-column="63" selection-end-line="434" selection-end-column="63" />
+        <state relative-caret-position="348">
+          <caret line="234" column="53" selection-start-line="234" selection-start-column="53" selection-end-line="234" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12617#12669#0" />
-            <element signature="e#16931#16933#0" />
-            <element signature="e#23586#23652#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/backup/result.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/tool/home.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

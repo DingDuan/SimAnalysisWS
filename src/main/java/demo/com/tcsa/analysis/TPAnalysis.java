@@ -50,10 +50,6 @@ public class TPAnalysis {
      **/
     public static Map<Integer, List<ContestantTFModel>> myAnalyze(List<MUTModel> mutModelList, String rootPath){
         final ExecutorService exec = Executors.newFixedThreadPool(1);
-
-        //get all MUT from mysql database;
-//        mutModelList = mutModelDao.getMUTModelList();
-
         String suffix = "/src/test/java/net/mooctest";
         String testFilePath = rootPath+suffix;
         List<TestFileModel> testFileModelList = null;
