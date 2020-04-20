@@ -1,2 +1,2 @@
 # SimAnalysisWS
-A Web Service to do similarity analysis for Mooctest.
+A System to do similarity analysis and plagiarism detection.
