@@ -73,6 +73,8 @@ public class TFServiceImpl implements TFService {
         DownloadCode downloadCode = new DownloadCode();
         String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
         String subject = "Tarjan";
+
+        //从外部获取代码url并下载解压
 //        String subject = "Province";
 //        List<Url> codeUrlList = inputs.getCodeUrlList();
 //        List<Url> codeUrlList = downloadCode.getUrlList("TrieTree");

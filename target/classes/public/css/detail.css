@@ -1,0 +1,39 @@
+#detail-wrapper {
+    margin: 1.5% 1% 1.5% 0%;
+    width: 1190px;
+    margin-left: 250px;
+    margin-top: 60px;
+    height: 1000px;
+    background-color: #eee;
+    padding: 1%;
+    color: #555;
+}
+
+.wrapper1{
+    /*margin: 0% 1% 0% 1%;*/
+    padding: 1%;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+#src{
+    height: 250px;
+    margin-top: 250px;
+    background-color: rgba(255,212,207,0.19);
+}
+
+#src-code{
+    height:80%;
+}
+
+#frag{
+    height: 380px;
+}
+
+.frag-code-wrapper{
+    float:left;
+    width: 50%;
+    background-color: rgba(255,212,207,0.19);
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 0.5%;
+}
+

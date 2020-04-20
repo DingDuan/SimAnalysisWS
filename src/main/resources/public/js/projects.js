@@ -56,3 +56,24 @@ function showRBT() {
 function delayURL(url,time) {
     setTimeout("top.location.href = '" + url + "'",time);
 }
+
+function detectPlag(){
+    // console.log("yes!");
+    var codeUrlList = new Array();
+    var url = "/API/TF/allDetection";
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: JSON.stringify({
+            
+        }),
+        success: function(result){
+            console.log("yes!")
+        },
+        error: function (err) {
+            console.log("这是个错误");
+        }
+        }
+
+    )
+}
