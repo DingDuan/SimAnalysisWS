@@ -151,7 +151,7 @@ public class TFServiceImpl implements TFService {
         for(int i = 0;i < dirList.size();i++){
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
-                if((i>0||j>1)) continue;
+//                if((i>0||j>1)) continue;
 //                if(i==0&&(j<241||j>=75)) continue;
                 paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
