@@ -76,12 +76,11 @@ public class TFServiceImpl implements TFService {
 
         //从外部获取代码url并下载解压
 //        String subject = "Province";
-//        List<Url> codeUrlList = inputs.getCodeUrlList();
-//        List<Url> codeUrlList = downloadCode.getUrlList("TrieTree");
+//        List<String> codeUrlList = inputs.getCodeUrlList();
+//        List<String> codeUrlList = downloadCode.getUrlList("TrieTree");
 //        long beginDownloadTime = System.currentTimeMillis();
 //        for(int i=0;i<codeUrlList.size();i++){
-//            Url codeUrl = codeUrlList.get(i);
-//            String urlStr = codeUrl.getCodeUrl();
+//            String urlStr = codeUrlList.get(i);
 //            String[] list = urlStr.split("/");
 //            String[] lastContent = list[list.length-1].split("_");
 //            subject = lastContent[0];
@@ -146,27 +145,28 @@ public class TFServiceImpl implements TFService {
         Paths paths = new Paths();
         paths.setSrcPath(rootPath);
 
-//        System.out.println("检测选手数量："+dirList.size());
-//
-//        for(int i = 0;i < dirList.size();i++){
-//            paths.setP1Path(dirList.get(i).getPath());
-//            for(int j = i+1;j < dirList.size();j++){
-////                if((i==119||j==119)) continue;
-////                if(i==0&&(j<241||j>=75)) continue;
-//                paths.setP2Path(dirList.get(j).getPath());
-//                    System.out.println("检测：");
-//                    System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());
-//                    System.out.println("选手二：" + j +"路径："+ dirList.get(j).getPath());
-//                    detectBetweenTwo(paths);
-//            }
-//        }
-//
-//        long endDetectTime = System.currentTimeMillis();
-//        System.out.println("检测总耗时："+(endDetectTime-beginDetectTime)+"ms");
+        System.out.println("检测选手数量："+dirList.size());
 
-        if(outputAllPDF(dirList,subject)){
-            System.out.println("生成检测报告成功！");
+        //进行检测
+        for(int i = 0;i < dirList.size();i++){
+            paths.setP1Path(dirList.get(i).getPath());
+            for(int j = i+1;j < dirList.size();j++){
+                if((i>0||j>1)) continue;
+//                if(i==0&&(j<241||j>=75)) continue;
+                paths.setP2Path(dirList.get(j).getPath());
+                    System.out.println("检测：");
+                    System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());
+                    System.out.println("选手二：" + j +"路径："+ dirList.get(j).getPath());
+                    detectBetweenTwo(paths);
+            }
         }
+
+        long endDetectTime = System.currentTimeMillis();
+        System.out.println("检测总耗时："+(endDetectTime-beginDetectTime)+"ms");
+
+//        if(outputAllPDF(dirList,subject)){
+//            System.out.println("生成检测报告成功！");
+//        }
 
         return Result.success().message("检测结果保存成功！");
     }
@@ -259,6 +259,7 @@ public class TFServiceImpl implements TFService {
                 List<SimValueVO> resultList = new ArrayList<>();
                 mutModelList = mutModelDao.getALLBySubejct(subject);
                 if (mutModelList.size() == 0) {
+                    //提取待测方法
                     mutModelList = PUTAnalysis.analyze(srcPath, subject);
                 }
                 for (MUTModel mutModel : mutModelList) {
@@ -267,11 +268,13 @@ public class TFServiceImpl implements TFService {
 
                 List<TFModel> tfModelList1 = tfModelDao.getTFModelListByCidAndSubject(cid1,subject);
                 if(tfModelList1.size() == 0) {
+                    //测试片段提取
                     Map<Integer, List<ContestantTFModel>> tfMap1 = TPAnalysis.myAnalyze(mutModelList, p1Path);
                     saveTFToDB(tfMap1, subject);
                 }
                 List<TFModel> tfModelList2 = tfModelDao.getTFModelListByCidAndSubject(cid2,subject);
                 if(tfModelList2.size() == 0) {
+                    //测试片段提取
                     Map<Integer, List<ContestantTFModel>> tfMap2 = TPAnalysis.myAnalyze(mutModelList, p2Path);
 //                    System.out.println("选手："+cid2+" 片段："+tfMap2.get(-2005394965));
                     saveTFToDB(tfMap2, subject);

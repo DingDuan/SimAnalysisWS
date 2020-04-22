@@ -5,5 +5,5 @@ import java.util.List;
 
 @Data
 public class Inputs {
-    private List<Url> codeUrlList;
+    private List<String> codeUrlList;
 }

@@ -65,13 +65,17 @@ function detectPlag(){
         url: url,
         type: "POST",
         data: JSON.stringify({
-            
+            codeUrlList: codeUrlList
         }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
         success: function(result){
-            console.log("yes!")
+            console.log("检测结果保存成功！");
+            window.open("../tool/result.html");
         },
         error: function (err) {
-            console.log("这是个错误");
+            alert("检测出错!");
+
         }
         }
 

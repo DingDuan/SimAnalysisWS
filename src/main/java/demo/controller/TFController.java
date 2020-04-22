@@ -16,6 +16,16 @@ public class TFController {
     @Resource
     private TFService tfService;
 
+//    @PostMapping("/detection")
+//    public Result detect(@)
+
+    /*
+     * @Author duanding
+     * @Description 检测后端服务接口
+     * @Date 7:28 PM 2020/4/22
+     * @Param [inputs]
+     * @return demo.common.Result
+     **/
     @PostMapping("/allDetection")
     public Result detectAll(@RequestBody Inputs inputs){
         return tfService.detectAll(inputs);

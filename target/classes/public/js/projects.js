@@ -59,19 +59,23 @@ function delayURL(url,time) {
 
 function detectPlag(){
     // console.log("yes!");
-    var inputs = "";
+    var codeUrlList = new Array();
     var url = "/API/TF/allDetection";
     $.ajax({
         url: url,
         type: "POST",
-        data: {
-            "inputs": JSON.stringify(inputs)
-        },
+        data: JSON.stringify({
+            codeUrlList: codeUrlList
+        }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
         success: function(result){
-            console.log("yes!")
+            console.log("检测结果保存成功！");
+            window.open("../tool/result.html");
         },
         error: function (err) {
-            console.log("这是个错误");
+            alert("检测出错!");
+
         }
         }
 
