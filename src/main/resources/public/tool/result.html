@@ -105,10 +105,10 @@
     <h1 style="float: left">检测结果</h1>
 
     <div>
-        <div class="statistic">
-            <img src="../img/warning.png">
-            <!--For project Datalog , 10 students are detected,3 of them exist plagiarism!-->
-            对项目Tarjan，共检测10名学生的测试代码，其中3名学生存在抄袭！
+        <div class="statistic" id="general-result">
+            <!--<img src="../img/warning.png">-->
+            <!--&lt;!&ndash;For project Datalog , 10 students are detected,3 of them exist plagiarism!&ndash;&gt;-->
+            <!--对项目Tarjan，共检测10名学生的测试代码，其中3名学生存在抄袭！-->
         </div>
         <div class="mut-tf-wrapper">
             <div class="col-lg-7">
@@ -321,6 +321,7 @@
 </div>
 
 <script src="../js/echarts.js"></script>
+<script src="../js/result.js"></script>
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('forcechart'));
     option = {

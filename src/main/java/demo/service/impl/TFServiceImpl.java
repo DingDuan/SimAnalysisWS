@@ -151,7 +151,7 @@ public class TFServiceImpl implements TFService {
         for(int i = 0;i < dirList.size();i++){
             paths.setP1Path(dirList.get(i).getPath());
             for(int j = i+1;j < dirList.size();j++){
-//                if((i>0||j>1)) continue;
+                if((i>0||j>1)) continue;
 //                if(i==0&&(j<241||j>=75)) continue;
                 paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
@@ -168,7 +168,21 @@ public class TFServiceImpl implements TFService {
 //            System.out.println("生成检测报告成功！");
 //        }
 
-        return Result.success().message("检测结果保存成功！");
+        //将结果封装传给前端
+        ResultVO resultVO = new ResultVO();
+        resultVO.setSubjectName(subject);
+        resultVO.setAllDetectionNum(dirList.size());
+        List<StatisticResult> statisticResultList = getDetectionResFromDB(dirList,subject);
+        resultVO.setStatisticResultList(statisticResultList);
+        Set<Integer> plagSet = new HashSet<>();
+        for(StatisticResult statisticResult: statisticResultList){
+            if(statisticResult.isPlag()){
+                plagSet.add(statisticResult.getStu1());
+                plagSet.add(statisticResult.getStu2());
+            }
+        }
+        resultVO.setPlagNum(plagSet.size());
+        return Result.success().withData(resultVO);
     }
 
     /*
@@ -342,6 +356,69 @@ public class TFServiceImpl implements TFService {
 
     /*
      * @Author duanding
+     * @Description 从数据库获取检测统计结果（为了Result界面）
+     * @Date 4:50 PM 2020/4/23
+     * @Param [dirList, subject]
+     * @return java.util.List<demo.vo.StatisticResult>
+     **/
+    public List<StatisticResult> getDetectionResFromDB(List<File> dirList,String subject){
+        List<StatisticResult> statisticResultList = new ArrayList<>();
+        List<Integer> players = new ArrayList<>();
+        for(int i=0;i<dirList.size();i++){
+            String path = dirList.get(i).getPath();
+            String[] paths = path.split("/");
+            String lastContent = paths[paths.length-1];
+            String[] lastContents = lastContent.split("_");
+            String cidStr = "";
+            if(path.contains("Province")){
+                int index = 0;
+                if(lastContents[0].contains("AStar")) {
+                    index = lastContents[0].indexOf("A");
+                }else if(lastContents[0].contains("TernaryTree")){
+                    index = lastContents[0].indexOf("T");
+                }
+                cidStr = lastContents[0].substring(0,index);
+            }else{
+                cidStr = lastContents[0];
+            }
+            Integer cid = Integer.parseInt(cidStr);
+            players.add(cid);
+        }
+//        int plagPairs = 0;
+        int id = 0;
+        List<SimValueModel> allSimValueList = simValueModelDao.searchSimValueAllContentBySubject(subject);
+        for(int i=0;i<players.size()-1;i++) {
+            int cid1 = players.get(i);
+            for (int j = i + 1; j < players.size(); j++) {
+                int cid2 = players.get(j);
+                List<SimValueModel> simValueList = getSimValueByPair(cid1, cid2, allSimValueList);
+                StatisticResult statisticResult = new StatisticResult();
+                statisticResult.setId(id);
+                id++;
+                statisticResult.setStu1(cid1);
+                statisticResult.setStu2(cid2);
+                if (simValueList.size() != 0) {
+                    Collections.sort(simValueList,simValueList.get(0));
+                    Double maxSim = simValueList.get(0).getSimValue();
+                    statisticResult.setMaxSim(maxSim.intValue());
+                    if (maxSim >= threshold * 100) {
+                        statisticResult.setPlag(true);
+//                        plagPairs++;
+                    } else {
+                        statisticResult.setPlag(false);
+                    }
+                }else{
+                    statisticResult.setMaxSim(0);
+                    statisticResult.setPlag(false);
+                }
+                statisticResultList.add(statisticResult);
+            }
+        }
+        return statisticResultList;
+    }
+    
+    /*
+     * @Author duanding
      * @Description 生成检测所有选手的报告PDF
      * @Date 3:46 PM 2020/1/8
      * @Param [dirList, subject]
@@ -391,7 +468,7 @@ public class TFServiceImpl implements TFService {
         List<SimDetail> simDetailList = new ArrayList<>();
         List<FragDetail> fragDetailList = new ArrayList<>();
         int index = 1;
-        int plgPairs = 0;
+        int plagPairs = 0;
         List<MUTModel> mutList = mutModelDao.getALLBySubejct(subject);
         List<TFModel> tfModelList = tfModelDao.getTFModelListBySubject(subject);
         List<SimValueModel> allSimValueList = simValueModelDao.searchSimValueAllContentBySubject(subject);
@@ -411,7 +488,7 @@ public class TFServiceImpl implements TFService {
                     generalResult.setMaxSim(maxSim.intValue());
                     if (maxSim >= threshold * 100) {
                             generalResult.setPlag(true);
-                            plgPairs++;
+                            plagPairs++;
                         } else {
                             generalResult.setPlag(false);
                         }
@@ -423,7 +500,7 @@ public class TFServiceImpl implements TFService {
                 index++;
             }
         }
-        pdfContent.setPlagPairs(plgPairs);
+        pdfContent.setPlagPairs(plagPairs);
         Collections.sort(generalResultList,generalResultList.get(0));
         pdfContent.setResultList(generalResultList);
 

@@ -15,4 +15,5 @@ public class StatisticResult {
     private int maxSim;
 
     private boolean isPlag;
+
 }

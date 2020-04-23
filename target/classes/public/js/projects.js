@@ -71,6 +71,12 @@ function detectPlag(){
         contentType: "application/json; charset=utf-8",
         success: function(result){
             console.log("检测结果保存成功！");
+            var jsondata = JSON.stringify(result.data);
+            var jsonobj = eval("("+jsondata+")");
+            // console.log("解析数据："+jsonobj);
+            var plagNum = jsonobj.plagNum;
+            console.log("plag:"+plagNum);
+            document.getElementById("statistic-result").innerHTML = "改变内容了！"
             window.open("../tool/result.html");
         },
         error: function (err) {
