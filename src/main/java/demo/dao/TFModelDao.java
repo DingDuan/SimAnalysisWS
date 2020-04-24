@@ -25,6 +25,9 @@ public interface TFModelDao extends JpaRepository<TFModel, Integer> {
 
     @Query(value = "select * from tf_model where subject=?1", nativeQuery = true)
     List<TFModel> getTFModelListBySubject(String subject);
+
+    @Query(value = "select fragment from tf_model where subject=?1 and mid=?2 and cid=?3", nativeQuery = true)
+    String getTFBySubjectAndMidAndCid(String subject,int mid,int cid);
 //
 //    List<TFModel> searchTFModelListByParameter(int cid1, int cid2, int mid);
 }

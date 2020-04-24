@@ -29,29 +29,47 @@ function getDetectRes(){
                 //展示左边表格
                 var statisticResultList = jsonobj.statisticResultList;
                 var table = document.getElementById("correspond");
+                var page = document.getElementById("page");
                 table.innerHTML = "";
                 for(var i=0;i<10;i++){
                     var trNode = table.insertRow();
                     var tdNode = trNode.insertCell();
-                    tdNode.innerHTML = statisticResultList[i].id;
+                    tdNode.style.textAlign = "center";
+                    tdNode.innerHTML = (i+1);
                     var tdNode = trNode.insertCell();
+                    tdNode.style.textAlign = "center";
                     tdNode.innerHTML = statisticResultList[i].stu1;
                     var tdNode = trNode.insertCell();
+                    tdNode.style.textAlign = "center";
                     tdNode.innerHTML = statisticResultList[i].stu2;
                     var tdNode = trNode.insertCell();
+                    tdNode.style.textAlign = "center";
                     tdNode.innerHTML = statisticResultList[i].maxSim+"%";
+                    // console.log("all:"+JSON.stringify(statisticResultList[i]));
                     var tdNode = trNode.insertCell();
-                    if(statisticResultList[i].isPlag){
+                    tdNode.style.textAlign = "center";
+                    // console.log("isPlag:"+statisticResultList[i].plag);
+                    if(statisticResultList[i].plag){
                         tdNode.innerHTML = "是";
                     }else{
                         tdNode.innerHTML = "否";
                     }
                     var tdNode = trNode.insertCell();
+                    tdNode.style.textAlign = "center";
                     tdNode.innerHTML = "<button class=\"button-green\" id=\"Stu1\" style=\"font-size: 20px;\"\n" +
                         "                                        onclick=\"{location.href='../tool/detail.html'}\">详情\n" +
                         "                                </button>";
 
+
+
                 }
+                // console.log(statisticResultList.length);
+                // for(var j=0;j<(statisticResultList.length/10);j++){
+                //     var index = j+2;
+                //     console.log("in:"+statisticResultList.length);
+                //     page.append("<a href=\"#\">"+index+"</a>");
+                // }
+
 
             },
             error: function (err) {

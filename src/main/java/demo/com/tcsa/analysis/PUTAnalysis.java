@@ -98,12 +98,12 @@ public class PUTAnalysis {
 //                String fileName = file.getName();
 //                for(String PUTName : PUTNames){
 //                    if(fileName.equals(PUTName)){
-                        String fileContent = FileUtil.readFileContentToString(file);
-                        if (!ParenthesisUtil.judgeParenthesisMatchAmongString(fileContent)) {
-                            System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
-                            continue;
-                        }
-                        analyzeSubjectFileContentString(fileContent,subject);
+                String fileContent = FileUtil.readFileContentToString(file);
+                if (!ParenthesisUtil.judgeParenthesisMatchAmongString(fileContent)) {
+                    System.err.println("The parenthesis in the test file \"" + file.getName() + "\" is mismatched!");
+                    continue;
+                }
+                analyzeSubjectFileContentString(fileContent,subject);
 //                    }
 //                }
             }

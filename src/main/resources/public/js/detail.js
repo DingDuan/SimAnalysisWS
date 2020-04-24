@@ -3,6 +3,11 @@
 //      // deleteMyPage();
 //
 // })
+window.onload = showDetail;
+
+function showDetail(){
+
+}
 
 function createMyPage(start,end) {
     var i = start;

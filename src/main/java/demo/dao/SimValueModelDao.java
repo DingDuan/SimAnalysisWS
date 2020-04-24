@@ -21,6 +21,9 @@ public interface SimValueModelDao extends JpaRepository<SimValueModel, Integer> 
 
     @Query(value = "select * from sim_value_model where subject=?1", nativeQuery = true)
     List<SimValueModel> searchSimValueAllContentBySubject(String subject);
+
+    @Query(value = "select * from sim_value_model where subject=?1 and cid1=?2 and cid2=?3", nativeQuery = true)
+    List<SimValueModel> searchAllBySubjectAndCids(String subject,int cid1,int cid2);
 //
 //    List<SimValueModel> searchSimValueByParameterByCategory(int cid1, int cid2, int category);
 //

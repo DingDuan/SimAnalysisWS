@@ -17,4 +17,6 @@ public class ResultVO {
 
     private List<StatisticResult> statisticResultList;
 
+
+
 }

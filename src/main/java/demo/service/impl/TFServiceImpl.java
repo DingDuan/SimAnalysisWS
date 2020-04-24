@@ -308,6 +308,7 @@ public class TFServiceImpl implements TFService {
 //                                    (simValueVO.getCid2() == cid1 && simValueVO.getCid1() == cid2)){
 //                                IndexDisplayVO indexDisplayVO = new IndexDisplayVO();
 //
+
 //                                indexDisplayVO.setMethodId(i + 1);
 //
 //                                int mid = simValueVO.getMid();
@@ -414,7 +415,46 @@ public class TFServiceImpl implements TFService {
                 statisticResultList.add(statisticResult);
             }
         }
+        if(statisticResultList.size() != 0) {
+            Collections.sort(statisticResultList, statisticResultList.get(0));
+        }
         return statisticResultList;
+    }
+
+    /*
+     * @Author duanding
+     * @Description 获取详情页面需要的详情信息
+     * @Date 12:20 AM 2020/4/25
+     * @Param [subject, stu1, stu2]
+     * @return demo.vo.DetailVO
+     **/
+    @Override
+    public DetailVO getDetail(String subject,int stu1,int stu2){
+        DetailVO detailVO = new DetailVO();
+        detailVO.setStu1(stu1);
+        detailVO.setStu2(stu2);
+        List<SimValueModel> simValueModelList = simValueModelDao.searchAllBySubjectAndCids(subject,stu1,stu2);
+        Collections.sort(simValueModelList,simValueModelList.get(0));
+        int[] topThreeSim = new int[3];
+        List<String> tfList1 = new ArrayList<>();
+        List<String> tfList2 = new ArrayList<>();
+        for(int i=0;i<simValueModelList.size();i++){
+            SimValueModel simValueModel = simValueModelList.get(i);
+            if(i<3){
+                Double simValue = simValueModel.getSimValue();
+                topThreeSim[i] = simValue.intValue();
+            }
+            int mid = simValueModel.getMid();
+            String tf1 = tfModelDao.getTFBySubjectAndMidAndCid(subject,mid,stu1);
+            tfList1.add(tf1);
+            String tf2 = tfModelDao.getTFBySubjectAndMidAndCid(subject,mid,stu2);
+            tfList2.add(tf2);
+        }
+//        mutModelDao.
+        detailVO.setTopThreeSim(topThreeSim);
+        detailVO.setTF1(tfList1);
+        detailVO.setTF2(tfList2);
+        return detailVO;
     }
     
     /*
