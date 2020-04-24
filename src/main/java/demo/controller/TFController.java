@@ -1,6 +1,7 @@
 package demo.controller;
 
 import demo.common.Result;
+import demo.vo.DetailVO;
 import demo.vo.Inputs;
 import demo.vo.Paths;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,12 @@ public class TFController {
     public Result detectAll(@RequestBody Inputs inputs){
         return tfService.detectAll(inputs);
 //        return null;
+    }
+
+    @PostMapping("/getDetail")
+    public DetailVO getDetail(String subject,Integer stu1,Integer stu2){
+        System.out.println("stu1:"+stu1);
+        return tfService.getDetail(subject,stu1,stu2);
     }
 
     @GetMapping("/simValue")

@@ -33,64 +33,6 @@
         }
     </script>
 
-    <script>
-        $(function () {
-            $("#slider-range-min").slider({
-                range: "min",
-                value: 0.8,
-                min: 0.1,
-                max: 1.0,
-                step: 0.1,
-                slide: function (event, ui) {
-                    $("#amount").val(ui.value);
-                }
-            });
-            $("#amount").val($("#slider-range-min").slider("value"));
-
-            var option1 = {
-                value: 91,//百分比,必填
-                // name: 'TF Similarity',//必填
-                name: '片段相似度',//必填
-                // title: 'Top Similarity ',
-                title: '相似度前三',
-
-                backgroundColor: '#f0fff4',
-                color: ['#38a8da', '#d4effa'],
-                fontSize: 20,
-                domEle: document.getElementById("chart1")//必填
-            }
-            percentPie1 = new PercentPie(option1);
-            percentPie1.init();
-
-            var option2 = {
-                value: 80,//百分比,必填
-                // name: 'TF Similarity',//必填
-                name: '片段相似度',//必填
-                // title:'相似度第一',
-                backgroundColor: '#f0fff4',
-                color: ['#38a8da', '#d4effa'],
-                fontSize: 20,
-                domEle: document.getElementById("chart2")//必填
-            }
-            percentPie2 = new PercentPie(option2);
-            percentPie2.init();
-
-            var option3 = {
-                value: 69,//百分比,必填
-                // name: 'TF Similarity',//必填
-                name: '片段相似度',//必填
-                // title:'相似度第一',
-                backgroundColor: '#f0fff4',
-                color: ['#38a8da', '#d4effa'],
-                fontSize: 20,
-                domEle: document.getElementById("chart3")//必填
-            }
-            percentPie3 = new PercentPie(option3);
-            percentPie3.init();
-
-        });
-    </script>
-
 </head>
 <body>
 <header>
@@ -171,7 +113,7 @@
             <h3>测试目标</h3>
             <div>
                 <pre id="src-code">
-public Datalog getHead() {
+public Tarjan getHead() {
     for (Substitution s : subs) {
         result.add(s.applyOn(head).toFact());
     }
@@ -184,26 +126,28 @@ public Datalog getHead() {
             <!--<h3>Test Fragments</h3>-->
             <h3>测试片段</h3>
 
-            <div class="frag-code-wrapper">
+            <div id="frag1" class="frag-code-wrapper">
                 <!--<h3>Student No.1</h3>-->
-                <h3>学生 No.19229</h3>
-                <div class="frag-code">
-                <pre>
-Predicate p1 = new Predicate("p1");
-Rule r1;
-Datalog d = r1.getHead();</pre>
-                </div>
+
+                <!--<h3>学生 No.19229</h3>-->
+                <!--<div class="frag-code">-->
+                <!--<pre>-->
+<!--Predicate p1 = new Predicate("p1");-->
+<!--Rule r1;-->
+<!--Datalog d = r1.getHead();</pre>-->
+                <!--</div>-->
             </div>
 
-            <div class="frag-code-wrapper">
+            <div id="frag2" class="frag-code-wrapper">
                 <!--<h3>Student No.2</h3>-->
-                <h3>学生 No.2843</h3>
-                <div class="frag-code">
-                <pre>
-Predicate p2 = new Predicate("p2");
-Rule r1;
-Datalog d = r1.getHead();</pre>
-                </div>
+
+                <!--<h3>学生 No.2843</h3>-->
+                <!--<div class="frag-code">-->
+                <!--<pre>-->
+<!--Predicate p2 = new Predicate("p2");-->
+<!--Rule r1;-->
+<!--Datalog d = r1.getHead();</pre>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
