@@ -22,7 +22,8 @@ function showDetail(subject,stu1,stu2){
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (result) {
-            var jsondata = JSON.stringify(result.data);
+            var jsondata = JSON.stringify(result);
+            console.log(result);
             var jsonobj = eval("("+jsondata+")");
             var topThreeSim = jsonobj.topThreeSim;
             $("#slider-range-min").slider({
@@ -78,18 +79,32 @@ function showDetail(subject,stu1,stu2){
             percentPie3 = new PercentPie(option3);
             percentPie3.init();
 
-            var tfList1 = jsonobj.TF1;
+            var tfList1 = jsonobj.tf1;
+            // console.log(tfList1);
+            var content = tfList1[0];
+            for(i=0;i<content.length;i++){
+                var item = content.charAt(i);
+                if(item == '<'){
+                    console.log("dfa");
+                    content.replace(/</,"&lt;");
+                    //可以直接替代，不用判断，但不知为啥没能替代
+                }
+                if(item == '>'){
+                    content.replace(/>/,"&gt;");
+                }
+            }
+            console.log(content);
             var frag1 = $("#frag1");
-            var content1 = $("<h3>学生 No."+stu1+"</h3>-->\n" +
+            var content1 = $("<h3>学生 No."+stu1+"</h3>\n" +
                 "                <div class=\"frag-code\">\n" +
                 "                <pre>\n" +
-                tfList1[0] +
+                content +
                 "</pre>\n" +
                 "                </div>")
             frag1.append(content1);
-            var tfList2 = jsonobj.TF2;
+            var tfList2 = jsonobj.tf2;
             var frag2 = $("#frag2");
-            var content2 = $("<h3>学生 No."+stu2+"</h3>-->\n" +
+            var content2 = $("<h3>学生 No."+stu2+"</h3>\n" +
                 "                <div class=\"frag-code\">\n" +
                 "                <pre>\n" +
                 tfList2[0] +

@@ -1,6 +1,7 @@
 package demo.controller;
 
 import demo.common.Result;
+import demo.vo.DetailInput;
 import demo.vo.DetailVO;
 import demo.vo.Inputs;
 import demo.vo.Paths;
@@ -34,7 +35,10 @@ public class TFController {
     }
 
     @PostMapping("/getDetail")
-    public DetailVO getDetail(String subject,Integer stu1,Integer stu2){
+    public DetailVO getDetail(@RequestBody DetailInput detailInput){
+        String subject = detailInput.getSubject();
+        int stu1 = detailInput.getStu1();
+        int stu2 = detailInput.getStu2();
         System.out.println("stu1:"+stu1);
         return tfService.getDetail(subject,stu1,stu2);
     }
