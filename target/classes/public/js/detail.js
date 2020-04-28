@@ -82,16 +82,8 @@ function showDetail(subject,stu1,stu2){
             var tfList1 = jsonobj.tf1;
             // console.log(tfList1);
             var content = tfList1[0];
-            for(i=0;i<content.length;i++){
-                var item = content.charAt(i);
-                if(item == '<'){
-                    console.log("dfa");
-                    content.replace(/</,"&lt;");
-                }
-                if(item == '>'){
-                    content.replace(/>/,"&gt;");
-                }
-            }
+            content = content.replace(/</g,'');
+            content = content.replace(/>/g,'');
             console.log(content);
             var frag1 = $("#frag1");
             var content1 = $("<h3>学生 No."+stu1+"</h3>\n" +
@@ -110,6 +102,10 @@ function showDetail(subject,stu1,stu2){
                 "</pre>\n" +
                 "                </div>")
             frag2.append(content2);
+            jQuery(document).ready(function () {
+                jQuery("pre").addClass("prettyprint linenums");
+                prettyPrint();
+            });
         }
     })
 }

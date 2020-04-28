@@ -27,4 +27,13 @@ public interface TFService {
      * @return demo.vo.DetailVO
      **/
     DetailVO getDetail(String subject, int stu1, int stu2);
+
+    /*
+     * @Author duanding
+     * @Description 生成检测报告对外接口
+     * @Date 1:06 AM 2020/4/29
+     * @Param [subject]
+     * @return boolean
+     **/
+    boolean generateReport(String subject);
 }

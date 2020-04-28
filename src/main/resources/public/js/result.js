@@ -80,3 +80,25 @@ function getDetectRes(){
 
     )
 }
+
+function generateReport() {
+    var url = "/API/TF/generateReport?subject=Tarjan";
+    var subject = "Tarjan";
+    $.ajax({
+        url: url,
+        type: "GET",
+        // data: JSON.stringify({
+        //     subject: subject
+        // }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (result) {
+            alert("生成报告成功！")
+        },
+        error: function (err) {
+            alert("生成报告出错!");
+
+        }
+    }
+    )
+}

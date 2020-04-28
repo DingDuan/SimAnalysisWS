@@ -34,13 +34,33 @@ public class TFController {
 //        return null;
     }
 
+    /*
+     * @Author duanding
+     * @Description 获取详情信息
+     * @Date 1:07 AM 2020/4/29
+     * @Param [detailInput]
+     * @return demo.vo.DetailVO
+     **/
     @PostMapping("/getDetail")
     public DetailVO getDetail(@RequestBody DetailInput detailInput){
         String subject = detailInput.getSubject();
         int stu1 = detailInput.getStu1();
         int stu2 = detailInput.getStu2();
-        System.out.println("stu1:"+stu1);
+//        System.out.println("stu1:"+stu1);
         return tfService.getDetail(subject,stu1,stu2);
+    }
+
+    /*
+     * @Author duanding
+     * @Description 生成检测报告
+     * @Date 1:09 AM 2020/4/29
+     * @Param [subject]
+     * @return boolean
+     **/
+    @GetMapping("/generateReport")
+    public boolean generateReport(@RequestParam("subject") String subject){
+        System.out.println("reportSubject:"+subject);
+        return tfService.generateReport(subject);
     }
 
     @GetMapping("/simValue")

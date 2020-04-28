@@ -42,6 +42,8 @@ import static java.util.Arrays.asList;
 @Service
 public class TFServiceImpl implements TFService {
     double threshold = 0.8;
+    String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+
 
     @Resource
     private SimValueModelDao simValueModelDao;
@@ -71,7 +73,6 @@ public class TFServiceImpl implements TFService {
     @Override
     public Result detectAll(Inputs inputs) {
         DownloadCode downloadCode = new DownloadCode();
-        String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
         String subject = "Tarjan";
 
         //从外部获取代码url并下载解压
@@ -456,7 +457,61 @@ public class TFServiceImpl implements TFService {
         detailVO.setTF2(tfList2);
         return detailVO;
     }
-    
+
+    /*
+     * @Author duanding
+     * @Description 生成检测报告对外接口
+     * @Date 1:06 AM 2020/4/29
+     * @Param [subject]
+     * @return boolean
+     **/
+    @Override
+    public boolean generateReport(String subject){
+        String rootPath = downloadDestPre+subject+"/";
+        File rootDir = new File(rootPath);
+        String parentName = rootDir.getName();
+        File[] allChildDirectories = rootDir.listFiles();
+        List<File> dirList = new ArrayList<>();
+        boolean flag;
+        if (allChildDirectories != null && allChildDirectories.length > 0) {
+            for (int i = 0; i < allChildDirectories.length; i++) {
+                flag = false;
+                File directory = allChildDirectories[i];
+                if (".DS_Store".equals(directory.getName())) {
+                    continue;
+                }
+                if (directory.isDirectory()) {
+                    String[] dirName = directory.getName().split("_");
+                    String dirNameFirst = dirName[0];
+                    BigInteger dirNameLast = new BigInteger(dirName[dirName.length-1]);
+                    if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
+                            && directory.getName().contains(subject)) {
+//                            && directory.getName().contains("AStar")) {
+                        Iterator it = dirList.iterator();
+                        while(it.hasNext()){
+                            File existDir = (File) it.next();
+                            String[] existDirName = existDir.getName().split("_");
+                            String existDirNameFirst = existDirName[0];
+                            BigInteger existDirNameLast = new BigInteger(existDirName[existDirName.length-1]);
+                            if(existDirNameFirst.equals(dirNameFirst)) {
+                                if (existDirNameLast.compareTo(dirNameLast) == -1) {
+                                    it.remove();
+                                }else{
+                                    flag = true;
+                                }
+                                break;
+                            }
+                        }
+                        if(!flag) {
+                            dirList.add(directory);
+                        }
+                    }
+                }
+            }
+        }
+        return outputAllPDF(dirList,subject);
+    }
+
     /*
      * @Author duanding
      * @Description 生成检测所有选手的报告PDF

@@ -42,6 +42,9 @@
         }
     </script>
 
+    <script src="../js/result.js"></script>
+
+
 </head>
 <body>
 <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
@@ -349,6 +352,11 @@
         <!--</div>-->
 
     </div>
+    <div style="text-align: center;">
+        <button class="button-green" id="report" style="font-size: 30px;width: 230px;"
+        onclick="generateReport()">生成检测报告
+        </button>
+    </div>
     <footer style="text-align: center; margin-top: 60px;">
         <div class="container">
             <p> &copy;2019 Mooctest Copyright: Nanjing Mooctest Co. Ltd.</p>
@@ -359,7 +367,6 @@
 </div>
 
 <script src="../js/echarts.js"></script>
-<script src="../js/result.js"></script>
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('forcechart'));
     option = {
