@@ -1,0 +1,2 @@
+[MASTER] 13:54:39.730 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.function.Function<T, R> : Type points to itself
+[MASTER] 13:54:47.898 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.function.Predicate<T> : Type points to itself

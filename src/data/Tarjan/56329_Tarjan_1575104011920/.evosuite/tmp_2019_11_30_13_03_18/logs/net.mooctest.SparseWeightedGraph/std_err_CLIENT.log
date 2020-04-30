@@ -1,0 +1,58 @@
+[MASTER] 13:04:04.147 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.HashMap<K, V> : Type points to itself
+[MASTER] 13:04:26.788 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
+[MASTER] 13:04:32.018 [TEST_EXECUTION_THREAD_0] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.util.Comparator due to IAE: 
+Mockito cannot mock this class: interface java.util.Comparator.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:04:56.138 [TEST_EXECUTION_THREAD_5] ERROR FunctionalMockStatement - Cannot use Mockito on class net.mooctest.Edge due to IAE: 
+Mockito cannot mock this class: class net.mooctest.Edge.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:05:01.731 [TEST_EXECUTION_THREAD_4] ERROR FunctionalMockStatement - Failed to use Mockito on interface java.util.function.Consumer: null
+[MASTER] 13:05:04.514 [TEST_EXECUTION_THREAD_5] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.util.function.Consumer due to IAE: 
+Mockito cannot mock this class: interface java.util.function.Consumer.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:05:04.515 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for net.mooctest.Edge<V> : Type points to itself

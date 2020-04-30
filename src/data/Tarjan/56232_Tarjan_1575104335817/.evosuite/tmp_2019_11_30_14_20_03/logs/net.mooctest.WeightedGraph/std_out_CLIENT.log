@@ -1,0 +1,32 @@
+* Starting client
+* Connecting to master process on port 8366
+* Analyzing classpath: 
+  - C:\mooctest\projects\3933\56232\Tarjan\target\test-classes
+  - C:\mooctest\projects\3933\56232\Tarjan\target\classes
+  - E:\maven\repository\com\github\stefanbirkner\system-rules\1.18.0\system-rules-1.18.0.jar
+  - E:\maven\repository\junit\junit\4.12\junit-4.12.jar
+  - E:\maven\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+[MASTER] 14:20:41.223 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.collect.Maps was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:20:41.227 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: com.google.common.collect.Maps
+[MASTER] 14:20:41.263 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.collect.DiscreteDomain was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:20:41.263 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: com.google.common.collect.DiscreteDomain
+[MASTER] 14:20:41.271 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.collect.ImmutableSet was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:20:41.271 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: com.google.common.collect.ImmutableSet
+[MASTER] 14:20:41.291 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.base.Objects was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:20:41.291 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: com.google.common.base.Objects
+[MASTER] 14:20:41.296 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.base.Objects was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:20:41.297 [pool-2-thread-1] WARN  CheapPurityAnalyzer - com.google.common.base.Objects was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+* Finished analyzing classpath
+* Generating tests for class net.mooctest.WeightedGraph
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 14:20:42.434 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: C:\mooctest\projects\3933\56232\Tarjan\.evosuite\evosuite-seeds\net.mooctest.WeightedGraph.seed
+* Loaded 0 tests from C:\mooctest\projects\3933\56232\Tarjan\.evosuite\evosuite-seeds\net.mooctest.WeightedGraph.seed

@@ -42,7 +42,8 @@ import static java.util.Arrays.asList;
 @Service
 public class TFServiceImpl implements TFService {
     double threshold = 0.8;
-    String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+//    String downloadDestPre = "/Users/dd/study/iSE/Graduation-Design/ContestDataSet/";
+    String downloadDestPre = "./src/data/";
 
 
     @Resource
@@ -72,6 +73,7 @@ public class TFServiceImpl implements TFService {
      **/
     @Override
     public Result detectAll(Inputs inputs) {
+        ResultVO resultVO = new ResultVO();
         DownloadCode downloadCode = new DownloadCode();
         String subject = "Tarjan";
 
@@ -103,86 +105,102 @@ public class TFServiceImpl implements TFService {
 
         String rootPath = downloadDestPre+subject+"/";
         File rootDir = new File(rootPath);
-        String parentName = rootDir.getName();
-        File[] allChildDirectories = rootDir.listFiles();
         List<File> dirList = new ArrayList<>();
-        boolean flag;
-        if (allChildDirectories != null && allChildDirectories.length > 0) {
-            for (int i = 0; i < allChildDirectories.length; i++) {
-                flag = false;
-                File directory = allChildDirectories[i];
-                if (".DS_Store".equals(directory.getName())) {
-                    continue;
-                }
-                if (directory.isDirectory()) {
-                    String[] dirName = directory.getName().split("_");
-                    String dirNameFirst = dirName[0];
-                    BigInteger dirNameLast = new BigInteger(dirName[dirName.length-1]);
-                    if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
-                            && directory.getName().contains(subject)) {
-//                            && directory.getName().contains("AStar")) {
-                        Iterator it = dirList.iterator();
-                        while(it.hasNext()){
-                            File existDir = (File) it.next();
-                            String[] existDirName = existDir.getName().split("_");
-                            String existDirNameFirst = existDirName[0];
-                            BigInteger existDirNameLast = new BigInteger(existDirName[existDirName.length-1]);
-                            if(existDirNameFirst.equals(dirNameFirst)) {
-                                if (existDirNameLast.compareTo(dirNameLast) == -1) {
-                                    it.remove();
-                                }else{
-                                    flag = true;
+        if(rootDir.exists()) {
+            String parentName = rootDir.getName();
+            File[] allChildDirectories = rootDir.listFiles();
+            boolean flag;
+            if (allChildDirectories != null && allChildDirectories.length > 0) {
+                for (int i = 0; i < allChildDirectories.length; i++) {
+                    flag = false;
+                    File directory = allChildDirectories[i];
+                    if (".DS_Store".equals(directory.getName())) {
+                        continue;
+                    }
+                    if (directory.isDirectory()) {
+                        String[] dirName = directory.getName().split("_");
+                        String dirNameFirst = dirName[0];
+                        BigInteger dirNameLast = new BigInteger(dirName[dirName.length - 1]);
+                        if (directory.listFiles().length > 0 && parentName.equals(directory.getParentFile().getName())
+                                && directory.getName().contains(subject)) {
+                            //                            && directory.getName().contains("AStar")) {
+                            Iterator it = dirList.iterator();
+                            while (it.hasNext()) {
+                                File existDir = (File) it.next();
+                                String[] existDirName = existDir.getName().split("_");
+                                String existDirNameFirst = existDirName[0];
+                                BigInteger existDirNameLast = new BigInteger(existDirName[existDirName.length - 1]);
+                                if (existDirNameFirst.equals(dirNameFirst)) {
+                                    if (existDirNameLast.compareTo(dirNameLast) == -1) {
+                                        it.remove();
+                                    } else {
+                                        flag = true;
+                                    }
+                                    break;
                                 }
-                                break;
                             }
-                        }
-                        if(!flag) {
-                            dirList.add(directory);
+                            if (!flag) {
+                                dirList.add(directory);
+                            }
                         }
                     }
                 }
             }
-        }
-        Paths paths = new Paths();
-        paths.setSrcPath(rootPath);
 
-        System.out.println("检测选手数量："+dirList.size());
+            Paths paths = new Paths();
+            paths.setSrcPath(rootPath);
 
-        //进行检测
-        for(int i = 0;i < dirList.size();i++){
-            paths.setP1Path(dirList.get(i).getPath());
-            for(int j = i+1;j < dirList.size();j++){
-                if((i>0||j>1)) continue;
+            System.out.println("检测选手数量：" + dirList.size());
+
+            //进行检测
+            for (int i = 0; i < dirList.size(); i++) {
+                paths.setP1Path(dirList.get(i).getPath());
+                for (int j = i + 1; j < dirList.size(); j++) {
+                    if ((i > 1 || j > 2)) continue;
 //                if(i==0&&(j<241||j>=75)) continue;
-                paths.setP2Path(dirList.get(j).getPath());
+                    paths.setP2Path(dirList.get(j).getPath());
                     System.out.println("检测：");
-                    System.out.println("选手一：" + i +"路径："+dirList.get(i).getPath());
-                    System.out.println("选手二：" + j +"路径："+ dirList.get(j).getPath());
+                    System.out.println("选手一：" + i + "路径：" + dirList.get(i).getPath());
+                    System.out.println("选手二：" + j + "路径：" + dirList.get(j).getPath());
                     detectBetweenTwo(paths);
+                }
             }
-        }
 
-        long endDetectTime = System.currentTimeMillis();
-        System.out.println("检测总耗时："+(endDetectTime-beginDetectTime)+"ms");
+
+            long endDetectTime = System.currentTimeMillis();
+            System.out.println("检测总耗时：" + (endDetectTime - beginDetectTime) + "ms");
 
 //        if(outputAllPDF(dirList,subject)){
 //            System.out.println("生成检测报告成功！");
 //        }
 
-        //将结果封装传给前端
-        ResultVO resultVO = new ResultVO();
-        resultVO.setSubjectName(subject);
-        resultVO.setAllDetectionNum(dirList.size());
-        List<StatisticResult> statisticResultList = getDetectionResFromDB(dirList,subject);
-        resultVO.setStatisticResultList(statisticResultList);
-        Set<Integer> plagSet = new HashSet<>();
-        for(StatisticResult statisticResult: statisticResultList){
-            if(statisticResult.isPlag()){
-                plagSet.add(statisticResult.getStu1());
-                plagSet.add(statisticResult.getStu2());
+            //将结果封装传给前端
+            resultVO.setSubjectName(subject);
+            resultVO.setAllDetectionNum(dirList.size());
+            List<StatisticResult> statisticResultList = getDetectionResFromDB(dirList, subject);
+            resultVO.setStatisticResultList(statisticResultList);
+            Set<Integer> plagSet = new HashSet<>();
+            for (StatisticResult statisticResult : statisticResultList) {
+                if (statisticResult.isPlag()) {
+                    plagSet.add(statisticResult.getStu1());
+                    plagSet.add(statisticResult.getStu2());
+                }
             }
+            resultVO.setPlagNum(plagSet.size());
+        }else{
+            resultVO.setSubjectName(subject);
+            resultVO.setAllDetectionNum(85);
+            List<StatisticResult> statisticResultList = getDetectionResFromDB(subject);
+            resultVO.setStatisticResultList(statisticResultList);
+            Set<Integer> plagSet = new HashSet<>();
+            for (StatisticResult statisticResult : statisticResultList) {
+                if (statisticResult.isPlag()) {
+                    plagSet.add(statisticResult.getStu1());
+                    plagSet.add(statisticResult.getStu2());
+                }
+            }
+            resultVO.setPlagNum(plagSet.size());
         }
-        resultVO.setPlagNum(plagSet.size());
         return Result.success().withData(resultVO);
     }
 
@@ -386,6 +404,65 @@ public class TFServiceImpl implements TFService {
             Integer cid = Integer.parseInt(cidStr);
             players.add(cid);
         }
+//        int plagPairs = 0;
+        int id = 0;
+        List<SimValueModel> allSimValueList = simValueModelDao.searchSimValueAllContentBySubject(subject);
+        for(int i=0;i<players.size()-1;i++) {
+            int cid1 = players.get(i);
+            for (int j = i + 1; j < players.size(); j++) {
+                int cid2 = players.get(j);
+                List<SimValueModel> simValueList = getSimValueByPair(cid1, cid2, allSimValueList);
+                StatisticResult statisticResult = new StatisticResult();
+                statisticResult.setId(id);
+                id++;
+                statisticResult.setStu1(cid1);
+                statisticResult.setStu2(cid2);
+                if (simValueList.size() != 0) {
+                    Collections.sort(simValueList,simValueList.get(0));
+                    Double maxSim = simValueList.get(0).getSimValue();
+                    statisticResult.setMaxSim(maxSim.intValue());
+                    if (maxSim >= threshold * 100) {
+                        statisticResult.setPlag(true);
+//                        plagPairs++;
+                    } else {
+                        statisticResult.setPlag(false);
+                    }
+                }else{
+                    statisticResult.setMaxSim(0);
+                    statisticResult.setPlag(false);
+                }
+                statisticResultList.add(statisticResult);
+            }
+        }
+        if(statisticResultList.size() != 0) {
+            Collections.sort(statisticResultList, statisticResultList.get(0));
+        }
+        return statisticResultList;
+    }
+
+    public List<StatisticResult> getDetectionResFromDB(String subject){
+        List<StatisticResult> statisticResultList = new ArrayList<>();
+        List<Integer> players = new ArrayList<>();
+//        for(int i=0;i<dirList.size();i++){
+//            String path = dirList.get(i).getPath();
+//            String[] paths = path.split("/");
+//            String lastContent = paths[paths.length-1];
+//            String[] lastContents = lastContent.split("_");
+//            String cidStr = "";
+//            if(path.contains("Province")){
+//                int index = 0;
+//                if(lastContents[0].contains("AStar")) {
+//                    index = lastContents[0].indexOf("A");
+//                }else if(lastContents[0].contains("TernaryTree")){
+//                    index = lastContents[0].indexOf("T");
+//                }
+//                cidStr = lastContents[0].substring(0,index);
+//            }else{
+//                cidStr = lastContents[0];
+//            }
+//            Integer cid = Integer.parseInt(cidStr);
+//            players.add(cid);
+//        }
 //        int plagPairs = 0;
         int id = 0;
         List<SimValueModel> allSimValueList = simValueModelDao.searchSimValueAllContentBySubject(subject);

@@ -141,7 +141,7 @@ public class GeneratePDF {
             String dateString = formatter.format(currentTime);
             SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
             String dateID = formatter2.format(currentTime);
-            PdfWriter.getInstance(document, new FileOutputStream("/Users/dd/Desktop/report"+dateID+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("./src/report/report"+dateID+".pdf"));
             document.addTitle("测试脚本相似度检测报告");
             document.open();
             BaseFont bfChinese = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);

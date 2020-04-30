@@ -1,0 +1,23 @@
+[MASTER] 13:12:36.883 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.lang.Comparable<T> : Type points to itself
+[MASTER] 13:13:14.261 [TEST_EXECUTION_THREAD_0] ERROR FunctionalMockStatement - Cannot use Mockito on class net.mooctest.Edge due to IAE: 
+Mockito cannot mock this class: class net.mooctest.Edge.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:13:18.477 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
+[MASTER] 13:13:18.572 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for net.mooctest.EdgeQueueMap<V>.EdgeQueue<V> : Type points to itself
+[MASTER] 13:13:21.144 [TEST_EXECUTION_THREAD_1] ERROR AbstractStatement - Error assigning value of type Edge[] defined at statement Edge<String>[] edgeArray0 = (Edge<String>[]) Array.newInstance(Edge.class, 4);, assignment statement: edgeArray0[0] = (Edge<String>) edgeArray0;; SUT=net.mooctest.EdgeQueueMap
+[MASTER] 13:13:22.364 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for net.mooctest.Pair<T, V> : Type points to itself

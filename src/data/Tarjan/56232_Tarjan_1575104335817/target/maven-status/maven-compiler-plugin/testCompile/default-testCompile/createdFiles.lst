@@ -1,0 +1,12 @@
+net\mooctest\Partition_ESTest.class
+net\mooctest\ExclusiveEdge_ESTest.class
+net\mooctest\SparseWeightedGraph_Test.class
+net\mooctest\ChuLiuEdmonds_Test.class
+net\mooctest\Weighted_ESTest.class
+net\mooctest\Pair_ESTest.class
+net\mooctest\TestFibonacciHeap.class
+net\mooctest\Arborescence_Test.class
+net\mooctest\Edge_Test.class
+net\mooctest\FibonacciQueue_Test.class
+net\mooctest\WeightedGraph_Test.class
+net\mooctest\Partition_Test.class

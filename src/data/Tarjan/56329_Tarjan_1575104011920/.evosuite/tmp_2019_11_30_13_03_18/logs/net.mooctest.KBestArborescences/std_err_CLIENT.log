@@ -1,0 +1,1070 @@
+[MASTER] 13:06:24.356 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on class net.mooctest.Edge due to IAE: 
+Mockito cannot mock this class: class net.mooctest.Edge.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:06:26.811 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on class net.mooctest.EdgeQueueMap$EdgeQueue due to IAE: 
+Mockito cannot mock this class: class net.mooctest.EdgeQueueMap$EdgeQueue.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:06:26.884 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.util.Comparator due to IAE: 
+Mockito cannot mock this class: interface java.util.Comparator.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:06:26.898 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.lang.Comparable due to IAE: 
+Mockito cannot mock this class: interface java.lang.Comparable.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:06:27.939 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
+[MASTER] 13:06:42.842 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.util.function.BiConsumer due to IAE: 
+Mockito cannot mock this class: interface java.util.function.BiConsumer.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:07:18.786 [TEST_EXECUTION_THREAD_1] ERROR FunctionalMockStatement - Cannot use Mockito on interface java.util.function.Consumer due to IAE: 
+Mockito cannot mock this class: interface java.util.function.Consumer.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.191-b12
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_191-b12
+JVM info           : mixed mode
+OS name            : Windows 10
+OS version         : 10.0
+
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+[MASTER] 13:08:07.542 [pool-2-thread-1] ERROR TestCluster - Failed to check cache for net.mooctest.EdgeQueueMap<V>.EdgeQueue<V> : Type points to itself
+[MASTER] 13:08:11.251 [TEST_EXECUTION_THREAD_1] ERROR AbstractStatement - Error assigning value of type Comparable[] defined at statement Comparable<EdgeQueueMap.EdgeQueue<Object>>[] comparableArray0 = (Comparable<EdgeQueueMap.EdgeQueue<Object>>[]) Array.newInstance(Comparable.class, 2);, assignment statement: comparableArray0[0] = (Comparable<EdgeQueueMap.EdgeQueue<Object>>) comparableArray0;; SUT=net.mooctest.KBestArborescences
+[MASTER] 13:11:08.130 [pool-2-thread-1] ERROR JUnitAnalyzer - Compilation failed on compilation units: [RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_1_1575090667136\net\mooctest\KBestArborescences_1_tmp__ESTest.java], RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_1_1575090667136\net\mooctest\KBestArborescences_1_tmp__ESTest_scaffolding.java]]
+[MASTER] 13:11:08.130 [pool-2-thread-1] ERROR JUnitAnalyzer - Classpath: C:/mooctest/projects/3933/56329/Tarjan/target/classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;D:\respository\org\evosuite\evosuite-master\1.0.6\evosuite-master-1.0.6.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar
+[MASTER] 13:11:08.131 [pool-2-thread-1] ERROR JUnitAnalyzer - evosuiteCP: C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;D:\respository\org\evosuite\evosuite-master\1.0.6\evosuite-master-1.0.6.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar
+[MASTER] 13:11:08.147 [pool-2-thread-1] ERROR JUnitAnalyzer - Diagnostic: incompatible types: com.google.common.collect.ImmutableMap<net.mooctest.EdgeQueueMap.EdgeQueue<java.lang.Double>,net.mooctest.EdgeQueueMap.EdgeQueue<java.lang.Double>> cannot be converted to com.google.common.collect.ImmutableMap<net.mooctest.KBestArborescences,net.mooctest.KBestArborescences>: 38
+[MASTER] 13:11:08.150 [pool-2-thread-1] ERROR JUnitAnalyzer - RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_1_1575090667136\net\mooctest\KBestArborescences_1_tmp__ESTest.java]
+1: /*
+2:  * This file was automatically generated by EvoSuite
+3:  * Sat Nov 30 05:11:07 GMT 2019
+4:  */
+5: 
+6: package net.mooctest;
+7: 
+8: import org.junit.Test;
+9: import static org.junit.Assert.*;
+10: import com.google.common.base.Optional;
+11: import com.google.common.collect.ImmutableMap;
+12: import com.google.common.collect.ImmutableSortedMap;
+13: import java.util.Collection;
+14: import java.util.LinkedHashSet;
+15: import java.util.PriorityQueue;
+16: import net.mooctest.Arborescence;
+17: import net.mooctest.Edge;
+18: import net.mooctest.EdgeQueueMap;
+19: import net.mooctest.ExclusiveEdge;
+20: import net.mooctest.KBestArborescences;
+21: import net.mooctest.Partition;
+22: import net.mooctest.Weighted;
+23: import org.evosuite.runtime.EvoRunner;
+24: import org.evosuite.runtime.EvoRunnerParameters;
+25: import org.junit.runner.RunWith;
+26: 
+27: @RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, useJEE = true) 
+28: public class KBestArborescences_1_tmp__ESTest extends KBestArborescences_1_tmp__ESTest_scaffolding {
+29: 
+30:   @Test(timeout = 4000)
+31:   public void test0()  throws Throwable  {
+32:       ImmutableSortedMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>> immutableSortedMap0 = ImmutableSortedMap.of();
+33:       Arborescence<EdgeQueueMap.EdgeQueue<Double>> arborescence0 = Arborescence.of((ImmutableMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>>) immutableSortedMap0);
+34:       Weighted<Arborescence<EdgeQueueMap.EdgeQueue<Double>>> weighted0 = Weighted.weighted(arborescence0, 1698.1083);
+35:       LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>> linkedHashSet0 = new LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>>();
+36:       linkedHashSet0.parallelStream();
+37:       KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>> kBestArborescences_SubsetOfSolutions0 = new KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>>((Edge<EdgeQueueMap.EdgeQueue<Double>>) null, weighted0, linkedHashSet0, linkedHashSet0);
+38:       Arborescence<KBestArborescences> arborescence1 = Arborescence.of((ImmutableMap<KBestArborescences, KBestArborescences>) arborescence0.parents);
+39:       PriorityQueue<KBestArborescences> priorityQueue0 = new PriorityQueue<KBestArborescences>();
+40:       Partition<KBestArborescences> partition0 = Partition.singletons((Collection<KBestArborescences>) priorityQueue0);
+41:       EdgeQueueMap.EdgeQueue<KBestArborescences> edgeQueueMap_EdgeQueue0 = EdgeQueueMap.EdgeQueue.create((KBestArborescences) null, partition0);
+42:       Optional<ExclusiveEdge<KBestArborescences>> optional0 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+43:       double[][] doubleArray0 = new double[0][5];
+44:       Optional<ExclusiveEdge<KBestArborescences>> optional1 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+45:       assertSame(optional1, optional0);
+46:   }
+47: }
+RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_1_1575090667136\net\mooctest\KBestArborescences_1_tmp__ESTest.java]
+1: /**
+2:  * Scaffolding file used to store all the setups needed to run 
+3:  * tests automatically generated by EvoSuite
+4:  * Sat Nov 30 05:11:07 GMT 2019
+5:  */
+6: 
+7: package net.mooctest;
+8: 
+9: import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
+10: import org.junit.BeforeClass;
+11: import org.junit.Before;
+12: import org.junit.After;
+13: import org.junit.AfterClass;
+14: import org.evosuite.runtime.sandbox.Sandbox;
+15: import org.evosuite.runtime.sandbox.Sandbox.SandboxMode;
+16: 
+17: @EvoSuiteClassExclude
+18: public class KBestArborescences_1_tmp__ESTest_scaffolding {
+19: 
+20:   @org.junit.Rule 
+21:   public org.evosuite.runtime.vnet.NonFunctionalRequirementRule nfr = new org.evosuite.runtime.vnet.NonFunctionalRequirementRule();
+22: 
+23:   private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+24: 
+25:   private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
+26: 
+27: 
+28:   @BeforeClass 
+29:   public static void initEvoSuiteFramework() { 
+30:     org.evosuite.runtime.RuntimeSettings.className = "net.mooctest.KBestArborescences"; 
+31:     org.evosuite.runtime.GuiSupport.initialize(); 
+32:     org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
+33:     org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
+34:     org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
+35:     org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
+36:     org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
+37:     org.evosuite.runtime.classhandling.JDKClassResetter.init();
+38:     setSystemProperties();
+39:     initializeClasses();
+40:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+41:   } 
+42: 
+43:   @AfterClass 
+44:   public static void clearEvoSuiteFramework(){ 
+45:     Sandbox.resetDefaultSecurityManager(); 
+46:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+47:   } 
+48: 
+49:   @Before 
+50:   public void initTestCase(){ 
+51:     threadStopper.storeCurrentThreads();
+52:     threadStopper.startRecordingTime();
+53:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
+54:     org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
+55:     setSystemProperties(); 
+56:     org.evosuite.runtime.GuiSupport.setHeadless(); 
+57:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+58:     org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
+59:   } 
+60: 
+61:   @After 
+62:   public void doneWithTestCase(){ 
+63:     threadStopper.killAndJoinClientThreads();
+64:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
+65:     org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
+66:     resetClasses(); 
+67:     org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
+68:     org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
+69:     org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
+70:   } 
+71: 
+72:   public static void setSystemProperties() {
+73:  
+74:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+75:     java.lang.System.setProperty("file.encoding", "GBK"); 
+76:     java.lang.System.setProperty("java.awt.headless", "true"); 
+77:     java.lang.System.setProperty("java.io.tmpdir", "C:\\Users\\34494\\AppData\\Local\\Temp\\"); 
+78:     java.lang.System.setProperty("user.country", "CN"); 
+79:     java.lang.System.setProperty("user.dir", "C:\\mooctest\\projects\\3933\\56329\\Tarjan"); 
+80:     java.lang.System.setProperty("user.home", "C:\\Users\\34494"); 
+81:     java.lang.System.setProperty("user.language", "zh"); 
+82:     java.lang.System.setProperty("user.name", "34494"); 
+83:     java.lang.System.setProperty("user.timezone", "Asia/Shanghai"); 
+84:   }
+85: 
+86:   private static void initializeClasses() {
+87:     org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(KBestArborescences_1_tmp__ESTest_scaffolding.class.getClassLoader() ,
+88:       "com.google.common.collect.AllEqualOrdering",
+89:       "com.google.common.collect.RegularContiguousSet",
+90:       "com.google.common.collect.Hashing",
+91:       "com.google.common.collect.ImmutableList$SubList",
+92:       "com.google.common.collect.Lists$RandomAccessPartition",
+93:       "com.google.common.collect.Collections2",
+94:       "com.google.common.collect.ImmutableSortedMap$Builder",
+95:       "net.mooctest.DenseWeightedGraph",
+96:       "com.google.common.collect.PeekingIterator",
+97:       "com.google.common.collect.RegularImmutableList",
+98:       "com.google.common.collect.RegularContiguousSet$2",
+99:       "com.google.common.collect.RegularContiguousSet$1",
+100:       "com.google.common.collect.FluentIterable",
+101:       "com.google.common.base.Optional",
+102:       "net.mooctest.Pair",
+103:       "com.google.common.collect.Lists$TransformingRandomAccessList",
+104:       "net.mooctest.KBestArborescences",
+105:       "com.google.common.collect.Sets$2",
+106:       "com.google.common.collect.Sets$3",
+107:       "com.google.common.collect.Sets$1",
+108:       "com.google.common.collect.NullsLastOrdering",
+109:       "com.google.common.collect.ImmutableMapKeySet",
+110:       "com.google.common.collect.ImmutableSet$ArrayImmutableSet",
+111:       "com.google.common.collect.RegularImmutableMap",
+112:       "com.google.common.collect.RegularImmutableBiMap",
+113:       "net.mooctest.ChuLiuEdmonds",
+114:       "com.google.common.collect.Range",
+115:       "net.mooctest.EdgeQueueMap$EdgeQueue",
+116:       "com.google.common.base.Objects$ToStringHelper",
+117:       "com.google.common.collect.ByFunctionOrdering",
+118:       "com.google.common.collect.SortedMapDifference",
+119:       "com.google.common.collect.RegularImmutableSet",
+120:       "com.google.common.collect.AbstractMapEntry",
+121:       "com.google.common.collect.Iterators$12",
+122:       "com.google.common.collect.Iterators$11",
+123:       "com.google.common.collect.EmptyImmutableBiMap",
+124:       "com.google.common.base.Predicate",
+125:       "com.google.common.collect.LexicographicalOrdering",
+126:       "net.mooctest.Edge$4",
+127:       "net.mooctest.Edge$3",
+128:       "net.mooctest.Edge$2",
+129:       "com.google.common.base.Present",
+130:       "com.google.common.base.Joiner",
+131:       "com.google.common.collect.Iterables",
+132:       "com.google.common.collect.NullsFirstOrdering",
+133:       "com.google.common.collect.ContiguousSet",
+134:       "com.google.common.collect.ImmutableAsList",
+135:       "com.google.common.collect.DiscreteDomain$BigIntegerDomain",
+136:       "com.google.common.collect.Sets$SetView",
+137:       "net.mooctest.Partition",
+138:       "com.google.common.collect.RegularImmutableAsList",
+139:       "com.google.common.collect.SingletonImmutableSet",
+140:       "com.google.common.collect.Iterators$14",
+141:       "com.google.common.collect.Iterators$13",
+142:       "com.google.common.collect.Cut$BelowValue",
+143:       "com.google.common.collect.RegularImmutableMap$LinkedEntry",
+144:       "com.google.common.collect.ImmutableMapEntrySet",
+145:       "net.mooctest.EdgeQueueMap",
+146:       "com.google.common.collect.Lists$Partition",
+147:       "net.mooctest.WeightedGraph",
+148:       "com.google.common.collect.Lists",
+149:       "com.google.common.collect.UnmodifiableListIterator",
+150:       "com.google.common.collect.UsingToStringOrdering",
+151:       "com.google.common.collect.DiscreteDomain",
+152:       "com.google.common.collect.RegularImmutableMap$TerminalEntry",
+153:       "com.google.common.base.Predicates",
+154:       "com.google.common.collect.EmptyContiguousSet",
+155:       "com.google.common.collect.ImmutableMultimap",
+156:       "com.google.common.collect.Lists$TransformingSequentialList",
+157:       "com.google.common.collect.ImmutableSortedMap",
+158:       "com.google.common.collect.ImmutableSortedSet",
+159:       "com.google.common.collect.Cut",
+160:       "com.google.common.base.Absent",
+161:       "net.mooctest.FibonacciHeap",
+162:       "com.google.common.collect.ObjectArrays",
+163:       "com.google.common.collect.AbstractIterator",
+164:       "net.mooctest.KBestArborescences$SubsetOfSolutions",
+165:       "com.google.common.base.Joiner$MapJoiner",
+166:       "net.mooctest.Weighted",
+167:       "com.google.common.collect.ImmutableList$1",
+168:       "com.google.common.collect.MapDifference",
+169:       "com.google.common.collect.RegularImmutableMap$NonTerminalEntry",
+170:       "com.google.common.collect.SortedIterable",
+171:       "com.google.common.base.Preconditions",
+172:       "com.google.common.collect.ImmutableSortedSetFauxverideShim",
+173:       "com.google.common.collect.UnmodifiableIterator",
+174:       "net.mooctest.FibonacciQueue$1",
+175:       "com.google.common.collect.ImmutableMapValues",
+176:       "com.google.common.collect.EmptyImmutableList",
+177:       "com.google.common.base.Objects$ToStringHelper$ValueHolder",
+178:       "com.google.common.collect.ImmutableEntry",
+179:       "com.google.common.base.Joiner$1",
+180:       "com.google.common.base.Joiner$2",
+181:       "com.google.common.collect.RegularImmutableSortedMap",
+182:       "com.google.common.collect.ImmutableCollection",
+183:       "com.google.common.collect.ImmutableEnumMap",
+184:       "com.google.common.collect.EmptyImmutableSortedSet",
+185:       "com.google.common.collect.ImmutableEnumSet",
+186:       "com.google.common.collect.Lists$RandomAccessListWrapper",
+187:       "com.google.common.collect.EmptyImmutableSortedMap",
+188:       "com.google.common.collect.ImmutableList$ReverseImmutableList",
+189:       "com.google.common.base.Objects",
+190:       "com.google.common.collect.SingletonImmutableList",
+191:       "com.google.common.collect.ImmutableSetMultimap",
+192:       "com.google.common.collect.Iterators$6",
+193:       "com.google.common.base.Predicates$AndPredicate",
+194:       "com.google.common.collect.BiMap",
+195:       "com.google.common.collect.Maps$9",
+196:       "com.google.common.collect.Iterators$7",
+197:       "com.google.common.collect.Iterators$8",
+198:       "com.google.common.collect.ImmutableSet",
+199:       "com.google.common.base.Function",
+200:       "com.google.common.collect.Lists$AbstractListWrapper",
+201:       "com.google.common.collect.ImmutableMap",
+202:       "com.google.common.collect.ComparatorOrdering",
+203:       "com.google.common.collect.AbstractIndexedListIterator",
+204:       "com.google.common.collect.DiscreteDomain$IntegerDomain",
+205:       "com.google.common.collect.Iterators$1",
+206:       "com.google.common.collect.Iterators$2",
+207:       "net.mooctest.SparseWeightedGraph",
+208:       "com.google.common.base.Predicates$NotPredicate",
+209:       "com.google.common.collect.Iterators$3",
+210:       "com.google.common.collect.Sets",
+211:       "com.google.common.collect.ImmutableCollection$EmptyImmutableCollection",
+212:       "com.google.common.collect.Iterators$5",
+213:       "com.google.common.collect.ImmutableSortedMapFauxverideShim",
+214:       "net.mooctest.Edge$EdgeBuilder",
+215:       "com.google.common.collect.Queues",
+216:       "com.google.common.collect.DiscreteDomain$LongDomain",
+217:       "net.mooctest.FibonacciHeap$1",
+218:       "com.google.common.collect.ExplicitOrdering",
+219:       "com.google.common.collect.Lists$StringAsImmutableList",
+220:       "com.google.common.collect.Lists$2",
+221:       "com.google.common.collect.Cut$AboveValue",
+222:       "com.google.common.primitives.Doubles",
+223:       "com.google.common.collect.Lists$1",
+224:       "com.google.common.collect.Iterables$2",
+225:       "com.google.common.collect.Iterables$3",
+226:       "com.google.common.collect.Range$2",
+227:       "com.google.common.collect.Range$3",
+228:       "net.mooctest.FibonacciHeap$Entry",
+229:       "net.mooctest.Edge$1",
+230:       "com.google.common.collect.Range$1",
+231:       "com.google.common.collect.Multiset",
+232:       "com.google.common.collect.AbstractMultimap",
+233:       "com.google.common.base.Supplier",
+234:       "com.google.common.collect.Multimap",
+235:       "com.google.common.collect.EmptyImmutableSet",
+236:       "com.google.common.collect.Iterators",
+237:       "com.google.common.collect.CompoundOrdering",
+238:       "com.google.common.collect.AbstractSequentialIterator",
+239:       "net.mooctest.Arborescence",
+240:       "com.google.common.collect.ImmutableBiMap",
+241:       "com.google.common.collect.ImmutableList",
+242:       "com.google.common.collect.SingletonImmutableBiMap",
+243:       "com.google.common.collect.ReverseOrdering",
+244:       "net.mooctest.FibonacciQueue",
+245:       "com.google.common.collect.FluentIterable$1",
+246:       "com.google.common.collect.ImmutableMap$1MapViewOfValuesAsSingletonSets",
+247:       "net.mooctest.ExclusiveEdge",
+248:       "net.mooctest.Edge",
+249:       "com.google.common.collect.RegularImmutableMap$EntrySet",
+250:       "com.google.common.collect.Cut$BelowAll",
+251:       "net.mooctest.ChuLiuEdmonds$PartialSolution",
+252:       "com.google.common.collect.ReverseNaturalOrdering",
+253:       "com.google.common.collect.ImmutableMap$Builder",
+254:       "com.google.common.collect.Maps",
+255:       "com.google.common.collect.SetMultimap",
+256:       "com.google.common.collect.TransformedIterator",
+257:       "com.google.common.collect.DescendingImmutableSortedSet",
+258:       "com.google.common.collect.Maps$EntryTransformer",
+259:       "com.google.common.collect.Ordering",
+260:       "com.google.common.collect.NaturalOrdering",
+261:       "com.google.common.collect.Iterators$MergingIterator",
+262:       "com.google.common.collect.Cut$AboveAll",
+263:       "com.google.common.collect.RegularImmutableSortedSet"
+264:     );
+265:   } 
+266: 
+267:   private static void resetClasses() {
+268:     org.evosuite.runtime.classhandling.ClassResetter.getInstance().setClassLoader(KBestArborescences_1_tmp__ESTest_scaffolding.class.getClassLoader()); 
+269: 
+270:     org.evosuite.runtime.classhandling.ClassStateSupport.resetClasses(
+271:       "net.mooctest.KBestArborescences",
+272:       "net.mooctest.KBestArborescences$SubsetOfSolutions",
+273:       "com.google.common.base.Joiner",
+274:       "com.google.common.base.Preconditions",
+275:       "com.google.common.base.Joiner$1",
+276:       "com.google.common.collect.Collections2",
+277:       "com.google.common.collect.ImmutableCollection$EmptyImmutableCollection",
+278:       "com.google.common.collect.ImmutableCollection",
+279:       "com.google.common.collect.ImmutableSet",
+280:       "com.google.common.collect.EmptyImmutableSet",
+281:       "com.google.common.base.Optional",
+282:       "com.google.common.base.Absent",
+283:       "com.google.common.collect.ImmutableMap",
+284:       "com.google.common.collect.ImmutableBiMap",
+285:       "com.google.common.collect.SingletonImmutableBiMap",
+286:       "net.mooctest.Arborescence",
+287:       "net.mooctest.Weighted",
+288:       "net.mooctest.Edge",
+289:       "com.google.common.collect.ImmutableMap$Builder",
+290:       "com.google.common.collect.Lists",
+291:       "com.google.common.collect.EmptyImmutableBiMap",
+292:       "net.mooctest.Edge$2",
+293:       "net.mooctest.WeightedGraph",
+294:       "net.mooctest.SparseWeightedGraph",
+295:       "com.google.common.base.Joiner$MapJoiner",
+296:       "com.google.common.collect.Maps",
+297:       "com.google.common.base.Predicates",
+298:       "com.google.common.base.Predicates$NotPredicate",
+299:       "net.mooctest.Edge$4",
+300:       "com.google.common.base.Predicates$AndPredicate",
+301:       "com.google.common.collect.UnmodifiableIterator",
+302:       "com.google.common.collect.UnmodifiableListIterator",
+303:       "com.google.common.collect.Iterators$1",
+304:       "com.google.common.collect.Iterators$2",
+305:       "com.google.common.collect.Iterators",
+306:       "net.mooctest.Edge$3",
+307:       "net.mooctest.ChuLiuEdmonds$PartialSolution",
+308:       "net.mooctest.Partition",
+309:       "net.mooctest.EdgeQueueMap",
+310:       "net.mooctest.DenseWeightedGraph",
+311:       "com.google.common.collect.SingletonImmutableSet",
+312:       "net.mooctest.Edge$1",
+313:       "com.google.common.collect.Iterators$13",
+314:       "net.mooctest.ChuLiuEdmonds",
+315:       "com.google.common.collect.Sets",
+316:       "com.google.common.collect.Queues",
+317:       "com.google.common.base.Objects",
+318:       "com.google.common.base.Objects$ToStringHelper",
+319:       "com.google.common.base.Objects$ToStringHelper$ValueHolder",
+320:       "com.google.common.collect.Range$1",
+321:       "com.google.common.collect.Range$2",
+322:       "com.google.common.collect.Ordering",
+323:       "com.google.common.collect.Range$3",
+324:       "com.google.common.collect.Cut",
+325:       "com.google.common.collect.Cut$BelowAll",
+326:       "com.google.common.collect.Cut$AboveAll",
+327:       "com.google.common.collect.Range",
+328:       "com.google.common.collect.Cut$BelowValue",
+329:       "com.google.common.collect.DiscreteDomain",
+330:       "com.google.common.collect.DiscreteDomain$IntegerDomain",
+331:       "com.google.common.collect.ImmutableSortedSetFauxverideShim",
+332:       "com.google.common.collect.NaturalOrdering",
+333:       "com.google.common.collect.EmptyImmutableSortedSet",
+334:       "com.google.common.collect.ImmutableSortedSet",
+335:       "com.google.common.collect.ContiguousSet",
+336:       "com.google.common.collect.RegularContiguousSet",
+337:       "com.google.common.collect.ObjectArrays",
+338:       "com.google.common.collect.AbstractSequentialIterator",
+339:       "com.google.common.collect.RegularContiguousSet$1",
+340:       "com.google.common.collect.RegularImmutableMap",
+341:       "com.google.common.collect.AbstractMapEntry",
+342:       "com.google.common.collect.ImmutableEntry",
+343:       "net.mooctest.ExclusiveEdge",
+344:       "com.google.common.collect.ImmutableList",
+345:       "com.google.common.collect.EmptyImmutableList",
+346:       "net.mooctest.Edge$EdgeBuilder",
+347:       "com.google.common.collect.ImmutableBiMap$Builder",
+348:       "net.mooctest.EdgeQueueMap$EdgeQueue",
+349:       "net.mooctest.FibonacciQueue",
+350:       "net.mooctest.FibonacciHeap",
+351:       "com.google.common.collect.ComparatorOrdering",
+352:       "com.google.common.collect.NullsFirstOrdering",
+353:       "net.mooctest.FibonacciQueue$1",
+354:       "com.google.common.collect.ImmutableSortedMapFauxverideShim",
+355:       "com.google.common.collect.EmptyImmutableSortedMap",
+356:       "com.google.common.collect.ImmutableSortedMap",
+357:       "net.mooctest.Pair",
+358:       "com.google.common.primitives.Booleans",
+359:       "com.google.common.collect.EmptyContiguousSet",
+360:       "com.google.common.collect.ImmutableSortedMap$Builder",
+361:       "com.google.common.collect.ImmutableSortedMap$1",
+362:       "com.google.common.collect.ComparisonChain$1",
+363:       "com.google.common.collect.ComparisonChain$InactiveComparisonChain",
+364:       "com.google.common.collect.ComparisonChain",
+365:       "com.google.common.primitives.Ints",
+366:       "com.google.common.collect.Hashing",
+367:       "com.google.common.collect.RegularImmutableMap$TerminalEntry",
+368:       "com.google.common.collect.RegularImmutableMap$NonTerminalEntry",
+369:       "com.google.common.collect.ReverseNaturalOrdering",
+370:       "com.google.common.collect.RegularImmutableSortedSet",
+371:       "com.google.common.collect.SingletonImmutableList",
+372:       "com.google.common.collect.ImmutableMap$1MapViewOfValuesAsSingletonSets",
+373:       "com.google.common.collect.AbstractMultimap",
+374:       "com.google.common.collect.ImmutableMultimap",
+375:       "com.google.common.collect.ImmutableSetMultimap",
+376:       "com.google.common.collect.RegularImmutableBiMap",
+377:       "com.google.common.collect.RegularImmutableBiMap$BiMapEntry",
+378:       "com.google.common.collect.ImmutableEnumSet",
+379:       "com.google.common.collect.Iterators$3",
+380:       "com.google.common.collect.TransformedIterator",
+381:       "com.google.common.collect.Iterators$8",
+382:       "com.google.common.primitives.Doubles",
+383:       "com.google.common.collect.ImmutableSet$ArrayImmutableSet",
+384:       "com.google.common.collect.RegularImmutableSet",
+385:       "com.google.common.collect.ImmutableAsList",
+386:       "com.google.common.collect.RegularImmutableAsList",
+387:       "com.google.common.collect.RegularImmutableList",
+388:       "com.google.common.collect.AbstractIndexedListIterator",
+389:       "com.google.common.collect.Iterators$12",
+390:       "net.mooctest.FibonacciHeap$Entry",
+391:       "com.google.common.base.Present",
+392:       "com.google.common.collect.ImmutableCollection$Builder",
+393:       "com.google.common.collect.ImmutableList$Builder",
+394:       "com.google.common.collect.RegularImmutableSortedMap",
+395:       "com.google.common.collect.Platform",
+396:       "com.google.common.collect.SortedLists$KeyPresentBehavior",
+397:       "com.google.common.collect.SortedLists$KeyAbsentBehavior",
+398:       "com.google.common.collect.SortedLists",
+399:       "com.google.common.collect.ImmutableList$ReverseImmutableList",
+400:       "com.google.common.collect.ImmutableList$ReverseImmutableList$1",
+401:       "net.mooctest.FibonacciHeap$1",
+402:       "com.google.common.collect.Iterators$5",
+403:       "com.google.common.collect.ImmutableMapEntrySet",
+404:       "com.google.common.collect.RegularImmutableMap$EntrySet",
+405:       "com.google.common.collect.Iterables",
+406:       "com.google.common.collect.FluentIterable",
+407:       "com.google.common.collect.Iterables$2",
+408:       "com.google.common.collect.Iterables$3"
+409:     );
+410:   }
+411: }
+
+[MASTER] 13:11:08.151 [pool-2-thread-1] ERROR JUnitAnalyzer - Failed to compile test case:
+ImmutableSortedMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>> immutableSortedMap0 = ImmutableSortedMap.of();
+Arborescence<EdgeQueueMap.EdgeQueue<Double>> arborescence0 = Arborescence.of((ImmutableMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>>) immutableSortedMap0);
+Weighted<Arborescence<EdgeQueueMap.EdgeQueue<Double>>> weighted0 = Weighted.weighted(arborescence0, 1698.1083);
+LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>> linkedHashSet0 = new LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>>();
+linkedHashSet0.parallelStream();
+KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>> kBestArborescences_SubsetOfSolutions0 = new KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>>((Edge<EdgeQueueMap.EdgeQueue<Double>>) null, weighted0, linkedHashSet0, linkedHashSet0);
+Arborescence<KBestArborescences> arborescence1 = Arborescence.of((ImmutableMap<KBestArborescences, KBestArborescences>) arborescence0.parents);
+PriorityQueue<KBestArborescences> priorityQueue0 = new PriorityQueue<KBestArborescences>();
+Partition<KBestArborescences> partition0 = Partition.singletons((Collection<KBestArborescences>) priorityQueue0);
+EdgeQueueMap.EdgeQueue<KBestArborescences> edgeQueueMap_EdgeQueue0 = EdgeQueueMap.EdgeQueue.create((KBestArborescences) null, partition0);
+Optional<ExclusiveEdge<KBestArborescences>> optional0 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+double[][] doubleArray0 = new double[0][5];
+Optional<ExclusiveEdge<KBestArborescences>> optional1 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+assertSame(optional1, optional0);
+
+
+[MASTER] 13:11:21.949 [pool-2-thread-1] ERROR JUnitAnalyzer - Compilation failed on compilation units: [RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_16_1575090681314\net\mooctest\KBestArborescences_16_tmp__ESTest.java], RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_16_1575090681314\net\mooctest\KBestArborescences_16_tmp__ESTest_scaffolding.java]]
+[MASTER] 13:11:21.950 [pool-2-thread-1] ERROR JUnitAnalyzer - Classpath: C:/mooctest/projects/3933/56329/Tarjan/target/classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;D:\respository\org\evosuite\evosuite-master\1.0.6\evosuite-master-1.0.6.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar
+[MASTER] 13:11:21.950 [pool-2-thread-1] ERROR JUnitAnalyzer - evosuiteCP: C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar;D:\respository\org\evosuite\evosuite-master\1.0.6\evosuite-master-1.0.6.jar;C:\mooctest\projects\3933\56329\Tarjan\target\classes;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\mooctest\projects\3933\56329\Tarjan\target\test-classes;C:\mooctest\projects\3933\56329\Tarjan\target\classes;D:\respository\junit\junit\4.12\junit-4.12.jar;D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\respository\com\google\guava\guava\14.0\guava-14.0.jar
+[MASTER] 13:11:21.950 [pool-2-thread-1] ERROR JUnitAnalyzer - Diagnostic: incompatible types: com.google.common.collect.ImmutableMap<net.mooctest.EdgeQueueMap.EdgeQueue<java.lang.Double>,net.mooctest.EdgeQueueMap.EdgeQueue<java.lang.Double>> cannot be converted to com.google.common.collect.ImmutableMap<net.mooctest.KBestArborescences,net.mooctest.KBestArborescences>: 37
+[MASTER] 13:11:21.956 [pool-2-thread-1] ERROR JUnitAnalyzer - RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_16_1575090681314\net\mooctest\KBestArborescences_16_tmp__ESTest.java]
+1: /*
+2:  * This file was automatically generated by EvoSuite
+3:  * Sat Nov 30 05:11:21 GMT 2019
+4:  */
+5: 
+6: package net.mooctest;
+7: 
+8: import org.junit.Test;
+9: import static org.junit.Assert.*;
+10: import com.google.common.base.Optional;
+11: import com.google.common.collect.ImmutableMap;
+12: import com.google.common.collect.ImmutableSortedMap;
+13: import java.util.Collection;
+14: import java.util.LinkedHashSet;
+15: import java.util.PriorityQueue;
+16: import net.mooctest.Arborescence;
+17: import net.mooctest.Edge;
+18: import net.mooctest.EdgeQueueMap;
+19: import net.mooctest.ExclusiveEdge;
+20: import net.mooctest.KBestArborescences;
+21: import net.mooctest.Partition;
+22: import net.mooctest.Weighted;
+23: import org.evosuite.runtime.EvoRunner;
+24: import org.evosuite.runtime.EvoRunnerParameters;
+25: import org.junit.runner.RunWith;
+26: 
+27: @RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, useJEE = true) 
+28: public class KBestArborescences_16_tmp__ESTest extends KBestArborescences_16_tmp__ESTest_scaffolding {
+29: 
+30:   @Test(timeout = 4000)
+31:   public void test0()  throws Throwable  {
+32:       ImmutableSortedMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>> immutableSortedMap0 = ImmutableSortedMap.of();
+33:       Arborescence<EdgeQueueMap.EdgeQueue<Double>> arborescence0 = Arborescence.of((ImmutableMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>>) immutableSortedMap0);
+34:       Weighted<Arborescence<EdgeQueueMap.EdgeQueue<Double>>> weighted0 = Weighted.weighted(arborescence0, 1698.1083);
+35:       LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>> linkedHashSet0 = new LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>>();
+36:       KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>> kBestArborescences_SubsetOfSolutions0 = new KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>>((Edge<EdgeQueueMap.EdgeQueue<Double>>) null, weighted0, linkedHashSet0, linkedHashSet0);
+37:       Arborescence<KBestArborescences> arborescence1 = Arborescence.of((ImmutableMap<KBestArborescences, KBestArborescences>) arborescence0.parents);
+38:       PriorityQueue<KBestArborescences> priorityQueue0 = new PriorityQueue<KBestArborescences>();
+39:       Partition<KBestArborescences> partition0 = Partition.singletons((Collection<KBestArborescences>) priorityQueue0);
+40:       EdgeQueueMap.EdgeQueue<KBestArborescences> edgeQueueMap_EdgeQueue0 = EdgeQueueMap.EdgeQueue.create((KBestArborescences) null, partition0);
+41:       Optional<ExclusiveEdge<KBestArborescences>> optional0 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+42:       assertNotNull(optional0);
+43:   }
+44: }
+RegularFileObject[C:\Users\34494\AppData\Local\Temp\EvoSuite_16_1575090681314\net\mooctest\KBestArborescences_16_tmp__ESTest.java]
+1: /**
+2:  * Scaffolding file used to store all the setups needed to run 
+3:  * tests automatically generated by EvoSuite
+4:  * Sat Nov 30 05:11:21 GMT 2019
+5:  */
+6: 
+7: package net.mooctest;
+8: 
+9: import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
+10: import org.junit.BeforeClass;
+11: import org.junit.Before;
+12: import org.junit.After;
+13: import org.junit.AfterClass;
+14: import org.evosuite.runtime.sandbox.Sandbox;
+15: import org.evosuite.runtime.sandbox.Sandbox.SandboxMode;
+16: 
+17: @EvoSuiteClassExclude
+18: public class KBestArborescences_16_tmp__ESTest_scaffolding {
+19: 
+20:   @org.junit.Rule 
+21:   public org.evosuite.runtime.vnet.NonFunctionalRequirementRule nfr = new org.evosuite.runtime.vnet.NonFunctionalRequirementRule();
+22: 
+23:   private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+24: 
+25:   private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
+26: 
+27: 
+28:   @BeforeClass 
+29:   public static void initEvoSuiteFramework() { 
+30:     org.evosuite.runtime.RuntimeSettings.className = "net.mooctest.KBestArborescences"; 
+31:     org.evosuite.runtime.GuiSupport.initialize(); 
+32:     org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
+33:     org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
+34:     org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
+35:     org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
+36:     org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
+37:     org.evosuite.runtime.classhandling.JDKClassResetter.init();
+38:     setSystemProperties();
+39:     initializeClasses();
+40:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+41:   } 
+42: 
+43:   @AfterClass 
+44:   public static void clearEvoSuiteFramework(){ 
+45:     Sandbox.resetDefaultSecurityManager(); 
+46:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+47:   } 
+48: 
+49:   @Before 
+50:   public void initTestCase(){ 
+51:     threadStopper.storeCurrentThreads();
+52:     threadStopper.startRecordingTime();
+53:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
+54:     org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
+55:     setSystemProperties(); 
+56:     org.evosuite.runtime.GuiSupport.setHeadless(); 
+57:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+58:     org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
+59:   } 
+60: 
+61:   @After 
+62:   public void doneWithTestCase(){ 
+63:     threadStopper.killAndJoinClientThreads();
+64:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
+65:     org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
+66:     resetClasses(); 
+67:     org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
+68:     org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
+69:     org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
+70:   } 
+71: 
+72:   public static void setSystemProperties() {
+73:  
+74:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+75:     java.lang.System.setProperty("file.encoding", "GBK"); 
+76:     java.lang.System.setProperty("java.awt.headless", "true"); 
+77:     java.lang.System.setProperty("java.io.tmpdir", "C:\\Users\\34494\\AppData\\Local\\Temp\\"); 
+78:     java.lang.System.setProperty("user.country", "CN"); 
+79:     java.lang.System.setProperty("user.dir", "C:\\mooctest\\projects\\3933\\56329\\Tarjan"); 
+80:     java.lang.System.setProperty("user.home", "C:\\Users\\34494"); 
+81:     java.lang.System.setProperty("user.language", "zh"); 
+82:     java.lang.System.setProperty("user.name", "34494"); 
+83:     java.lang.System.setProperty("user.timezone", "Asia/Shanghai"); 
+84:   }
+85: 
+86:   private static void initializeClasses() {
+87:     org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(KBestArborescences_16_tmp__ESTest_scaffolding.class.getClassLoader() ,
+88:       "com.google.common.collect.AllEqualOrdering",
+89:       "com.google.common.collect.RegularContiguousSet",
+90:       "com.google.common.collect.Hashing",
+91:       "com.google.common.collect.ImmutableList$SubList",
+92:       "com.google.common.collect.Lists$RandomAccessPartition",
+93:       "com.google.common.collect.Collections2",
+94:       "com.google.common.collect.ImmutableSortedMap$Builder",
+95:       "net.mooctest.DenseWeightedGraph",
+96:       "com.google.common.collect.PeekingIterator",
+97:       "com.google.common.collect.RegularImmutableList",
+98:       "com.google.common.collect.RegularContiguousSet$2",
+99:       "com.google.common.collect.RegularContiguousSet$1",
+100:       "com.google.common.collect.FluentIterable",
+101:       "com.google.common.base.Optional",
+102:       "net.mooctest.Pair",
+103:       "com.google.common.collect.Lists$TransformingRandomAccessList",
+104:       "net.mooctest.KBestArborescences",
+105:       "com.google.common.collect.Sets$2",
+106:       "com.google.common.collect.Sets$3",
+107:       "com.google.common.collect.Sets$1",
+108:       "com.google.common.collect.NullsLastOrdering",
+109:       "com.google.common.collect.ImmutableMapKeySet",
+110:       "com.google.common.collect.ImmutableSet$ArrayImmutableSet",
+111:       "com.google.common.collect.RegularImmutableMap",
+112:       "com.google.common.collect.RegularImmutableBiMap",
+113:       "net.mooctest.ChuLiuEdmonds",
+114:       "com.google.common.collect.Range",
+115:       "net.mooctest.EdgeQueueMap$EdgeQueue",
+116:       "com.google.common.base.Objects$ToStringHelper",
+117:       "com.google.common.collect.ByFunctionOrdering",
+118:       "com.google.common.collect.SortedMapDifference",
+119:       "com.google.common.collect.RegularImmutableSet",
+120:       "com.google.common.collect.AbstractMapEntry",
+121:       "com.google.common.collect.Iterators$12",
+122:       "com.google.common.collect.Iterators$11",
+123:       "com.google.common.collect.EmptyImmutableBiMap",
+124:       "com.google.common.base.Predicate",
+125:       "com.google.common.collect.LexicographicalOrdering",
+126:       "net.mooctest.Edge$4",
+127:       "net.mooctest.Edge$3",
+128:       "net.mooctest.Edge$2",
+129:       "com.google.common.base.Present",
+130:       "com.google.common.base.Joiner",
+131:       "com.google.common.collect.Iterables",
+132:       "com.google.common.collect.NullsFirstOrdering",
+133:       "com.google.common.collect.ContiguousSet",
+134:       "com.google.common.collect.ImmutableAsList",
+135:       "com.google.common.collect.DiscreteDomain$BigIntegerDomain",
+136:       "com.google.common.collect.Sets$SetView",
+137:       "net.mooctest.Partition",
+138:       "com.google.common.collect.RegularImmutableAsList",
+139:       "com.google.common.collect.SingletonImmutableSet",
+140:       "com.google.common.collect.Iterators$14",
+141:       "com.google.common.collect.Iterators$13",
+142:       "com.google.common.collect.Cut$BelowValue",
+143:       "com.google.common.collect.RegularImmutableMap$LinkedEntry",
+144:       "com.google.common.collect.ImmutableMapEntrySet",
+145:       "net.mooctest.EdgeQueueMap",
+146:       "com.google.common.collect.Lists$Partition",
+147:       "net.mooctest.WeightedGraph",
+148:       "com.google.common.collect.Lists",
+149:       "com.google.common.collect.UnmodifiableListIterator",
+150:       "com.google.common.collect.UsingToStringOrdering",
+151:       "com.google.common.collect.DiscreteDomain",
+152:       "com.google.common.collect.RegularImmutableMap$TerminalEntry",
+153:       "com.google.common.base.Predicates",
+154:       "com.google.common.collect.EmptyContiguousSet",
+155:       "com.google.common.collect.ImmutableMultimap",
+156:       "com.google.common.collect.Lists$TransformingSequentialList",
+157:       "com.google.common.collect.ImmutableSortedMap",
+158:       "com.google.common.collect.ImmutableSortedSet",
+159:       "com.google.common.collect.Cut",
+160:       "com.google.common.base.Absent",
+161:       "net.mooctest.FibonacciHeap",
+162:       "com.google.common.collect.ObjectArrays",
+163:       "com.google.common.collect.AbstractIterator",
+164:       "net.mooctest.KBestArborescences$SubsetOfSolutions",
+165:       "com.google.common.base.Joiner$MapJoiner",
+166:       "net.mooctest.Weighted",
+167:       "com.google.common.collect.ImmutableList$1",
+168:       "com.google.common.collect.MapDifference",
+169:       "com.google.common.collect.RegularImmutableMap$NonTerminalEntry",
+170:       "com.google.common.collect.SortedIterable",
+171:       "com.google.common.base.Preconditions",
+172:       "com.google.common.collect.ImmutableSortedSetFauxverideShim",
+173:       "com.google.common.collect.UnmodifiableIterator",
+174:       "net.mooctest.FibonacciQueue$1",
+175:       "com.google.common.collect.ImmutableMapValues",
+176:       "com.google.common.collect.EmptyImmutableList",
+177:       "com.google.common.base.Objects$ToStringHelper$ValueHolder",
+178:       "com.google.common.collect.ImmutableEntry",
+179:       "com.google.common.base.Joiner$1",
+180:       "com.google.common.base.Joiner$2",
+181:       "com.google.common.collect.RegularImmutableSortedMap",
+182:       "com.google.common.collect.ImmutableCollection",
+183:       "com.google.common.collect.ImmutableEnumMap",
+184:       "com.google.common.collect.EmptyImmutableSortedSet",
+185:       "com.google.common.collect.ImmutableEnumSet",
+186:       "com.google.common.collect.Lists$RandomAccessListWrapper",
+187:       "com.google.common.collect.EmptyImmutableSortedMap",
+188:       "com.google.common.collect.ImmutableList$ReverseImmutableList",
+189:       "com.google.common.base.Objects",
+190:       "com.google.common.collect.SingletonImmutableList",
+191:       "com.google.common.collect.ImmutableSetMultimap",
+192:       "com.google.common.collect.Iterators$6",
+193:       "com.google.common.base.Predicates$AndPredicate",
+194:       "com.google.common.collect.BiMap",
+195:       "com.google.common.collect.Maps$9",
+196:       "com.google.common.collect.Iterators$7",
+197:       "com.google.common.collect.Iterators$8",
+198:       "com.google.common.collect.ImmutableSet",
+199:       "com.google.common.base.Function",
+200:       "com.google.common.collect.Lists$AbstractListWrapper",
+201:       "com.google.common.collect.ImmutableMap",
+202:       "com.google.common.collect.ComparatorOrdering",
+203:       "com.google.common.collect.AbstractIndexedListIterator",
+204:       "com.google.common.collect.DiscreteDomain$IntegerDomain",
+205:       "com.google.common.collect.Iterators$1",
+206:       "com.google.common.collect.Iterators$2",
+207:       "net.mooctest.SparseWeightedGraph",
+208:       "com.google.common.base.Predicates$NotPredicate",
+209:       "com.google.common.collect.Iterators$3",
+210:       "com.google.common.collect.Sets",
+211:       "com.google.common.collect.ImmutableCollection$EmptyImmutableCollection",
+212:       "com.google.common.collect.Iterators$5",
+213:       "com.google.common.collect.ImmutableSortedMapFauxverideShim",
+214:       "net.mooctest.Edge$EdgeBuilder",
+215:       "com.google.common.collect.Queues",
+216:       "com.google.common.collect.DiscreteDomain$LongDomain",
+217:       "net.mooctest.FibonacciHeap$1",
+218:       "com.google.common.collect.ExplicitOrdering",
+219:       "com.google.common.collect.Lists$StringAsImmutableList",
+220:       "com.google.common.collect.Lists$2",
+221:       "com.google.common.collect.Cut$AboveValue",
+222:       "com.google.common.primitives.Doubles",
+223:       "com.google.common.collect.Lists$1",
+224:       "com.google.common.collect.Iterables$2",
+225:       "com.google.common.collect.Iterables$3",
+226:       "com.google.common.collect.Range$2",
+227:       "com.google.common.collect.Range$3",
+228:       "net.mooctest.FibonacciHeap$Entry",
+229:       "net.mooctest.Edge$1",
+230:       "com.google.common.collect.Range$1",
+231:       "com.google.common.collect.Multiset",
+232:       "com.google.common.collect.AbstractMultimap",
+233:       "com.google.common.base.Supplier",
+234:       "com.google.common.collect.Multimap",
+235:       "com.google.common.collect.EmptyImmutableSet",
+236:       "com.google.common.collect.Iterators",
+237:       "com.google.common.collect.CompoundOrdering",
+238:       "com.google.common.collect.AbstractSequentialIterator",
+239:       "net.mooctest.Arborescence",
+240:       "com.google.common.collect.ImmutableBiMap",
+241:       "com.google.common.collect.ImmutableList",
+242:       "com.google.common.collect.SingletonImmutableBiMap",
+243:       "com.google.common.collect.ReverseOrdering",
+244:       "net.mooctest.FibonacciQueue",
+245:       "com.google.common.collect.FluentIterable$1",
+246:       "com.google.common.collect.ImmutableMap$1MapViewOfValuesAsSingletonSets",
+247:       "net.mooctest.ExclusiveEdge",
+248:       "net.mooctest.Edge",
+249:       "com.google.common.collect.RegularImmutableMap$EntrySet",
+250:       "com.google.common.collect.Cut$BelowAll",
+251:       "net.mooctest.ChuLiuEdmonds$PartialSolution",
+252:       "com.google.common.collect.ReverseNaturalOrdering",
+253:       "com.google.common.collect.ImmutableMap$Builder",
+254:       "com.google.common.collect.Maps",
+255:       "com.google.common.collect.SetMultimap",
+256:       "com.google.common.collect.TransformedIterator",
+257:       "com.google.common.collect.DescendingImmutableSortedSet",
+258:       "com.google.common.collect.Maps$EntryTransformer",
+259:       "com.google.common.collect.Ordering",
+260:       "com.google.common.collect.NaturalOrdering",
+261:       "com.google.common.collect.Iterators$MergingIterator",
+262:       "com.google.common.collect.Cut$AboveAll",
+263:       "com.google.common.collect.RegularImmutableSortedSet"
+264:     );
+265:   } 
+266: 
+267:   private static void resetClasses() {
+268:     org.evosuite.runtime.classhandling.ClassResetter.getInstance().setClassLoader(KBestArborescences_16_tmp__ESTest_scaffolding.class.getClassLoader()); 
+269: 
+270:     org.evosuite.runtime.classhandling.ClassStateSupport.resetClasses(
+271:       "net.mooctest.KBestArborescences",
+272:       "net.mooctest.KBestArborescences$SubsetOfSolutions",
+273:       "com.google.common.base.Joiner",
+274:       "com.google.common.base.Preconditions",
+275:       "com.google.common.base.Joiner$1",
+276:       "com.google.common.collect.Collections2",
+277:       "com.google.common.collect.ImmutableCollection$EmptyImmutableCollection",
+278:       "com.google.common.collect.ImmutableCollection",
+279:       "com.google.common.collect.ImmutableSet",
+280:       "com.google.common.collect.EmptyImmutableSet",
+281:       "com.google.common.base.Optional",
+282:       "com.google.common.base.Absent",
+283:       "com.google.common.collect.ImmutableMap",
+284:       "com.google.common.collect.ImmutableBiMap",
+285:       "com.google.common.collect.SingletonImmutableBiMap",
+286:       "net.mooctest.Arborescence",
+287:       "net.mooctest.Weighted",
+288:       "net.mooctest.Edge",
+289:       "com.google.common.collect.ImmutableMap$Builder",
+290:       "com.google.common.collect.Lists",
+291:       "com.google.common.collect.EmptyImmutableBiMap",
+292:       "net.mooctest.Edge$2",
+293:       "net.mooctest.WeightedGraph",
+294:       "net.mooctest.SparseWeightedGraph",
+295:       "com.google.common.base.Joiner$MapJoiner",
+296:       "com.google.common.collect.Maps",
+297:       "com.google.common.base.Predicates",
+298:       "com.google.common.base.Predicates$NotPredicate",
+299:       "net.mooctest.Edge$4",
+300:       "com.google.common.base.Predicates$AndPredicate",
+301:       "com.google.common.collect.UnmodifiableIterator",
+302:       "com.google.common.collect.UnmodifiableListIterator",
+303:       "com.google.common.collect.Iterators$1",
+304:       "com.google.common.collect.Iterators$2",
+305:       "com.google.common.collect.Iterators",
+306:       "net.mooctest.Edge$3",
+307:       "net.mooctest.ChuLiuEdmonds$PartialSolution",
+308:       "net.mooctest.Partition",
+309:       "net.mooctest.EdgeQueueMap",
+310:       "net.mooctest.DenseWeightedGraph",
+311:       "com.google.common.collect.SingletonImmutableSet",
+312:       "net.mooctest.Edge$1",
+313:       "com.google.common.collect.Iterators$13",
+314:       "net.mooctest.ChuLiuEdmonds",
+315:       "com.google.common.collect.Sets",
+316:       "com.google.common.collect.Queues",
+317:       "com.google.common.base.Objects",
+318:       "com.google.common.base.Objects$ToStringHelper",
+319:       "com.google.common.base.Objects$ToStringHelper$ValueHolder",
+320:       "com.google.common.collect.Range$1",
+321:       "com.google.common.collect.Range$2",
+322:       "com.google.common.collect.Ordering",
+323:       "com.google.common.collect.Range$3",
+324:       "com.google.common.collect.Cut",
+325:       "com.google.common.collect.Cut$BelowAll",
+326:       "com.google.common.collect.Cut$AboveAll",
+327:       "com.google.common.collect.Range",
+328:       "com.google.common.collect.Cut$BelowValue",
+329:       "com.google.common.collect.DiscreteDomain",
+330:       "com.google.common.collect.DiscreteDomain$IntegerDomain",
+331:       "com.google.common.collect.ImmutableSortedSetFauxverideShim",
+332:       "com.google.common.collect.NaturalOrdering",
+333:       "com.google.common.collect.EmptyImmutableSortedSet",
+334:       "com.google.common.collect.ImmutableSortedSet",
+335:       "com.google.common.collect.ContiguousSet",
+336:       "com.google.common.collect.RegularContiguousSet",
+337:       "com.google.common.collect.ObjectArrays",
+338:       "com.google.common.collect.AbstractSequentialIterator",
+339:       "com.google.common.collect.RegularContiguousSet$1",
+340:       "com.google.common.collect.RegularImmutableMap",
+341:       "com.google.common.collect.AbstractMapEntry",
+342:       "com.google.common.collect.ImmutableEntry",
+343:       "net.mooctest.ExclusiveEdge",
+344:       "com.google.common.collect.ImmutableList",
+345:       "com.google.common.collect.EmptyImmutableList",
+346:       "net.mooctest.Edge$EdgeBuilder",
+347:       "com.google.common.collect.ImmutableBiMap$Builder",
+348:       "net.mooctest.EdgeQueueMap$EdgeQueue",
+349:       "net.mooctest.FibonacciQueue",
+350:       "net.mooctest.FibonacciHeap",
+351:       "com.google.common.collect.ComparatorOrdering",
+352:       "com.google.common.collect.NullsFirstOrdering",
+353:       "net.mooctest.FibonacciQueue$1",
+354:       "com.google.common.collect.ImmutableSortedMapFauxverideShim",
+355:       "com.google.common.collect.EmptyImmutableSortedMap",
+356:       "com.google.common.collect.ImmutableSortedMap",
+357:       "net.mooctest.Pair",
+358:       "com.google.common.primitives.Booleans",
+359:       "com.google.common.collect.EmptyContiguousSet",
+360:       "com.google.common.collect.ImmutableSortedMap$Builder",
+361:       "com.google.common.collect.ImmutableSortedMap$1",
+362:       "com.google.common.collect.ComparisonChain$1",
+363:       "com.google.common.collect.ComparisonChain$InactiveComparisonChain",
+364:       "com.google.common.collect.ComparisonChain",
+365:       "com.google.common.primitives.Ints",
+366:       "com.google.common.collect.Hashing",
+367:       "com.google.common.collect.RegularImmutableMap$TerminalEntry",
+368:       "com.google.common.collect.RegularImmutableMap$NonTerminalEntry",
+369:       "com.google.common.collect.ReverseNaturalOrdering",
+370:       "com.google.common.collect.RegularImmutableSortedSet",
+371:       "com.google.common.collect.SingletonImmutableList",
+372:       "com.google.common.collect.ImmutableMap$1MapViewOfValuesAsSingletonSets",
+373:       "com.google.common.collect.AbstractMultimap",
+374:       "com.google.common.collect.ImmutableMultimap",
+375:       "com.google.common.collect.ImmutableSetMultimap",
+376:       "com.google.common.collect.RegularImmutableBiMap",
+377:       "com.google.common.collect.RegularImmutableBiMap$BiMapEntry",
+378:       "com.google.common.collect.ImmutableEnumSet",
+379:       "com.google.common.collect.Iterators$3",
+380:       "com.google.common.collect.TransformedIterator",
+381:       "com.google.common.collect.Iterators$8",
+382:       "com.google.common.primitives.Doubles",
+383:       "com.google.common.collect.ImmutableSet$ArrayImmutableSet",
+384:       "com.google.common.collect.RegularImmutableSet",
+385:       "com.google.common.collect.ImmutableAsList",
+386:       "com.google.common.collect.RegularImmutableAsList",
+387:       "com.google.common.collect.RegularImmutableList",
+388:       "com.google.common.collect.AbstractIndexedListIterator",
+389:       "com.google.common.collect.Iterators$12",
+390:       "net.mooctest.FibonacciHeap$Entry",
+391:       "com.google.common.base.Present",
+392:       "com.google.common.collect.ImmutableCollection$Builder",
+393:       "com.google.common.collect.ImmutableList$Builder",
+394:       "com.google.common.collect.RegularImmutableSortedMap",
+395:       "com.google.common.collect.Platform",
+396:       "com.google.common.collect.SortedLists$KeyPresentBehavior",
+397:       "com.google.common.collect.SortedLists$KeyAbsentBehavior",
+398:       "com.google.common.collect.SortedLists",
+399:       "com.google.common.collect.ImmutableList$ReverseImmutableList",
+400:       "com.google.common.collect.ImmutableList$ReverseImmutableList$1",
+401:       "net.mooctest.FibonacciHeap$1",
+402:       "com.google.common.collect.Iterators$5",
+403:       "com.google.common.collect.ImmutableMapEntrySet",
+404:       "com.google.common.collect.RegularImmutableMap$EntrySet",
+405:       "com.google.common.collect.Iterables",
+406:       "com.google.common.collect.FluentIterable",
+407:       "com.google.common.collect.Iterables$2",
+408:       "com.google.common.collect.Iterables$3"
+409:     );
+410:   }
+411: }
+
+[MASTER] 13:11:21.957 [pool-2-thread-1] ERROR JUnitAnalyzer - Failed to compile test case:
+ImmutableSortedMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>> immutableSortedMap0 = ImmutableSortedMap.of();
+Arborescence<EdgeQueueMap.EdgeQueue<Double>> arborescence0 = Arborescence.of((ImmutableMap<EdgeQueueMap.EdgeQueue<Double>, EdgeQueueMap.EdgeQueue<Double>>) immutableSortedMap0);
+Weighted<Arborescence<EdgeQueueMap.EdgeQueue<Double>>> weighted0 = Weighted.weighted(arborescence0, 1698.1083);
+LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>> linkedHashSet0 = new LinkedHashSet<Edge<EdgeQueueMap.EdgeQueue<Double>>>();
+KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>> kBestArborescences_SubsetOfSolutions0 = new KBestArborescences.SubsetOfSolutions<EdgeQueueMap.EdgeQueue<Double>>((Edge<EdgeQueueMap.EdgeQueue<Double>>) null, weighted0, linkedHashSet0, linkedHashSet0);
+Arborescence<KBestArborescences> arborescence1 = Arborescence.of((ImmutableMap<KBestArborescences, KBestArborescences>) arborescence0.parents);
+PriorityQueue<KBestArborescences> priorityQueue0 = new PriorityQueue<KBestArborescences>();
+Partition<KBestArborescences> partition0 = Partition.singletons((Collection<KBestArborescences>) priorityQueue0);
+EdgeQueueMap.EdgeQueue<KBestArborescences> edgeQueueMap_EdgeQueue0 = EdgeQueueMap.EdgeQueue.create((KBestArborescences) null, partition0);
+Optional<ExclusiveEdge<KBestArborescences>> optional0 = KBestArborescences.seek((ExclusiveEdge<KBestArborescences>) null, arborescence1, (EdgeQueueMap.EdgeQueue<KBestArborescences>) edgeQueueMap_EdgeQueue0);
+assertNotNull(optional0);
+
+
+[MASTER] 13:11:53.125 [pool-2-thread-1] ERROR JUnitAnalyzer - Ran out of time while checking tests

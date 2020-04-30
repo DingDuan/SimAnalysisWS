@@ -1,0 +1,100 @@
+* Starting client
+* Connecting to master process on port 2783
+* Analyzing classpath: 
+  - C:/mooctest/projects/3933/56329/Tarjan/target/classes
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\access-bridge-64.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\cldrdata.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\dnsns.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jaccess.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\jfxrt.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\localedata.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\nashorn.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunec.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunjce_provider.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunmscapi.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\sunpkcs11.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\ext\zipfs.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfxswt.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\management-agent.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar
+  - C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar
+  - C:\mooctest\projects\3933\56329\Tarjan\target\test-classes
+  - C:\mooctest\projects\3933\56329\Tarjan\target\classes
+  - D:\respository\junit\junit\4.12\junit-4.12.jar
+  - D:\respository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+  - D:\respository\com\google\guava\guava\14.0\guava-14.0.jar
+* Finished analyzing classpath
+* Generating tests for class net.mooctest.Pair
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 13:16:33.270 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: C:\mooctest\projects\3933\56329\Tarjan\.evosuite\evosuite-seeds\net.mooctest.Pair.seed
+* Loaded 0 tests from C:\mooctest\projects\3933\56329\Tarjan\.evosuite\evosuite-seeds\net.mooctest.Pair.seed
+* Total number of test goals: 
+  - Line 12
+  - Branch 10
+  - Exception 0
+  - MutationFactory 30
+  - Output 7
+  - Method 5
+  - MethodNoException 5
+  - CBranchFitnessFactory 10
+* Using seed 1575090954217
+* Starting evolution
+[MASTER] 13:16:36.475 [pool-2-thread-1] WARN  TimeController - Phase INITIALIZATION lasted too long, 20 seconds more than allowed.
+* Search finished after 83s and 709 generations, 288401 statements, best individual has fitness: 4.0
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 100%
+* Total number of goals: 12
+* Number of covered goals: 12
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 10
+* Number of covered goals: 10
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100% (no goals)
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 100%
+* Total number of goals: 30
+* Number of covered goals: 30
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 57%
+* Total number of goals: 7
+* Number of covered goals: 4
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 5
+* Number of covered goals: 5
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 5
+* Number of covered goals: 5
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 100%
+* Total number of goals: 10
+* Number of covered goals: 10
+* Generated 6 tests with total length 21
+* Resulting test suite's coverage: 95% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 61%
+* Compiling and checking tests
+* Writing JUnit test case 'Pair_ESTest' to C:\mooctest\projects\3933\56329\Tarjan\.evosuite\tmp_2019_11_30_13_03_18\tests
+* Done!
+
